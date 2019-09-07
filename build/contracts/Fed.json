@@ -1,0 +1,257 @@
+{
+  "contractName": "Fed",
+  "abi": [
+    {
+      "inputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "storeETH",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"storeETH\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/A/repos/crypto_game/contracts/Fed.sol\":\"Fed\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/A/repos/crypto_game/contracts/Fed.sol\":{\"keccak256\":\"0x2890f0ff2b82747490d38278e5239d92bae11d1912737d870c6d67b02b4fef65\",\"urls\":[\"bzzr://3a16591ae0d46c663ec1424550608585051b1a69e39892d86ae6be66a177b878\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50605780601d6000396000f3fe608060405260043610601c5760003560e01c8063f1ad3334146021575b600080fd5b60276029565b005b56fea165627a7a72305820f53db0bc79129881c433a1f7c1bce05634aa533492237cef523f3e75ee8207730029",
+  "deployedBytecode": "0x608060405260043610601c5760003560e01c8063f1ad3334146021575b600080fd5b60276029565b005b56fea165627a7a72305820f53db0bc79129881c433a1f7c1bce05634aa533492237cef523f3e75ee8207730029",
+  "sourceMap": "27:132:0:-;;;49:31;8:9:-1;5:2;;;30:1;27;20:12;5:2;49:31:0;27:132;;;;;;",
+  "deployedSourceMap": "27:132:0:-;;;;;;;;;;;;;;;;;;;;;86:70;;;:::i;:::-;;;:::o",
+  "source": "pragma solidity ^0.5.0;\r\n\r\ncontract Fed {\r\n\r\n    constructor() public {\r\n\r\n    }\r\n    function storeETH() public payable {\r\n    // nothing to do here\r\n    }\r\n}\r\n",
+  "sourcePath": "A:/repos/crypto_game/contracts/Fed.sol",
+  "ast": {
+    "absolutePath": "/A/repos/crypto_game/contracts/Fed.sol",
+    "exportedSymbols": {
+      "Fed": [
+        10
+      ]
+    },
+    "id": 11,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 10,
+        "linearizedBaseContracts": [
+          10
+        ],
+        "name": "Fed",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4,
+              "nodeType": "Block",
+              "src": "70:10:0",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 5,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "60:2:0"
+            },
+            "returnParameters": {
+              "id": 3,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "70:0:0"
+            },
+            "scope": 10,
+            "src": "49:31:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 8,
+              "nodeType": "Block",
+              "src": "121:35:0",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 9,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "storeETH",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "103:2:0"
+            },
+            "returnParameters": {
+              "id": 7,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "121:0:0"
+            },
+            "scope": 10,
+            "src": "86:70:0",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 11,
+        "src": "27:132:0"
+      }
+    ],
+    "src": "0:161:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/A/repos/crypto_game/contracts/Fed.sol",
+    "exportedSymbols": {
+      "Fed": [
+        10
+      ]
+    },
+    "id": 11,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 10,
+        "linearizedBaseContracts": [
+          10
+        ],
+        "name": "Fed",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4,
+              "nodeType": "Block",
+              "src": "70:10:0",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 5,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "60:2:0"
+            },
+            "returnParameters": {
+              "id": 3,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "70:0:0"
+            },
+            "scope": 10,
+            "src": "49:31:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 8,
+              "nodeType": "Block",
+              "src": "121:35:0",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 9,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "storeETH",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "103:2:0"
+            },
+            "returnParameters": {
+              "id": 7,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "121:0:0"
+            },
+            "scope": 10,
+            "src": "86:70:0",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 11,
+        "src": "27:132:0"
+      }
+    ],
+    "src": "0:161:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x8d7B1EEE0Df3c8746ED47561b8822861116Ba019",
+      "transactionHash": "0xdad42638b01b7c8fdfc41ea1b8c6d951f5e8506d1e83bbde88dc2c2b68e59717"
+    }
+  },
+  "schemaVersion": "3.0.14",
+  "updatedAt": "2019-09-04T01:17:50.068Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
