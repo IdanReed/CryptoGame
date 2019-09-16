@@ -3,64 +3,85 @@ pragma solidity ^0.5.0;
 contract Game {
     constructor() public { }
 
-
     /**************************************************************
-    Non-placeable types
+    Crafting map
     **************************************************************/
-    enum ReasourceType {Natural, AttackPower, Component}
-
-    struct NaturalReasourceType {
-        uint extractionDifficulty;
+    struct ExtractorPros{
+        uint what;
     }
-    uint constant NATURAL_REASOURCE_TYPE_CAP = 1;
-    NaturalReasourceType[NATURAL_REASOURCE_TYPE_CAP] naturalReasourcesTypes;
+    enum ItemType{
+        NaturalReasource,
+        AttackPower,
+        Component,
+        Placeable
+    }
 
-    /**************************************************************
-    Recipe
-    **************************************************************/
+    struct ItemProperties{
+        uint backupItemId;
+
+        ItemType itemType;
+        uint weight;
+        uint volume;
+
+        ExtractorPros extractor;
+    }
+    ItemProperties[] items;
+
+    struct RecipeElement{
+        uint itemId;
+        uint quantity;
+    }
+    struct Recipe{
+        bool valid;
+        RecipeElement[] inputIds;
+        RecipeElement[] outputIds;
+    }
+    Recipe[] recipes;
+
+    function getItemProperties(uint itemI) private returns (ItemProperties memory) {
+
+    }
+
+    function craft(uint recipeId) public {
+
+    }
 
     /**************************************************************
     Sector
     **************************************************************/
     struct SectorPlaceable {
-        uint8 spaceRequired;
+        ItemReference itemReference;
+
+        uint spaceRequired;
     }
 
 
     /**************************************************************
     Silo
     **************************************************************/
-    struct SiloType{
-        ReasourceType storageType;
-    }
-    uint constant SILO_TYPE_CAP = 1;
-    SiloType[SILO_TYPE_CAP] siloTypes;
-
     struct Silo {
         SectorPlaceable placeableData;
-        uint siloTypeId;
 
-        uint reasourceId;
-        uint value;
+        ItemReference storedItemReference;
+        uint quantity;
     }
-
 
     /**************************************************************
     Extractor
     **************************************************************/
-    struct ExtractorType{
-
-        uint rate;
-        NaturalReasourceType reasourceType;
-    }
-    uint constant EXTRACTOR_TYPE_CAP = 1;
-    ExtractorType[EXTRACTOR_TYPE_CAP] extractorTypes;
-
     struct Extractor {
         SectorPlaceable placeableData;
-        uint extractorTypeId;
+
+        uint targetRecipe;
     }
 
+    /**************************************************************
+    Extractor
+    **************************************************************/
+    struct Factory {
+        SectorPlaceable placeableData;
+
+    }
 
     /**************************************************************
     World
@@ -78,6 +99,7 @@ contract Game {
         uint lastTickBlock;
 
         /* Placeables       */
+
         Silo[] silos;
         Extractor[] extractors;
     }
@@ -94,19 +116,19 @@ contract Game {
         return cords;
     }
 
-    function tickExtractor(address sectorAddress, uint extractorIndex) public {
-        Sector storage selSector = sectors[sectorAddress];
+    // function tickExtractor(address sectorAddress, uint extractorIndex) public {
+    //     Sector storage selSector = sectors[sectorAddress];
 
-        if(
-            selSector.initialized &&
-            selSector.owner == msg.sender &&
-            extractorIndex < selSector.extractors.length
-            ) {
+    //     if(
+    //         selSector.initialized &&
+    //         selSector.owner == msg.sender &&
+    //         extractorIndex < selSector.extractors.length
+    //         ) {
 
-            Extractor storage selExtractor = selSector.extractors[extractorIndex];
-            selExtractor.testVal = true;
-        }
-    }
+    //         Extractor storage selExtractor = selSector.extractors[extractorIndex];
+    //         selExtractor.testVal = true;
+    //     }
+    // }
 
     /**************************************************************
     Public ABI
