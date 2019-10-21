@@ -1,0 +1,458 @@
+{
+  "contractName": "Recipe",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/A/repos/crypto_game/contracts/Recipe.sol\":\"Recipe\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/A/repos/crypto_game/contracts/Recipe.sol\":{\"keccak256\":\"0x81f19716a1e84dc23519182c5c64feea829b8b9322c6302298b9b602c046750f\",\"urls\":[\"bzzr://e19b6e46ff436d31521f4ceb7c72c3957df8c98bdf10c1c2b889e2a2668f1964\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a72305820773089402280a9246ecb9ecbb27c30501b7b5faeaaec254f7b0f3fbf70980efa0029",
+  "deployedBytecode": "0x6080604052600080fdfea165627a7a72305820773089402280a9246ecb9ecbb27c30501b7b5faeaaec254f7b0f3fbf70980efa0029",
+  "sourceMap": "27:219:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:219:4;;;;;;;",
+  "deployedSourceMap": "27:219:4:-;;;;;",
+  "source": "pragma solidity ^0.5.0;\r\n\r\ncontract Recipe{\r\n    struct RecipeElement{\r\n        uint itemId;\r\n        uint quantity;\r\n    }\r\n    struct Recipe{\r\n        uint recipeId;\r\n        RecipeElement[] inputs;\r\n        RecipeElement[] outputs;\r\n    }\r\n\r\n}",
+  "sourcePath": "A:\\repos\\crypto_game\\contracts\\Recipe.sol",
+  "ast": {
+    "absolutePath": "/A/repos/crypto_game/contracts/Recipe.sol",
+    "exportedSymbols": {
+      "Recipe": [
+        599
+      ]
+    },
+    "id": 600,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 584,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:4"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 599,
+        "linearizedBaseContracts": [
+          599
+        ],
+        "name": "Recipe",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Recipe.RecipeElement",
+            "id": 589,
+            "members": [
+              {
+                "constant": false,
+                "id": 586,
+                "name": "itemId",
+                "nodeType": "VariableDeclaration",
+                "scope": 589,
+                "src": "80:11:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 585,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "80:4:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 588,
+                "name": "quantity",
+                "nodeType": "VariableDeclaration",
+                "scope": 589,
+                "src": "102:13:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 587,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "102:4:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "RecipeElement",
+            "nodeType": "StructDefinition",
+            "scope": 599,
+            "src": "49:74:4",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Recipe.Recipe",
+            "id": 598,
+            "members": [
+              {
+                "constant": false,
+                "id": 591,
+                "name": "recipeId",
+                "nodeType": "VariableDeclaration",
+                "scope": 598,
+                "src": "153:13:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 590,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "153:4:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 594,
+                "name": "inputs",
+                "nodeType": "VariableDeclaration",
+                "scope": 598,
+                "src": "177:22:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_RecipeElement_$589_storage_$dyn_storage_ptr",
+                  "typeString": "struct Recipe.RecipeElement[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "contractScope": null,
+                    "id": 592,
+                    "name": "RecipeElement",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 589,
+                    "src": "177:13:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_RecipeElement_$589_storage_ptr",
+                      "typeString": "struct Recipe.RecipeElement"
+                    }
+                  },
+                  "id": 593,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "177:15:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_RecipeElement_$589_storage_$dyn_storage_ptr",
+                    "typeString": "struct Recipe.RecipeElement[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 597,
+                "name": "outputs",
+                "nodeType": "VariableDeclaration",
+                "scope": 598,
+                "src": "210:23:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_RecipeElement_$589_storage_$dyn_storage_ptr",
+                  "typeString": "struct Recipe.RecipeElement[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "contractScope": null,
+                    "id": 595,
+                    "name": "RecipeElement",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 589,
+                    "src": "210:13:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_RecipeElement_$589_storage_ptr",
+                      "typeString": "struct Recipe.RecipeElement"
+                    }
+                  },
+                  "id": 596,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "210:15:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_RecipeElement_$589_storage_$dyn_storage_ptr",
+                    "typeString": "struct Recipe.RecipeElement[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Recipe",
+            "nodeType": "StructDefinition",
+            "scope": 599,
+            "src": "129:112:4",
+            "visibility": "public"
+          }
+        ],
+        "scope": 600,
+        "src": "27:219:4"
+      }
+    ],
+    "src": "0:246:4"
+  },
+  "legacyAST": {
+    "absolutePath": "/A/repos/crypto_game/contracts/Recipe.sol",
+    "exportedSymbols": {
+      "Recipe": [
+        599
+      ]
+    },
+    "id": 600,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 584,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:4"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 599,
+        "linearizedBaseContracts": [
+          599
+        ],
+        "name": "Recipe",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Recipe.RecipeElement",
+            "id": 589,
+            "members": [
+              {
+                "constant": false,
+                "id": 586,
+                "name": "itemId",
+                "nodeType": "VariableDeclaration",
+                "scope": 589,
+                "src": "80:11:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 585,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "80:4:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 588,
+                "name": "quantity",
+                "nodeType": "VariableDeclaration",
+                "scope": 589,
+                "src": "102:13:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 587,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "102:4:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "RecipeElement",
+            "nodeType": "StructDefinition",
+            "scope": 599,
+            "src": "49:74:4",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Recipe.Recipe",
+            "id": 598,
+            "members": [
+              {
+                "constant": false,
+                "id": 591,
+                "name": "recipeId",
+                "nodeType": "VariableDeclaration",
+                "scope": 598,
+                "src": "153:13:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 590,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "153:4:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 594,
+                "name": "inputs",
+                "nodeType": "VariableDeclaration",
+                "scope": 598,
+                "src": "177:22:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_RecipeElement_$589_storage_$dyn_storage_ptr",
+                  "typeString": "struct Recipe.RecipeElement[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "contractScope": null,
+                    "id": 592,
+                    "name": "RecipeElement",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 589,
+                    "src": "177:13:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_RecipeElement_$589_storage_ptr",
+                      "typeString": "struct Recipe.RecipeElement"
+                    }
+                  },
+                  "id": 593,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "177:15:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_RecipeElement_$589_storage_$dyn_storage_ptr",
+                    "typeString": "struct Recipe.RecipeElement[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 597,
+                "name": "outputs",
+                "nodeType": "VariableDeclaration",
+                "scope": 598,
+                "src": "210:23:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_RecipeElement_$589_storage_$dyn_storage_ptr",
+                  "typeString": "struct Recipe.RecipeElement[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "contractScope": null,
+                    "id": 595,
+                    "name": "RecipeElement",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 589,
+                    "src": "210:13:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_RecipeElement_$589_storage_ptr",
+                      "typeString": "struct Recipe.RecipeElement"
+                    }
+                  },
+                  "id": 596,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "210:15:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_RecipeElement_$589_storage_$dyn_storage_ptr",
+                    "typeString": "struct Recipe.RecipeElement[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Recipe",
+            "nodeType": "StructDefinition",
+            "scope": 599,
+            "src": "129:112:4",
+            "visibility": "public"
+          }
+        ],
+        "scope": 600,
+        "src": "27:219:4"
+      }
+    ],
+    "src": "0:246:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.14",
+  "updatedAt": "2019-10-21T00:16:28.196Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

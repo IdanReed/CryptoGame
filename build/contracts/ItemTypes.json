@@ -1,0 +1,562 @@
+{
+  "contractName": "ItemTypes",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/A/repos/crypto_game/contracts/ItemTypes.sol\":\"ItemTypes\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/A/repos/crypto_game/contracts/ItemTypes.sol\":{\"keccak256\":\"0x65e864254f45c3cbf3f032f9bf8be9e8656df502fc6b52d1c01db477290b803e\",\"urls\":[\"bzzr://9c64a5080482b473eacc3f802253f1da866e93c6135c3015a0275f1f197b6417\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a72305820d81ff882414093b0dc56eb0ae3e7627d69f0df29a17e956b413bc98923d91f9a0029",
+  "deployedBytecode": "0x6080604052600080fdfea165627a7a72305820d81ff882414093b0dc56eb0ae3e7627d69f0df29a17e956b413bc98923d91f9a0029",
+  "sourceMap": "27:460:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;27:460:2;;;;;;;",
+  "deployedSourceMap": "27:460:2:-;;;;;",
+  "source": "pragma solidity ^0.5.0;\r\n\r\ncontract ItemTypes{\r\n    enum ItemType{\r\n        NaturalReasource,\r\n        Component,\r\n        Extractor,\r\n        Factory\r\n    }\r\n    struct ExtractorProperties{\r\n        uint targetRecipe;\r\n    }\r\n\r\n    struct OptionalItemProperties{\r\n        ExtractorProperties extractor;\r\n    }\r\n    struct ItemProperties{\r\n        uint backupItemId;\r\n\r\n        uint density;\r\n\r\n        ItemType itemType;\r\n\r\n        OptionalItemProperties optionalProperties;\r\n    }\r\n\r\n}",
+  "sourcePath": "A:\\repos\\crypto_game\\contracts\\ItemTypes.sol",
+  "ast": {
+    "absolutePath": "/A/repos/crypto_game/contracts/ItemTypes.sol",
+    "exportedSymbols": {
+      "ItemTypes": [
+        517
+      ]
+    },
+    "id": 518,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 496,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 517,
+        "linearizedBaseContracts": [
+          517
+        ],
+        "name": "ItemTypes",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "ItemTypes.ItemType",
+            "id": 501,
+            "members": [
+              {
+                "id": 497,
+                "name": "NaturalReasource",
+                "nodeType": "EnumValue",
+                "src": "76:16:2"
+              },
+              {
+                "id": 498,
+                "name": "Component",
+                "nodeType": "EnumValue",
+                "src": "103:9:2"
+              },
+              {
+                "id": 499,
+                "name": "Extractor",
+                "nodeType": "EnumValue",
+                "src": "123:9:2"
+              },
+              {
+                "id": 500,
+                "name": "Factory",
+                "nodeType": "EnumValue",
+                "src": "143:7:2"
+              }
+            ],
+            "name": "ItemType",
+            "nodeType": "EnumDefinition",
+            "src": "52:105:2"
+          },
+          {
+            "canonicalName": "ItemTypes.ExtractorProperties",
+            "id": 504,
+            "members": [
+              {
+                "constant": false,
+                "id": 503,
+                "name": "targetRecipe",
+                "nodeType": "VariableDeclaration",
+                "scope": 504,
+                "src": "200:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 502,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "200:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ExtractorProperties",
+            "nodeType": "StructDefinition",
+            "scope": 517,
+            "src": "163:62:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "ItemTypes.OptionalItemProperties",
+            "id": 507,
+            "members": [
+              {
+                "constant": false,
+                "id": 506,
+                "name": "extractor",
+                "nodeType": "VariableDeclaration",
+                "scope": 507,
+                "src": "273:29:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ExtractorProperties_$504_storage_ptr",
+                  "typeString": "struct ItemTypes.ExtractorProperties"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 505,
+                  "name": "ExtractorProperties",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 504,
+                  "src": "273:19:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ExtractorProperties_$504_storage_ptr",
+                    "typeString": "struct ItemTypes.ExtractorProperties"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "OptionalItemProperties",
+            "nodeType": "StructDefinition",
+            "scope": 517,
+            "src": "233:77:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "ItemTypes.ItemProperties",
+            "id": 516,
+            "members": [
+              {
+                "constant": false,
+                "id": 509,
+                "name": "backupItemId",
+                "nodeType": "VariableDeclaration",
+                "scope": 516,
+                "src": "348:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 508,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "348:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 511,
+                "name": "density",
+                "nodeType": "VariableDeclaration",
+                "scope": 516,
+                "src": "378:12:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 510,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "378:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 513,
+                "name": "itemType",
+                "nodeType": "VariableDeclaration",
+                "scope": 516,
+                "src": "403:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_ItemType_$501",
+                  "typeString": "enum ItemTypes.ItemType"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 512,
+                  "name": "ItemType",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 501,
+                  "src": "403:8:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_ItemType_$501",
+                    "typeString": "enum ItemTypes.ItemType"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 515,
+                "name": "optionalProperties",
+                "nodeType": "VariableDeclaration",
+                "scope": 516,
+                "src": "433:41:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_OptionalItemProperties_$507_storage_ptr",
+                  "typeString": "struct ItemTypes.OptionalItemProperties"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 514,
+                  "name": "OptionalItemProperties",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 507,
+                  "src": "433:22:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_OptionalItemProperties_$507_storage_ptr",
+                    "typeString": "struct ItemTypes.OptionalItemProperties"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ItemProperties",
+            "nodeType": "StructDefinition",
+            "scope": 517,
+            "src": "316:166:2",
+            "visibility": "public"
+          }
+        ],
+        "scope": 518,
+        "src": "27:460:2"
+      }
+    ],
+    "src": "0:487:2"
+  },
+  "legacyAST": {
+    "absolutePath": "/A/repos/crypto_game/contracts/ItemTypes.sol",
+    "exportedSymbols": {
+      "ItemTypes": [
+        517
+      ]
+    },
+    "id": 518,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 496,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 517,
+        "linearizedBaseContracts": [
+          517
+        ],
+        "name": "ItemTypes",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "ItemTypes.ItemType",
+            "id": 501,
+            "members": [
+              {
+                "id": 497,
+                "name": "NaturalReasource",
+                "nodeType": "EnumValue",
+                "src": "76:16:2"
+              },
+              {
+                "id": 498,
+                "name": "Component",
+                "nodeType": "EnumValue",
+                "src": "103:9:2"
+              },
+              {
+                "id": 499,
+                "name": "Extractor",
+                "nodeType": "EnumValue",
+                "src": "123:9:2"
+              },
+              {
+                "id": 500,
+                "name": "Factory",
+                "nodeType": "EnumValue",
+                "src": "143:7:2"
+              }
+            ],
+            "name": "ItemType",
+            "nodeType": "EnumDefinition",
+            "src": "52:105:2"
+          },
+          {
+            "canonicalName": "ItemTypes.ExtractorProperties",
+            "id": 504,
+            "members": [
+              {
+                "constant": false,
+                "id": 503,
+                "name": "targetRecipe",
+                "nodeType": "VariableDeclaration",
+                "scope": 504,
+                "src": "200:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 502,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "200:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ExtractorProperties",
+            "nodeType": "StructDefinition",
+            "scope": 517,
+            "src": "163:62:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "ItemTypes.OptionalItemProperties",
+            "id": 507,
+            "members": [
+              {
+                "constant": false,
+                "id": 506,
+                "name": "extractor",
+                "nodeType": "VariableDeclaration",
+                "scope": 507,
+                "src": "273:29:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ExtractorProperties_$504_storage_ptr",
+                  "typeString": "struct ItemTypes.ExtractorProperties"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 505,
+                  "name": "ExtractorProperties",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 504,
+                  "src": "273:19:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ExtractorProperties_$504_storage_ptr",
+                    "typeString": "struct ItemTypes.ExtractorProperties"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "OptionalItemProperties",
+            "nodeType": "StructDefinition",
+            "scope": 517,
+            "src": "233:77:2",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "ItemTypes.ItemProperties",
+            "id": 516,
+            "members": [
+              {
+                "constant": false,
+                "id": 509,
+                "name": "backupItemId",
+                "nodeType": "VariableDeclaration",
+                "scope": 516,
+                "src": "348:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 508,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "348:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 511,
+                "name": "density",
+                "nodeType": "VariableDeclaration",
+                "scope": 516,
+                "src": "378:12:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 510,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "378:4:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 513,
+                "name": "itemType",
+                "nodeType": "VariableDeclaration",
+                "scope": 516,
+                "src": "403:17:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_enum$_ItemType_$501",
+                  "typeString": "enum ItemTypes.ItemType"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 512,
+                  "name": "ItemType",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 501,
+                  "src": "403:8:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_enum$_ItemType_$501",
+                    "typeString": "enum ItemTypes.ItemType"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 515,
+                "name": "optionalProperties",
+                "nodeType": "VariableDeclaration",
+                "scope": 516,
+                "src": "433:41:2",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_OptionalItemProperties_$507_storage_ptr",
+                  "typeString": "struct ItemTypes.OptionalItemProperties"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 514,
+                  "name": "OptionalItemProperties",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 507,
+                  "src": "433:22:2",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_OptionalItemProperties_$507_storage_ptr",
+                    "typeString": "struct ItemTypes.OptionalItemProperties"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ItemProperties",
+            "nodeType": "StructDefinition",
+            "scope": 517,
+            "src": "316:166:2",
+            "visibility": "public"
+          }
+        ],
+        "scope": 518,
+        "src": "27:460:2"
+      }
+    ],
+    "src": "0:487:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.14",
+  "updatedAt": "2019-10-21T05:13:09.507Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

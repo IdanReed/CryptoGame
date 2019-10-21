@@ -1,60 +1,19 @@
 pragma solidity ^0.5.0;
 
-contract Game {
-    constructor() public { }
+import "./ItemTypes.sol";
+import "./RecipeTypes.sol";
+import "./CraftingManager.sol";
 
-    /**************************************************************
-    Crafting map
-    **************************************************************/
-    struct ExtractorPros{
-        uint what;
-    }
-    enum ItemType{
-        NaturalReasource,
-        AttackPower,
-        Component,
-        Placeable
-    }
-
-    struct ItemProperties{
-        uint backupItemId;
-
-        ItemType itemType;
-        uint weight;
-        uint volume;
-
-        ExtractorPros extractor;
-    }
-    ItemProperties[] items;
-
-    struct RecipeElement{
-        uint itemId;
-        uint quantity;
-    }
-    struct Recipe{
-        bool valid;
-        RecipeElement[] inputIds;
-        RecipeElement[] outputIds;
-    }
-    Recipe[] recipes;
-
-    function getItemProperties(uint itemI) private returns (ItemProperties memory) {
-
-    }
-
-    function craft(uint recipeId) public {
-
-    }
+contract Game is ItemTypes, RecipeTypes, CraftingManager{
 
     /**************************************************************
     Sector
     **************************************************************/
     struct SectorPlaceable {
-        ItemReference itemReference;
+        uint itemId;
 
         uint spaceRequired;
     }
-
 
     /**************************************************************
     Silo
@@ -62,7 +21,7 @@ contract Game {
     struct Silo {
         SectorPlaceable placeableData;
 
-        ItemReference storedItemReference;
+        uint itemId;
         uint quantity;
     }
 
@@ -72,7 +31,6 @@ contract Game {
     struct Extractor {
         SectorPlaceable placeableData;
 
-        uint targetRecipe;
     }
 
     /**************************************************************
@@ -81,6 +39,7 @@ contract Game {
     struct Factory {
         SectorPlaceable placeableData;
 
+        uint targetRecipe;
     }
 
     /**************************************************************
@@ -99,9 +58,9 @@ contract Game {
         uint lastTickBlock;
 
         /* Placeables       */
-
         Silo[] silos;
         Extractor[] extractors;
+        Factory[] factories;
     }
 
     mapping (address => Sector) sectors;
@@ -125,8 +84,7 @@ contract Game {
     //         extractorIndex < selSector.extractors.length
     //         ) {
 
-    //         Extractor storage selExtractor = selSector.extractors[extractorIndex];
-    //         selExtractor.testVal = true;
+    //         //Extractor storage selExtractor = selSector.extractors[extractorIndex];
     //     }
     // }
 
@@ -144,11 +102,11 @@ contract Game {
     }
 
     function buildPlaceable(address sectorAddress) public {
-        
+
     }
 
     function tickSector(address sectorAddress) public {
-        
+
     }
 
     /**************************************************************
@@ -174,4 +132,5 @@ contract Game {
             selSector.cordinates.zAngle
         );
     }
+
 }

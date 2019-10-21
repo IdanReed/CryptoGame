@@ -1,0 +1,2581 @@
+{
+  "contractName": "CraftingMapLoader",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "density",
+          "type": "uint256"
+        },
+        {
+          "name": "itemType",
+          "type": "uint256"
+        }
+      ],
+      "name": "addItem",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "addRecipe",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "isInput",
+          "type": "bool"
+        },
+        {
+          "name": "itemId",
+          "type": "uint256"
+        },
+        {
+          "name": "quantity",
+          "type": "uint256"
+        }
+      ],
+      "name": "addRecipeElement",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "addExtractorProps",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"addRecipe\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"addExtractorProps\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"isInput\",\"type\":\"bool\"},{\"name\":\"itemId\",\"type\":\"uint256\"},{\"name\":\"quantity\",\"type\":\"uint256\"}],\"name\":\"addRecipeElement\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"density\",\"type\":\"uint256\"},{\"name\":\"itemType\",\"type\":\"uint256\"}],\"name\":\"addItem\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/A/repos/crypto_game/contracts/CraftingManager.sol\":\"CraftingMapLoader\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/A/repos/crypto_game/contracts/CraftingManager.sol\":{\"keccak256\":\"0xe0b4db0309edd18332b9e0267baf0c9edf2422f539535dcac5c78b529607abfa\",\"urls\":[\"bzzr://1ded635f5491414a9404b02a462dc5ad8ce37172b11f33bc2e935e1d1d990fa2\"]},\"/A/repos/crypto_game/contracts/ItemTypes.sol\":{\"keccak256\":\"0x65e864254f45c3cbf3f032f9bf8be9e8656df502fc6b52d1c01db477290b803e\",\"urls\":[\"bzzr://9c64a5080482b473eacc3f802253f1da866e93c6135c3015a0275f1f197b6417\"]},\"/A/repos/crypto_game/contracts/RecipeTypes.sol\":{\"keccak256\":\"0x25acadf3155dd4cf41a5abafbeb67f437007f6343a4addf4a65b0e144a24d319\",\"urls\":[\"bzzr://6d2cd4200152a66bfec00dc5e13fcbb225d0b9a8a8ac376d1829773ca6cfa63a\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50610456806100206000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80632e46dc9f14610051578063581228ac1461005b5780636cd59e3e14610065578063a2125232146100a9575b600080fd5b6100596100e1565b005b6100636100fc565b005b6100a76004803603606081101561007b57600080fd5b8101908080351515906020019092919080359060200190929190803590602001909291905050506100fe565b005b6100df600480360360408110156100bf57600080fd5b8101908080359060200190929190803590602001909291905050506101e4565b005b60016000818180549050019150816100f991906102c6565b50565b565b6000806001600080549050038154811061011457fe5b9060005260206000209060030201905061012c6102f8565b604051806040016040528085815260200184815250905084156101955781600101819080600181540180825580915050906001820390600052602060002090600202016000909192909190915060008201518160000155602082015181600101555050506101dd565b81600201819080600181540180825580915050906001820390600052602060002090600202016000909192909190915060008201518160000155602082015181600101555050505b5050505050565b6101ec610312565b6101f461032b565b6040518060800160405280600180549050815260200185815260200184600381111561021c57fe5b600381111561022757fe5b815260200183815250905060018190806001815401808255809150509060018203906000526020600020906004020160009091929091909150600082015181600001556020820151816001015560408201518160020160006101000a81548160ff0219169083600381111561029857fe5b0217905550606082015181600301600082015181600001600082015181600001555050505050505050505050565b8154818355818111156102f3576003028160030283600052602060002091820191016102f29190610364565b5b505050565b604051806040016040528060008152602001600081525090565b60405180602001604052806103256103ab565b81525090565b604051806080016040528060008152602001600081526020016000600381111561035157fe5b815260200161035e6103be565b81525090565b6103a891905b808211156103a45760008082016000905560018201600061038b91906103d7565b60028201600061039b91906103d7565b5060030161036a565b5090565b90565b6040518060200160405280600081525090565b60405180602001604052806103d16103ab565b81525090565b50805460008255600202906000526020600020908101906103f891906103fb565b50565b61042791905b8082111561042357600080820160009055600182016000905550600201610401565b5090565b9056fea165627a7a72305820b21cde659369d295baba8e2221c19d44bf477a52851bed521ab0ec7818b8641e0029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c80632e46dc9f14610051578063581228ac1461005b5780636cd59e3e14610065578063a2125232146100a9575b600080fd5b6100596100e1565b005b6100636100fc565b005b6100a76004803603606081101561007b57600080fd5b8101908080351515906020019092919080359060200190929190803590602001909291905050506100fe565b005b6100df600480360360408110156100bf57600080fd5b8101908080359060200190929190803590602001909291905050506101e4565b005b60016000818180549050019150816100f991906102c6565b50565b565b6000806001600080549050038154811061011457fe5b9060005260206000209060030201905061012c6102f8565b604051806040016040528085815260200184815250905084156101955781600101819080600181540180825580915050906001820390600052602060002090600202016000909192909190915060008201518160000155602082015181600101555050506101dd565b81600201819080600181540180825580915050906001820390600052602060002090600202016000909192909190915060008201518160000155602082015181600101555050505b5050505050565b6101ec610312565b6101f461032b565b6040518060800160405280600180549050815260200185815260200184600381111561021c57fe5b600381111561022757fe5b815260200183815250905060018190806001815401808255809150509060018203906000526020600020906004020160009091929091909150600082015181600001556020820151816001015560408201518160020160006101000a81548160ff0219169083600381111561029857fe5b0217905550606082015181600301600082015181600001600082015181600001555050505050505050505050565b8154818355818111156102f3576003028160030283600052602060002091820191016102f29190610364565b5b505050565b604051806040016040528060008152602001600081525090565b60405180602001604052806103256103ab565b81525090565b604051806080016040528060008152602001600081526020016000600381111561035157fe5b815260200161035e6103be565b81525090565b6103a891905b808211156103a45760008082016000905560018201600061038b91906103d7565b60028201600061039b91906103d7565b5060030161036a565b5090565b90565b6040518060200160405280600081525090565b60405180602001604052806103d16103ab565b81525090565b50805460008255600202906000526020600020908101906103f891906103fb565b50565b61042791905b8082111561042357600080820160009055600182016000905550600201610401565b5090565b9056fea165627a7a72305820b21cde659369d295baba8e2221c19d44bf477a52851bed521ab0ec7818b8641e0029",
+  "sourceMap": "85:1042:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;85:1042:0;;;;;;;",
+  "deployedSourceMap": "85:1042:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;85:1042:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;543:66;;;:::i;:::-;;1078:46;;;:::i;:::-;;615:455;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;615:455:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;198:337;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;198:337:0;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;543:66;600:1;582:7;:19;;;;;;;;;;;;;;:::i;:::-;;543:66::o;1078:46::-;:::o;615:455::-;801:21;825:7;850:1;833:7;:14;;;;:18;825:27;;;;;;;;;;;;;;;;;;801:51;;863:28;;:::i;:::-;894:31;;;;;;;;908:6;894:31;;;;916:8;894:31;;;863:62;;941:7;938:125;;;965:6;:13;;984:7;965:27;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;965:27:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;938:125;;;1023:6;:14;;1043:7;1023:28;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;1023:28:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;938:125;615:455;;;;;:::o;198:337::-;262:47;;:::i;:::-;322:31;;:::i;:::-;356:139;;;;;;;;385:5;:12;;;;356:139;;;;412:7;356:139;;;;443:8;434:18;;;;;;;;356:139;;;;;;;;;;;;467:17;356:139;;;322:173;;506:5;517:9;506:21;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;506:21:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;198:337;;;;:::o;85:1042::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;:::i;:::-;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\r\n\r\nimport \"./ItemTypes.sol\";\r\nimport \"./RecipeTypes.sol\";\r\n\r\ncontract CraftingMapLoader is ItemTypes, RecipeTypes{\r\n    Recipe[] recipes;\r\n    ItemProperties[] items;\r\n\r\n    function addItem(uint density, uint itemType) public {\r\n        OptionalItemProperties memory itemPropsOptional;\r\n\r\n        ItemProperties memory itemProps = ItemProperties(\r\n            items.length,\r\n            density,\r\n            ItemType(itemType),\r\n            itemPropsOptional\r\n        );\r\n        items.push(itemProps);\r\n    }\r\n\r\n    function addRecipe() public {\r\n        recipes.length += 1;\r\n    }\r\n    function addRecipeElement(bool isInput, uint itemId, uint quantity) public {\r\n        //require(itemId < items.length, \"Require that itemId is within range of valid items.\");\r\n\r\n        Recipe storage recipe = recipes[recipes.length - 1];\r\n        RecipeElement memory element = RecipeElement(itemId, quantity);\r\n\r\n        if(isInput) {\r\n            recipe.inputs.push(element);\r\n        }else{\r\n            recipe.outputs.push(element);\r\n        }\r\n    }\r\n\r\n    function addExtractorProps() public {\r\n\r\n    }\r\n}",
+  "sourcePath": "A:\\repos\\crypto_game\\contracts\\CraftingManager.sol",
+  "ast": {
+    "absolutePath": "/A/repos/crypto_game/contracts/CraftingManager.sol",
+    "exportedSymbols": {
+      "CraftingMapLoader": [
+        103
+      ]
+    },
+    "id": 104,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "absolutePath": "/A/repos/crypto_game/contracts/ItemTypes.sol",
+        "file": "./ItemTypes.sol",
+        "id": 2,
+        "nodeType": "ImportDirective",
+        "scope": 104,
+        "sourceUnit": 526,
+        "src": "27:25:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/A/repos/crypto_game/contracts/RecipeTypes.sol",
+        "file": "./RecipeTypes.sol",
+        "id": 3,
+        "nodeType": "ImportDirective",
+        "scope": 104,
+        "sourceUnit": 600,
+        "src": "54:27:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 4,
+              "name": "ItemTypes",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 525,
+              "src": "115:9:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ItemTypes_$525",
+                "typeString": "contract ItemTypes"
+              }
+            },
+            "id": 5,
+            "nodeType": "InheritanceSpecifier",
+            "src": "115:9:0"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6,
+              "name": "RecipeTypes",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 599,
+              "src": "126:11:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_RecipeTypes_$599",
+                "typeString": "contract RecipeTypes"
+              }
+            },
+            "id": 7,
+            "nodeType": "InheritanceSpecifier",
+            "src": "126:11:0"
+          }
+        ],
+        "contractDependencies": [
+          525,
+          599
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 103,
+        "linearizedBaseContracts": [
+          103,
+          599,
+          525
+        ],
+        "name": "CraftingMapLoader",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 10,
+            "name": "recipes",
+            "nodeType": "VariableDeclaration",
+            "scope": 103,
+            "src": "144:16:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_Recipe_$598_storage_$dyn_storage",
+              "typeString": "struct RecipeTypes.Recipe[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 8,
+                "name": "Recipe",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 598,
+                "src": "144:6:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Recipe_$598_storage_ptr",
+                  "typeString": "struct RecipeTypes.Recipe"
+                }
+              },
+              "id": 9,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "144:8:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_Recipe_$598_storage_$dyn_storage_ptr",
+                "typeString": "struct RecipeTypes.Recipe[]"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 13,
+            "name": "items",
+            "nodeType": "VariableDeclaration",
+            "scope": 103,
+            "src": "167:22:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_ItemProperties_$524_storage_$dyn_storage",
+              "typeString": "struct ItemTypes.ItemProperties[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 11,
+                "name": "ItemProperties",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 524,
+                "src": "167:14:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ItemProperties_$524_storage_ptr",
+                  "typeString": "struct ItemTypes.ItemProperties"
+                }
+              },
+              "id": 12,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "167:16:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_ItemProperties_$524_storage_$dyn_storage_ptr",
+                "typeString": "struct ItemTypes.ItemProperties[]"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 41,
+              "nodeType": "Block",
+              "src": "251:284:0",
+              "statements": [
+                {
+                  "assignments": [
+                    21
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 21,
+                      "name": "itemPropsOptional",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 41,
+                      "src": "262:47:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_OptionalItemProperties_$515_memory_ptr",
+                        "typeString": "struct ItemTypes.OptionalItemProperties"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 20,
+                        "name": "OptionalItemProperties",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 515,
+                        "src": "262:22:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_OptionalItemProperties_$515_storage_ptr",
+                          "typeString": "struct ItemTypes.OptionalItemProperties"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 22,
+                  "initialValue": null,
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "262:47:0"
+                },
+                {
+                  "assignments": [
+                    24
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 24,
+                      "name": "itemProps",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 41,
+                      "src": "322:31:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ItemProperties_$524_memory_ptr",
+                        "typeString": "struct ItemTypes.ItemProperties"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 23,
+                        "name": "ItemProperties",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 524,
+                        "src": "322:14:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ItemProperties_$524_storage_ptr",
+                          "typeString": "struct ItemTypes.ItemProperties"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 34,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 26,
+                          "name": "items",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 13,
+                          "src": "385:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_struct$_ItemProperties_$524_storage_$dyn_storage",
+                            "typeString": "struct ItemTypes.ItemProperties storage ref[] storage ref"
+                          }
+                        },
+                        "id": 27,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "385:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 28,
+                        "name": "density",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 15,
+                        "src": "412:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 30,
+                            "name": "itemType",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 17,
+                            "src": "443:8:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          ],
+                          "id": 29,
+                          "name": "ItemType",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 509,
+                          "src": "434:8:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_enum$_ItemType_$509_$",
+                            "typeString": "type(enum ItemTypes.ItemType)"
+                          }
+                        },
+                        "id": 31,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "434:18:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_ItemType_$509",
+                          "typeString": "enum ItemTypes.ItemType"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 32,
+                        "name": "itemPropsOptional",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 21,
+                        "src": "467:17:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_OptionalItemProperties_$515_memory_ptr",
+                          "typeString": "struct ItemTypes.OptionalItemProperties memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_enum$_ItemType_$509",
+                          "typeString": "enum ItemTypes.ItemType"
+                        },
+                        {
+                          "typeIdentifier": "t_struct$_OptionalItemProperties_$515_memory_ptr",
+                          "typeString": "struct ItemTypes.OptionalItemProperties memory"
+                        }
+                      ],
+                      "id": 25,
+                      "name": "ItemProperties",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 524,
+                      "src": "356:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_ItemProperties_$524_storage_ptr_$",
+                        "typeString": "type(struct ItemTypes.ItemProperties storage pointer)"
+                      }
+                    },
+                    "id": 33,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "356:139:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ItemProperties_$524_memory",
+                      "typeString": "struct ItemTypes.ItemProperties memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "322:173:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 38,
+                        "name": "itemProps",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 24,
+                        "src": "517:9:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ItemProperties_$524_memory_ptr",
+                          "typeString": "struct ItemTypes.ItemProperties memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_ItemProperties_$524_memory_ptr",
+                          "typeString": "struct ItemTypes.ItemProperties memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 35,
+                        "name": "items",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 13,
+                        "src": "506:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_ItemProperties_$524_storage_$dyn_storage",
+                          "typeString": "struct ItemTypes.ItemProperties storage ref[] storage ref"
+                        }
+                      },
+                      "id": 37,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "506:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_ItemProperties_$524_storage_$returns$_t_uint256_$",
+                        "typeString": "function (struct ItemTypes.ItemProperties storage ref) returns (uint256)"
+                      }
+                    },
+                    "id": 39,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "506:21:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 40,
+                  "nodeType": "ExpressionStatement",
+                  "src": "506:21:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 42,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addItem",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 18,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15,
+                  "name": "density",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42,
+                  "src": "215:12:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 14,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "215:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17,
+                  "name": "itemType",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42,
+                  "src": "229:13:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 16,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "229:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "214:29:0"
+            },
+            "returnParameters": {
+              "id": 19,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "251:0:0"
+            },
+            "scope": 103,
+            "src": "198:337:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 51,
+              "nodeType": "Block",
+              "src": "571:38:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 49,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 45,
+                        "name": "recipes",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10,
+                        "src": "582:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Recipe_$598_storage_$dyn_storage",
+                          "typeString": "struct RecipeTypes.Recipe storage ref[] storage ref"
+                        }
+                      },
+                      "id": 47,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "582:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "+=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "31",
+                      "id": 48,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "600:1:0",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_1_by_1",
+                        "typeString": "int_const 1"
+                      },
+                      "value": "1"
+                    },
+                    "src": "582:19:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 50,
+                  "nodeType": "ExpressionStatement",
+                  "src": "582:19:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 52,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addRecipe",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 43,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "561:2:0"
+            },
+            "returnParameters": {
+              "id": 44,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "571:0:0"
+            },
+            "scope": 103,
+            "src": "543:66:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 97,
+              "nodeType": "Block",
+              "src": "690:380:0",
+              "statements": [
+                {
+                  "assignments": [
+                    62
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 62,
+                      "name": "recipe",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 97,
+                      "src": "801:21:0",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Recipe_$598_storage_ptr",
+                        "typeString": "struct RecipeTypes.Recipe"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 61,
+                        "name": "Recipe",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 598,
+                        "src": "801:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Recipe_$598_storage_ptr",
+                          "typeString": "struct RecipeTypes.Recipe"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 69,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 63,
+                      "name": "recipes",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10,
+                      "src": "825:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Recipe_$598_storage_$dyn_storage",
+                        "typeString": "struct RecipeTypes.Recipe storage ref[] storage ref"
+                      }
+                    },
+                    "id": 68,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 67,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 64,
+                          "name": "recipes",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 10,
+                          "src": "833:7:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_struct$_Recipe_$598_storage_$dyn_storage",
+                            "typeString": "struct RecipeTypes.Recipe storage ref[] storage ref"
+                          }
+                        },
+                        "id": 65,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "833:14:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "-",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 66,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "850:1:0",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      "src": "833:18:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "825:27:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Recipe_$598_storage",
+                      "typeString": "struct RecipeTypes.Recipe storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "801:51:0"
+                },
+                {
+                  "assignments": [
+                    71
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 71,
+                      "name": "element",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 97,
+                      "src": "863:28:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_RecipeElement_$589_memory_ptr",
+                        "typeString": "struct RecipeTypes.RecipeElement"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 70,
+                        "name": "RecipeElement",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 589,
+                        "src": "863:13:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_RecipeElement_$589_storage_ptr",
+                          "typeString": "struct RecipeTypes.RecipeElement"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 76,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 73,
+                        "name": "itemId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 56,
+                        "src": "908:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 74,
+                        "name": "quantity",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 58,
+                        "src": "916:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 72,
+                      "name": "RecipeElement",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 589,
+                      "src": "894:13:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_RecipeElement_$589_storage_ptr_$",
+                        "typeString": "type(struct RecipeTypes.RecipeElement storage pointer)"
+                      }
+                    },
+                    "id": 75,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "894:31:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_RecipeElement_$589_memory",
+                      "typeString": "struct RecipeTypes.RecipeElement memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "863:62:0"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "id": 77,
+                    "name": "isInput",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 54,
+                    "src": "941:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 95,
+                    "nodeType": "Block",
+                    "src": "1008:55:0",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 92,
+                              "name": "element",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 71,
+                              "src": "1043:7:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_RecipeElement_$589_memory_ptr",
+                                "typeString": "struct RecipeTypes.RecipeElement memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_struct$_RecipeElement_$589_memory_ptr",
+                                "typeString": "struct RecipeTypes.RecipeElement memory"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 87,
+                                "name": "recipe",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 62,
+                                "src": "1023:6:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Recipe_$598_storage_ptr",
+                                  "typeString": "struct RecipeTypes.Recipe storage pointer"
+                                }
+                              },
+                              "id": 90,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "outputs",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 597,
+                              "src": "1023:14:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_RecipeElement_$589_storage_$dyn_storage",
+                                "typeString": "struct RecipeTypes.RecipeElement storage ref[] storage ref"
+                              }
+                            },
+                            "id": 91,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "push",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "1023:19:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_RecipeElement_$589_storage_$returns$_t_uint256_$",
+                              "typeString": "function (struct RecipeTypes.RecipeElement storage ref) returns (uint256)"
+                            }
+                          },
+                          "id": 93,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1023:28:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 94,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1023:28:0"
+                      }
+                    ]
+                  },
+                  "id": 96,
+                  "nodeType": "IfStatement",
+                  "src": "938:125:0",
+                  "trueBody": {
+                    "id": 86,
+                    "nodeType": "Block",
+                    "src": "950:54:0",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 83,
+                              "name": "element",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 71,
+                              "src": "984:7:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_RecipeElement_$589_memory_ptr",
+                                "typeString": "struct RecipeTypes.RecipeElement memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_struct$_RecipeElement_$589_memory_ptr",
+                                "typeString": "struct RecipeTypes.RecipeElement memory"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 78,
+                                "name": "recipe",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 62,
+                                "src": "965:6:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Recipe_$598_storage_ptr",
+                                  "typeString": "struct RecipeTypes.Recipe storage pointer"
+                                }
+                              },
+                              "id": 81,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "inputs",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 594,
+                              "src": "965:13:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_RecipeElement_$589_storage_$dyn_storage",
+                                "typeString": "struct RecipeTypes.RecipeElement storage ref[] storage ref"
+                              }
+                            },
+                            "id": 82,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "push",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "965:18:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_RecipeElement_$589_storage_$returns$_t_uint256_$",
+                              "typeString": "function (struct RecipeTypes.RecipeElement storage ref) returns (uint256)"
+                            }
+                          },
+                          "id": 84,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "965:27:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 85,
+                        "nodeType": "ExpressionStatement",
+                        "src": "965:27:0"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 98,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addRecipeElement",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 59,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 54,
+                  "name": "isInput",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 98,
+                  "src": "641:12:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 53,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "641:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 56,
+                  "name": "itemId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 98,
+                  "src": "655:11:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 55,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "655:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 58,
+                  "name": "quantity",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 98,
+                  "src": "668:13:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 57,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "668:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "640:42:0"
+            },
+            "returnParameters": {
+              "id": 60,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "690:0:0"
+            },
+            "scope": 103,
+            "src": "615:455:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 101,
+              "nodeType": "Block",
+              "src": "1114:10:0",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 102,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addExtractorProps",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 99,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1104:2:0"
+            },
+            "returnParameters": {
+              "id": 100,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1114:0:0"
+            },
+            "scope": 103,
+            "src": "1078:46:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 104,
+        "src": "85:1042:0"
+      }
+    ],
+    "src": "0:1127:0"
+  },
+  "legacyAST": {
+    "absolutePath": "/A/repos/crypto_game/contracts/CraftingManager.sol",
+    "exportedSymbols": {
+      "CraftingMapLoader": [
+        103
+      ]
+    },
+    "id": 104,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:0"
+      },
+      {
+        "absolutePath": "/A/repos/crypto_game/contracts/ItemTypes.sol",
+        "file": "./ItemTypes.sol",
+        "id": 2,
+        "nodeType": "ImportDirective",
+        "scope": 104,
+        "sourceUnit": 526,
+        "src": "27:25:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/A/repos/crypto_game/contracts/RecipeTypes.sol",
+        "file": "./RecipeTypes.sol",
+        "id": 3,
+        "nodeType": "ImportDirective",
+        "scope": 104,
+        "sourceUnit": 600,
+        "src": "54:27:0",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 4,
+              "name": "ItemTypes",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 525,
+              "src": "115:9:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ItemTypes_$525",
+                "typeString": "contract ItemTypes"
+              }
+            },
+            "id": 5,
+            "nodeType": "InheritanceSpecifier",
+            "src": "115:9:0"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6,
+              "name": "RecipeTypes",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 599,
+              "src": "126:11:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_RecipeTypes_$599",
+                "typeString": "contract RecipeTypes"
+              }
+            },
+            "id": 7,
+            "nodeType": "InheritanceSpecifier",
+            "src": "126:11:0"
+          }
+        ],
+        "contractDependencies": [
+          525,
+          599
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 103,
+        "linearizedBaseContracts": [
+          103,
+          599,
+          525
+        ],
+        "name": "CraftingMapLoader",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 10,
+            "name": "recipes",
+            "nodeType": "VariableDeclaration",
+            "scope": 103,
+            "src": "144:16:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_Recipe_$598_storage_$dyn_storage",
+              "typeString": "struct RecipeTypes.Recipe[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 8,
+                "name": "Recipe",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 598,
+                "src": "144:6:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Recipe_$598_storage_ptr",
+                  "typeString": "struct RecipeTypes.Recipe"
+                }
+              },
+              "id": 9,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "144:8:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_Recipe_$598_storage_$dyn_storage_ptr",
+                "typeString": "struct RecipeTypes.Recipe[]"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 13,
+            "name": "items",
+            "nodeType": "VariableDeclaration",
+            "scope": 103,
+            "src": "167:22:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_array$_t_struct$_ItemProperties_$524_storage_$dyn_storage",
+              "typeString": "struct ItemTypes.ItemProperties[]"
+            },
+            "typeName": {
+              "baseType": {
+                "contractScope": null,
+                "id": 11,
+                "name": "ItemProperties",
+                "nodeType": "UserDefinedTypeName",
+                "referencedDeclaration": 524,
+                "src": "167:14:0",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ItemProperties_$524_storage_ptr",
+                  "typeString": "struct ItemTypes.ItemProperties"
+                }
+              },
+              "id": 12,
+              "length": null,
+              "nodeType": "ArrayTypeName",
+              "src": "167:16:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_array$_t_struct$_ItemProperties_$524_storage_$dyn_storage_ptr",
+                "typeString": "struct ItemTypes.ItemProperties[]"
+              }
+            },
+            "value": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 41,
+              "nodeType": "Block",
+              "src": "251:284:0",
+              "statements": [
+                {
+                  "assignments": [
+                    21
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 21,
+                      "name": "itemPropsOptional",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 41,
+                      "src": "262:47:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_OptionalItemProperties_$515_memory_ptr",
+                        "typeString": "struct ItemTypes.OptionalItemProperties"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 20,
+                        "name": "OptionalItemProperties",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 515,
+                        "src": "262:22:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_OptionalItemProperties_$515_storage_ptr",
+                          "typeString": "struct ItemTypes.OptionalItemProperties"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 22,
+                  "initialValue": null,
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "262:47:0"
+                },
+                {
+                  "assignments": [
+                    24
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 24,
+                      "name": "itemProps",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 41,
+                      "src": "322:31:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_ItemProperties_$524_memory_ptr",
+                        "typeString": "struct ItemTypes.ItemProperties"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 23,
+                        "name": "ItemProperties",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 524,
+                        "src": "322:14:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ItemProperties_$524_storage_ptr",
+                          "typeString": "struct ItemTypes.ItemProperties"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 34,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 26,
+                          "name": "items",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 13,
+                          "src": "385:5:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_struct$_ItemProperties_$524_storage_$dyn_storage",
+                            "typeString": "struct ItemTypes.ItemProperties storage ref[] storage ref"
+                          }
+                        },
+                        "id": 27,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "385:12:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 28,
+                        "name": "density",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 15,
+                        "src": "412:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 30,
+                            "name": "itemType",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 17,
+                            "src": "443:8:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          ],
+                          "id": 29,
+                          "name": "ItemType",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 509,
+                          "src": "434:8:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_enum$_ItemType_$509_$",
+                            "typeString": "type(enum ItemTypes.ItemType)"
+                          }
+                        },
+                        "id": 31,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "434:18:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_enum$_ItemType_$509",
+                          "typeString": "enum ItemTypes.ItemType"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 32,
+                        "name": "itemPropsOptional",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 21,
+                        "src": "467:17:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_OptionalItemProperties_$515_memory_ptr",
+                          "typeString": "struct ItemTypes.OptionalItemProperties memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_enum$_ItemType_$509",
+                          "typeString": "enum ItemTypes.ItemType"
+                        },
+                        {
+                          "typeIdentifier": "t_struct$_OptionalItemProperties_$515_memory_ptr",
+                          "typeString": "struct ItemTypes.OptionalItemProperties memory"
+                        }
+                      ],
+                      "id": 25,
+                      "name": "ItemProperties",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 524,
+                      "src": "356:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_ItemProperties_$524_storage_ptr_$",
+                        "typeString": "type(struct ItemTypes.ItemProperties storage pointer)"
+                      }
+                    },
+                    "id": 33,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "356:139:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_ItemProperties_$524_memory",
+                      "typeString": "struct ItemTypes.ItemProperties memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "322:173:0"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 38,
+                        "name": "itemProps",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 24,
+                        "src": "517:9:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_ItemProperties_$524_memory_ptr",
+                          "typeString": "struct ItemTypes.ItemProperties memory"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_struct$_ItemProperties_$524_memory_ptr",
+                          "typeString": "struct ItemTypes.ItemProperties memory"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 35,
+                        "name": "items",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 13,
+                        "src": "506:5:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_ItemProperties_$524_storage_$dyn_storage",
+                          "typeString": "struct ItemTypes.ItemProperties storage ref[] storage ref"
+                        }
+                      },
+                      "id": 37,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "push",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "506:10:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_ItemProperties_$524_storage_$returns$_t_uint256_$",
+                        "typeString": "function (struct ItemTypes.ItemProperties storage ref) returns (uint256)"
+                      }
+                    },
+                    "id": 39,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "506:21:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 40,
+                  "nodeType": "ExpressionStatement",
+                  "src": "506:21:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 42,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addItem",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 18,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 15,
+                  "name": "density",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42,
+                  "src": "215:12:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 14,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "215:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17,
+                  "name": "itemType",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 42,
+                  "src": "229:13:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 16,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "229:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "214:29:0"
+            },
+            "returnParameters": {
+              "id": 19,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "251:0:0"
+            },
+            "scope": 103,
+            "src": "198:337:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 51,
+              "nodeType": "Block",
+              "src": "571:38:0",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 49,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 45,
+                        "name": "recipes",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10,
+                        "src": "582:7:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_array$_t_struct$_Recipe_$598_storage_$dyn_storage",
+                          "typeString": "struct RecipeTypes.Recipe storage ref[] storage ref"
+                        }
+                      },
+                      "id": 47,
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "memberName": "length",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "582:14:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "+=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "hexValue": "31",
+                      "id": 48,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "number",
+                      "lValueRequested": false,
+                      "nodeType": "Literal",
+                      "src": "600:1:0",
+                      "subdenomination": null,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_rational_1_by_1",
+                        "typeString": "int_const 1"
+                      },
+                      "value": "1"
+                    },
+                    "src": "582:19:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 50,
+                  "nodeType": "ExpressionStatement",
+                  "src": "582:19:0"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 52,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addRecipe",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 43,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "561:2:0"
+            },
+            "returnParameters": {
+              "id": 44,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "571:0:0"
+            },
+            "scope": 103,
+            "src": "543:66:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 97,
+              "nodeType": "Block",
+              "src": "690:380:0",
+              "statements": [
+                {
+                  "assignments": [
+                    62
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 62,
+                      "name": "recipe",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 97,
+                      "src": "801:21:0",
+                      "stateVariable": false,
+                      "storageLocation": "storage",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_Recipe_$598_storage_ptr",
+                        "typeString": "struct RecipeTypes.Recipe"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 61,
+                        "name": "Recipe",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 598,
+                        "src": "801:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_Recipe_$598_storage_ptr",
+                          "typeString": "struct RecipeTypes.Recipe"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 69,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 63,
+                      "name": "recipes",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10,
+                      "src": "825:7:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_array$_t_struct$_Recipe_$598_storage_$dyn_storage",
+                        "typeString": "struct RecipeTypes.Recipe storage ref[] storage ref"
+                      }
+                    },
+                    "id": 68,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 67,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 64,
+                          "name": "recipes",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 10,
+                          "src": "833:7:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_array$_t_struct$_Recipe_$598_storage_$dyn_storage",
+                            "typeString": "struct RecipeTypes.Recipe storage ref[] storage ref"
+                          }
+                        },
+                        "id": 65,
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "833:14:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "-",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 66,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "850:1:0",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      "src": "833:18:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "825:27:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Recipe_$598_storage",
+                      "typeString": "struct RecipeTypes.Recipe storage ref"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "801:51:0"
+                },
+                {
+                  "assignments": [
+                    71
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 71,
+                      "name": "element",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 97,
+                      "src": "863:28:0",
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_struct$_RecipeElement_$589_memory_ptr",
+                        "typeString": "struct RecipeTypes.RecipeElement"
+                      },
+                      "typeName": {
+                        "contractScope": null,
+                        "id": 70,
+                        "name": "RecipeElement",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 589,
+                        "src": "863:13:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_struct$_RecipeElement_$589_storage_ptr",
+                          "typeString": "struct RecipeTypes.RecipeElement"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 76,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 73,
+                        "name": "itemId",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 56,
+                        "src": "908:6:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "id": 74,
+                        "name": "quantity",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 58,
+                        "src": "916:8:0",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 72,
+                      "name": "RecipeElement",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 589,
+                      "src": "894:13:0",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_struct$_RecipeElement_$589_storage_ptr_$",
+                        "typeString": "type(struct RecipeTypes.RecipeElement storage pointer)"
+                      }
+                    },
+                    "id": 75,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "structConstructorCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "894:31:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_RecipeElement_$589_memory",
+                      "typeString": "struct RecipeTypes.RecipeElement memory"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "863:62:0"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "id": 77,
+                    "name": "isInput",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 54,
+                    "src": "941:7:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 95,
+                    "nodeType": "Block",
+                    "src": "1008:55:0",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 92,
+                              "name": "element",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 71,
+                              "src": "1043:7:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_RecipeElement_$589_memory_ptr",
+                                "typeString": "struct RecipeTypes.RecipeElement memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_struct$_RecipeElement_$589_memory_ptr",
+                                "typeString": "struct RecipeTypes.RecipeElement memory"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 87,
+                                "name": "recipe",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 62,
+                                "src": "1023:6:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Recipe_$598_storage_ptr",
+                                  "typeString": "struct RecipeTypes.Recipe storage pointer"
+                                }
+                              },
+                              "id": 90,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "outputs",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 597,
+                              "src": "1023:14:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_RecipeElement_$589_storage_$dyn_storage",
+                                "typeString": "struct RecipeTypes.RecipeElement storage ref[] storage ref"
+                              }
+                            },
+                            "id": 91,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "push",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "1023:19:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_RecipeElement_$589_storage_$returns$_t_uint256_$",
+                              "typeString": "function (struct RecipeTypes.RecipeElement storage ref) returns (uint256)"
+                            }
+                          },
+                          "id": 93,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1023:28:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 94,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1023:28:0"
+                      }
+                    ]
+                  },
+                  "id": 96,
+                  "nodeType": "IfStatement",
+                  "src": "938:125:0",
+                  "trueBody": {
+                    "id": 86,
+                    "nodeType": "Block",
+                    "src": "950:54:0",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 83,
+                              "name": "element",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 71,
+                              "src": "984:7:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_struct$_RecipeElement_$589_memory_ptr",
+                                "typeString": "struct RecipeTypes.RecipeElement memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_struct$_RecipeElement_$589_memory_ptr",
+                                "typeString": "struct RecipeTypes.RecipeElement memory"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": null,
+                              "expression": {
+                                "argumentTypes": null,
+                                "id": 78,
+                                "name": "recipe",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 62,
+                                "src": "965:6:0",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_struct$_Recipe_$598_storage_ptr",
+                                  "typeString": "struct RecipeTypes.Recipe storage pointer"
+                                }
+                              },
+                              "id": 81,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "inputs",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": 594,
+                              "src": "965:13:0",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_array$_t_struct$_RecipeElement_$589_storage_$dyn_storage",
+                                "typeString": "struct RecipeTypes.RecipeElement storage ref[] storage ref"
+                              }
+                            },
+                            "id": 82,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "push",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": null,
+                            "src": "965:18:0",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_RecipeElement_$589_storage_$returns$_t_uint256_$",
+                              "typeString": "function (struct RecipeTypes.RecipeElement storage ref) returns (uint256)"
+                            }
+                          },
+                          "id": 84,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "965:27:0",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "id": 85,
+                        "nodeType": "ExpressionStatement",
+                        "src": "965:27:0"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 98,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addRecipeElement",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 59,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 54,
+                  "name": "isInput",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 98,
+                  "src": "641:12:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 53,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "641:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 56,
+                  "name": "itemId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 98,
+                  "src": "655:11:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 55,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "655:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 58,
+                  "name": "quantity",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 98,
+                  "src": "668:13:0",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 57,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "668:4:0",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "640:42:0"
+            },
+            "returnParameters": {
+              "id": 60,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "690:0:0"
+            },
+            "scope": 103,
+            "src": "615:455:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 101,
+              "nodeType": "Block",
+              "src": "1114:10:0",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 102,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addExtractorProps",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 99,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1104:2:0"
+            },
+            "returnParameters": {
+              "id": 100,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1114:0:0"
+            },
+            "scope": 103,
+            "src": "1078:46:0",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 104,
+        "src": "85:1042:0"
+      }
+    ],
+    "src": "0:1127:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.14",
+  "updatedAt": "2019-10-21T01:11:37.836Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
