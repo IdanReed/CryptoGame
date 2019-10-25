@@ -3,90 +3,11 @@ pragma solidity ^0.5.0;
 import "./ItemTypes.sol";
 import "./RecipeTypes.sol";
 import "./CraftingManager.sol";
+import "./SectorTypes.sol";
 
-contract Game is ItemTypes, RecipeTypes, CraftingManager{
-
-    /**************************************************************
-    Sector
-    **************************************************************/
-    struct SectorPlaceable {
-        uint itemId;
-
-        uint spaceRequired;
-    }
-
-    /**************************************************************
-    Silo
-    **************************************************************/
-    struct Silo {
-        SectorPlaceable placeableData;
-
-        uint itemId;
-        uint quantity;
-    }
-
-    /**************************************************************
-    Extractor
-    **************************************************************/
-    struct Extractor {
-        SectorPlaceable placeableData;
-
-    }
-
-    /**************************************************************
-    Extractor
-    **************************************************************/
-    struct Factory {
-        SectorPlaceable placeableData;
-
-        uint targetRecipe;
-    }
-
-    /**************************************************************
-    World
-    **************************************************************/
-    struct SphereCordinate{
-        uint xAngle; /* address bits from 160 to 80 */
-        uint zAngle; /* address bits from 80 to 0   */
-    }
-
-    struct Sector {
-        bool initialized;
-
-        address owner;
-        SphereCordinate cordinates;
-        uint lastTickBlock;
-
-        /* Placeables       */
-        Silo[] silos;
-        Extractor[] extractors;
-        Factory[] factories;
-    }
+contract Game is ItemTypes, RecipeTypes, CraftingManager, SectorTypes{
 
     mapping (address => Sector) sectors;
-
-    function convertAddressToCordinate(address addressToConvert) private pure returns (SphereCordinate memory) {
-        SphereCordinate memory cords;
-        uint rightMask = (1 << 80) - 1;
-        uint addressCasted = uint(addressToConvert);
-
-        cords.xAngle = (addressCasted & ~rightMask) >> 80;
-        cords.zAngle = addressCasted & rightMask;
-        return cords;
-    }
-
-    // function tickExtractor(address sectorAddress, uint extractorIndex) public {
-    //     Sector storage selSector = sectors[sectorAddress];
-
-    //     if(
-    //         selSector.initialized &&
-    //         selSector.owner == msg.sender &&
-    //         extractorIndex < selSector.extractors.length
-    //         ) {
-
-    //         //Extractor storage selExtractor = selSector.extractors[extractorIndex];
-    //     }
-    // }
 
     /**************************************************************
     Public ABI
@@ -97,11 +18,58 @@ contract Game is ItemTypes, RecipeTypes, CraftingManager{
         if (!nativeSector.initialized) {
             nativeSector.initialized = true;
             nativeSector.owner = msg.sender;
-            nativeSector.cordinates = convertAddressToCordinate(nativeSector.owner);
+
+            (   uint xAngle,
+                uint zAngle
+            ) = convertAddressToCordinateTuple(nativeSector.owner);
+
+            nativeSector.cordinates = SphereCordinate(xAngle, zAngle);
+        }
+    }
+    function craftInputPlaceable() private {
+        
+    }
+    function craftInputNonPlaceable() private {
+
+    }
+    function craftOutputPlaceable() private {
+
+    }
+    function craftOutputNonPlaceable() private {
+
+    }
+    function craftRecipeElement(Sector memory sector, bool isInput, uint itemId, uint quantity) private pure returns (bool) {
+        if(isInput){
+            // Determine if sector has something then su
+        }else{
+            // Store or place element
         }
     }
 
-    function buildPlaceable(address sectorAddress) public {
+    function craftRecipe(address sectorAddress, uint recipeId) public {
+        (   uint itemCount,
+            uint recipeCount
+        ) = getCraftingMapRanges();
+        require(recipeId < recipeCount, "Require recipeId to be in valid range.");
+
+        Sector memory sector = sectors[sectorAddress];
+        //require(sector.owner == msg.sender, "Require that the caller is the owner of the sector.");
+
+        (
+            uint inputCounts,
+            uint[50] memory inputItemIds,
+            uint[50] memory inputQuantities,
+            uint outputCounts,
+            uint[50] memory outputItemIds,
+            uint[50] memory outputQuantities
+        ) = getRecipeProperties(recipeId);
+
+        for(uint i = 0; i < inputCounts; i++){
+            
+        }
+        for(uint i = 0; i < outputCounts; i++){
+
+        }
 
     }
 
@@ -112,11 +80,6 @@ contract Game is ItemTypes, RecipeTypes, CraftingManager{
     /**************************************************************
     Public Views/Pure
     **************************************************************/
-    function convertAddressToCordinateTuple(address addressToConvert) public pure returns (uint, uint){
-        SphereCordinate memory cords = convertAddressToCordinate(addressToConvert);
-        return (cords.xAngle, cords.zAngle);
-    }
-
     function getSectorAttributes(address sectorAddress) public view returns (
         bool initialized,
         address owner,
@@ -132,5 +95,4 @@ contract Game is ItemTypes, RecipeTypes, CraftingManager{
             selSector.cordinates.zAngle
         );
     }
-
 }

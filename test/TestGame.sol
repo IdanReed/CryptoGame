@@ -8,7 +8,7 @@ contract TestGame {
     Game game = Game(DeployedAddresses.Game());
     uint public initialBalance = 10 ether;
 
-    function testFunction_ConvertAddressToCordinateTuple() public {
+    function testFunction_convertAddressToCordinateTuple() public {
 
         uint x;
         uint z;
@@ -25,15 +25,13 @@ contract TestGame {
 
     function testFunction_initializeNativeSector() public {
         game.initializeNativeSector();
-        (
-            bool initialized,
+        (   bool initialized,
             address owner,
             uint xAngleInit,
             uint zAngleInit
         ) = game.getSectorAttributes(address(this));
 
-        (
-            uint xAngleConverted,
+        (   uint xAngleConverted,
             uint zAngleConverted
         ) = game.convertAddressToCordinateTuple(address(this));
 
@@ -47,7 +45,7 @@ contract TestGame {
     function setupRoutine_addRecipes() private {
         game.addItem(1, 0);
         game.addItem(2, 1);
-        //game.addRecipe();
+        game.addRecipe();
         game.addRecipeElement(true, 0, 1);
         game.addRecipeElement(false, 1, 2);
     }
@@ -55,41 +53,49 @@ contract TestGame {
     function testSetupRoutine_addRecipes() public {
         setupRoutine_addRecipes();
 
-        (
-            uint itemCount,
+        (   uint itemCount,
             uint recipeCount
         ) = game.getCraftingMapRanges();
 
         Assert.equal(itemCount, 2, "Verify that item count equals expected.");
         Assert.equal(recipeCount, 1, "verify that recipe count equals expected.");
 
-        (
-            uint density,
+        (   uint density,
             uint itemType
         ) = game.getItemProperties(0);
 
         Assert.equal(density, 1, "Item 1 property density equals expected.");
         Assert.equal(itemType, 0, "Item 1 property itemType equals expected.");
 
-        (
-            density,
+        (   density,
             itemType
         ) = game.getItemProperties(1);
 
         Assert.equal(density, 2, "Item 2 property density equals expected.");
         Assert.equal(itemType, 1, "Item 2 property itemType equals expected.");
 
-        (
-            uint[] memory inputItemIds,
-            uint[] memory inputQuantities,
-            uint[] memory outputItemIds,
-            uint[] memory outputQuantities
-        ) = game.getRecipeProperties(1);
+        // game.getRecipeProperties(0);
 
-        // Assert.equal(inputItemIds.length, 1, "Item 2 property density equals expected.");
-        // Assert.equal(inputQuantities.length, 1, "Item 2 property density equals expected.");
-        // Assert.equal(outputItemIds.length, 1, "Item 2 property density equals expected.");
-        // Assert.equal(outputQuantities.length, 1, "Item 2 property density equals expected.");
+        (   uint inputCounts,
+            uint[50] memory inputItemIds,
+            uint[50] memory inputQuantities,
 
+            uint outputCounts,
+            uint[50] memory outputItemIds,
+            uint[50] memory outputQuantities
+        ) = game.getRecipeProperties(0);
+
+        Assert.equal(inputCounts, 1, "Item 2 property density equals expected.");
+        Assert.equal(outputCounts, 1, "Item 2 property density equals expected.");
+
+        Assert.equal(inputItemIds[0], 0, "Item 2 property density equals expected.");
+        Assert.equal(inputQuantities[0], 1, "Item 2 property density equals expected.");
+
+        Assert.equal(outputItemIds[0], 1, "Item 2 property density equals expected.");
+        Assert.equal(outputQuantities[0], 2, "Item 2 property density equals expected.");
+    }
+
+    function testFunction_craftRecipe() public {
+        game.craftRecipe(DeployedAddresses.Game(), 0);
     }
 }

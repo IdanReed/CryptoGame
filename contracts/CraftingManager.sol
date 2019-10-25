@@ -11,31 +11,32 @@ contract CraftingManager is ItemTypes, RecipeTypes{
     Public pure/views
     **************************************************************/
     function getRecipeProperties(uint recipeId) public view returns (
-        uint[] memory inputItemIds,
-        uint[] memory inputQuantities,
-        uint[] memory outputItemIds,
-        uint[] memory outputQuantities
+        uint inputCounts,
+        uint[50] memory inputItemIds,
+        uint[50] memory inputQuantities,
+        uint outputCounts,
+        uint[50] memory outputItemIds,
+        uint[50] memory outputQuantities
     ){
         Recipe memory recipe = recipes[recipeId];
 
-        inputItemIds = new uint[](recipe.inputs.length);
-        inputQuantities = new uint[](recipe.inputs.length);
-        outputItemIds = new uint[](recipe.outputs.length);
-        outputQuantities = new uint[](recipe.outputs.length);
         uint i;
 
-        for(i = 0; 0 < recipe.inputs.length; i++){
-            inputItemIds[i] = (recipe.inputs[i].itemId);
-            inputQuantities[i] = (recipe.inputs[i].quantity);
+        for(i = 0; i < recipe.inputs.length; i++){
+            inputItemIds[i] = recipe.inputs[i].itemId;
+            inputQuantities[i] = recipe.inputs[i].quantity;
         }
-        for(i = 0; 0 < recipe.outputs.length; i++){
-            outputItemIds[i] = (recipe.outputs[i].itemId);
-            outputQuantities[i] = (recipe.outputs[i].quantity);
+        for(i = 0; i < recipe.outputs.length; i++){
+            outputItemIds[i] = recipe.outputs[i].itemId;
+            outputQuantities[i] = recipe.outputs[i].quantity;
         }
 
         return (
+            recipe.inputs.length,
             inputItemIds,
             inputQuantities,
+
+            recipe.outputs.length,
             outputItemIds,
             outputQuantities
         );
@@ -65,13 +66,13 @@ contract CraftingManager is ItemTypes, RecipeTypes{
     }
 
     /**************************************************************
-    Recipe/item map loading
+    Recipe/item loading
     **************************************************************/
     function addItem(uint density, uint itemType) public {
         OptionalItemProperties memory itemPropsOptional;
 
         ItemProperties memory itemProps = ItemProperties(
-            items.length,
+            items.length - 1,
             density,
             ItemType(itemType),
             itemPropsOptional

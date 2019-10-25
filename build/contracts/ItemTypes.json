@@ -12,14 +12,14 @@
     "absolutePath": "/A/repos/crypto_game/contracts/ItemTypes.sol",
     "exportedSymbols": {
       "ItemTypes": [
-        517
+        501
       ]
     },
-    "id": 518,
+    "id": 502,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 496,
+        "id": 480,
         "literals": [
           "solidity",
           "^",
@@ -35,37 +35,37 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 517,
+        "id": 501,
         "linearizedBaseContracts": [
-          517
+          501
         ],
         "name": "ItemTypes",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "ItemTypes.ItemType",
-            "id": 501,
+            "id": 485,
             "members": [
               {
-                "id": 497,
+                "id": 481,
                 "name": "NaturalReasource",
                 "nodeType": "EnumValue",
                 "src": "76:16:2"
               },
               {
-                "id": 498,
+                "id": 482,
                 "name": "Component",
                 "nodeType": "EnumValue",
                 "src": "103:9:2"
               },
               {
-                "id": 499,
+                "id": 483,
                 "name": "Extractor",
                 "nodeType": "EnumValue",
                 "src": "123:9:2"
               },
               {
-                "id": 500,
+                "id": 484,
                 "name": "Factory",
                 "nodeType": "EnumValue",
                 "src": "143:7:2"
@@ -77,14 +77,14 @@
           },
           {
             "canonicalName": "ItemTypes.ExtractorProperties",
-            "id": 504,
+            "id": 488,
             "members": [
               {
                 "constant": false,
-                "id": 503,
+                "id": 487,
                 "name": "targetRecipe",
                 "nodeType": "VariableDeclaration",
-                "scope": 504,
+                "scope": 488,
                 "src": "200:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -93,7 +93,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 502,
+                  "id": 486,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "200:4:2",
@@ -108,36 +108,36 @@
             ],
             "name": "ExtractorProperties",
             "nodeType": "StructDefinition",
-            "scope": 517,
+            "scope": 501,
             "src": "163:62:2",
             "visibility": "public"
           },
           {
             "canonicalName": "ItemTypes.OptionalItemProperties",
-            "id": 507,
+            "id": 491,
             "members": [
               {
                 "constant": false,
-                "id": 506,
+                "id": 490,
                 "name": "extractor",
                 "nodeType": "VariableDeclaration",
-                "scope": 507,
+                "scope": 491,
                 "src": "273:29:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ExtractorProperties_$504_storage_ptr",
+                  "typeIdentifier": "t_struct$_ExtractorProperties_$488_storage_ptr",
                   "typeString": "struct ItemTypes.ExtractorProperties"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 505,
+                  "id": 489,
                   "name": "ExtractorProperties",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 504,
+                  "referencedDeclaration": 488,
                   "src": "273:19:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_ExtractorProperties_$504_storage_ptr",
+                    "typeIdentifier": "t_struct$_ExtractorProperties_$488_storage_ptr",
                     "typeString": "struct ItemTypes.ExtractorProperties"
                   }
                 },
@@ -147,20 +147,20 @@
             ],
             "name": "OptionalItemProperties",
             "nodeType": "StructDefinition",
-            "scope": 517,
+            "scope": 501,
             "src": "233:77:2",
             "visibility": "public"
           },
           {
             "canonicalName": "ItemTypes.ItemProperties",
-            "id": 516,
+            "id": 500,
             "members": [
               {
                 "constant": false,
-                "id": 509,
+                "id": 493,
                 "name": "backupItemId",
                 "nodeType": "VariableDeclaration",
-                "scope": 516,
+                "scope": 500,
                 "src": "348:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -169,7 +169,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 508,
+                  "id": 492,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "348:4:2",
@@ -183,10 +183,10 @@
               },
               {
                 "constant": false,
-                "id": 511,
+                "id": 495,
                 "name": "density",
                 "nodeType": "VariableDeclaration",
-                "scope": 516,
+                "scope": 500,
                 "src": "378:12:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -195,7 +195,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 510,
+                  "id": 494,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "378:4:2",
@@ -209,26 +209,26 @@
               },
               {
                 "constant": false,
-                "id": 513,
+                "id": 497,
                 "name": "itemType",
                 "nodeType": "VariableDeclaration",
-                "scope": 516,
+                "scope": 500,
                 "src": "403:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_ItemType_$501",
+                  "typeIdentifier": "t_enum$_ItemType_$485",
                   "typeString": "enum ItemTypes.ItemType"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 512,
+                  "id": 496,
                   "name": "ItemType",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 501,
+                  "referencedDeclaration": 485,
                   "src": "403:8:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_ItemType_$501",
+                    "typeIdentifier": "t_enum$_ItemType_$485",
                     "typeString": "enum ItemTypes.ItemType"
                   }
                 },
@@ -237,26 +237,26 @@
               },
               {
                 "constant": false,
-                "id": 515,
+                "id": 499,
                 "name": "optionalProperties",
                 "nodeType": "VariableDeclaration",
-                "scope": 516,
+                "scope": 500,
                 "src": "433:41:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_OptionalItemProperties_$507_storage_ptr",
+                  "typeIdentifier": "t_struct$_OptionalItemProperties_$491_storage_ptr",
                   "typeString": "struct ItemTypes.OptionalItemProperties"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 514,
+                  "id": 498,
                   "name": "OptionalItemProperties",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 507,
+                  "referencedDeclaration": 491,
                   "src": "433:22:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_OptionalItemProperties_$507_storage_ptr",
+                    "typeIdentifier": "t_struct$_OptionalItemProperties_$491_storage_ptr",
                     "typeString": "struct ItemTypes.OptionalItemProperties"
                   }
                 },
@@ -266,12 +266,12 @@
             ],
             "name": "ItemProperties",
             "nodeType": "StructDefinition",
-            "scope": 517,
+            "scope": 501,
             "src": "316:166:2",
             "visibility": "public"
           }
         ],
-        "scope": 518,
+        "scope": 502,
         "src": "27:460:2"
       }
     ],
@@ -281,14 +281,14 @@
     "absolutePath": "/A/repos/crypto_game/contracts/ItemTypes.sol",
     "exportedSymbols": {
       "ItemTypes": [
-        517
+        501
       ]
     },
-    "id": 518,
+    "id": 502,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 496,
+        "id": 480,
         "literals": [
           "solidity",
           "^",
@@ -304,37 +304,37 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 517,
+        "id": 501,
         "linearizedBaseContracts": [
-          517
+          501
         ],
         "name": "ItemTypes",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "ItemTypes.ItemType",
-            "id": 501,
+            "id": 485,
             "members": [
               {
-                "id": 497,
+                "id": 481,
                 "name": "NaturalReasource",
                 "nodeType": "EnumValue",
                 "src": "76:16:2"
               },
               {
-                "id": 498,
+                "id": 482,
                 "name": "Component",
                 "nodeType": "EnumValue",
                 "src": "103:9:2"
               },
               {
-                "id": 499,
+                "id": 483,
                 "name": "Extractor",
                 "nodeType": "EnumValue",
                 "src": "123:9:2"
               },
               {
-                "id": 500,
+                "id": 484,
                 "name": "Factory",
                 "nodeType": "EnumValue",
                 "src": "143:7:2"
@@ -346,14 +346,14 @@
           },
           {
             "canonicalName": "ItemTypes.ExtractorProperties",
-            "id": 504,
+            "id": 488,
             "members": [
               {
                 "constant": false,
-                "id": 503,
+                "id": 487,
                 "name": "targetRecipe",
                 "nodeType": "VariableDeclaration",
-                "scope": 504,
+                "scope": 488,
                 "src": "200:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -362,7 +362,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 502,
+                  "id": 486,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "200:4:2",
@@ -377,36 +377,36 @@
             ],
             "name": "ExtractorProperties",
             "nodeType": "StructDefinition",
-            "scope": 517,
+            "scope": 501,
             "src": "163:62:2",
             "visibility": "public"
           },
           {
             "canonicalName": "ItemTypes.OptionalItemProperties",
-            "id": 507,
+            "id": 491,
             "members": [
               {
                 "constant": false,
-                "id": 506,
+                "id": 490,
                 "name": "extractor",
                 "nodeType": "VariableDeclaration",
-                "scope": 507,
+                "scope": 491,
                 "src": "273:29:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ExtractorProperties_$504_storage_ptr",
+                  "typeIdentifier": "t_struct$_ExtractorProperties_$488_storage_ptr",
                   "typeString": "struct ItemTypes.ExtractorProperties"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 505,
+                  "id": 489,
                   "name": "ExtractorProperties",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 504,
+                  "referencedDeclaration": 488,
                   "src": "273:19:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_ExtractorProperties_$504_storage_ptr",
+                    "typeIdentifier": "t_struct$_ExtractorProperties_$488_storage_ptr",
                     "typeString": "struct ItemTypes.ExtractorProperties"
                   }
                 },
@@ -416,20 +416,20 @@
             ],
             "name": "OptionalItemProperties",
             "nodeType": "StructDefinition",
-            "scope": 517,
+            "scope": 501,
             "src": "233:77:2",
             "visibility": "public"
           },
           {
             "canonicalName": "ItemTypes.ItemProperties",
-            "id": 516,
+            "id": 500,
             "members": [
               {
                 "constant": false,
-                "id": 509,
+                "id": 493,
                 "name": "backupItemId",
                 "nodeType": "VariableDeclaration",
-                "scope": 516,
+                "scope": 500,
                 "src": "348:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -438,7 +438,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 508,
+                  "id": 492,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "348:4:2",
@@ -452,10 +452,10 @@
               },
               {
                 "constant": false,
-                "id": 511,
+                "id": 495,
                 "name": "density",
                 "nodeType": "VariableDeclaration",
-                "scope": 516,
+                "scope": 500,
                 "src": "378:12:2",
                 "stateVariable": false,
                 "storageLocation": "default",
@@ -464,7 +464,7 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 510,
+                  "id": 494,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
                   "src": "378:4:2",
@@ -478,26 +478,26 @@
               },
               {
                 "constant": false,
-                "id": 513,
+                "id": 497,
                 "name": "itemType",
                 "nodeType": "VariableDeclaration",
-                "scope": 516,
+                "scope": 500,
                 "src": "403:17:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_ItemType_$501",
+                  "typeIdentifier": "t_enum$_ItemType_$485",
                   "typeString": "enum ItemTypes.ItemType"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 512,
+                  "id": 496,
                   "name": "ItemType",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 501,
+                  "referencedDeclaration": 485,
                   "src": "403:8:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_ItemType_$501",
+                    "typeIdentifier": "t_enum$_ItemType_$485",
                     "typeString": "enum ItemTypes.ItemType"
                   }
                 },
@@ -506,26 +506,26 @@
               },
               {
                 "constant": false,
-                "id": 515,
+                "id": 499,
                 "name": "optionalProperties",
                 "nodeType": "VariableDeclaration",
-                "scope": 516,
+                "scope": 500,
                 "src": "433:41:2",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_OptionalItemProperties_$507_storage_ptr",
+                  "typeIdentifier": "t_struct$_OptionalItemProperties_$491_storage_ptr",
                   "typeString": "struct ItemTypes.OptionalItemProperties"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 514,
+                  "id": 498,
                   "name": "OptionalItemProperties",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 507,
+                  "referencedDeclaration": 491,
                   "src": "433:22:2",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_OptionalItemProperties_$507_storage_ptr",
+                    "typeIdentifier": "t_struct$_OptionalItemProperties_$491_storage_ptr",
                     "typeString": "struct ItemTypes.OptionalItemProperties"
                   }
                 },
@@ -535,12 +535,12 @@
             ],
             "name": "ItemProperties",
             "nodeType": "StructDefinition",
-            "scope": 517,
+            "scope": 501,
             "src": "316:166:2",
             "visibility": "public"
           }
         ],
-        "scope": 518,
+        "scope": 502,
         "src": "27:460:2"
       }
     ],
@@ -552,7 +552,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.14",
-  "updatedAt": "2019-10-21T05:13:09.507Z",
+  "updatedAt": "2019-10-25T17:38:23.667Z",
   "devdoc": {
     "methods": {}
   },
