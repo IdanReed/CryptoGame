@@ -1,11 +1,15 @@
 pragma solidity ^0.5.0;
 
-import "./ItemTypes.sol";
-import "./RecipeTypes.sol";
-import "./CraftingManager.sol";
-import "./SectorTypes.sol";
+import "./types/TypesItem.sol";
+import "./types/TypesTransformation.sol";
+import "./types/TypesSector.sol";
 
-contract Game is ItemTypes, RecipeTypes, CraftingManager, SectorTypes{
+import "./ProductionManager.sol";
+
+contract Game is
+    TypesItem, TypesTransformation, TypesSector,
+    ProductionManager
+    {
 
     mapping (address => Sector) sectors;
 
@@ -26,54 +30,12 @@ contract Game is ItemTypes, RecipeTypes, CraftingManager, SectorTypes{
             nativeSector.cordinates = SphereCordinate(xAngle, zAngle);
         }
     }
-    function craftInputPlaceable() private {
-        
-    }
-    function craftInputNonPlaceable() private {
-
-    }
-    function craftOutputPlaceable() private {
-
-    }
-    function craftOutputNonPlaceable() private {
-
-    }
-    function craftRecipeElement(Sector memory sector, bool isInput, uint itemId, uint quantity) private pure returns (bool) {
-        if(isInput){
-            // Determine if sector has something then su
-        }else{
-            // Store or place element
-        }
-    }
-
-    function craftRecipe(address sectorAddress, uint recipeId) public {
-        (   uint itemCount,
-            uint recipeCount
-        ) = getCraftingMapRanges();
-        require(recipeId < recipeCount, "Require recipeId to be in valid range.");
-
-        Sector memory sector = sectors[sectorAddress];
-        //require(sector.owner == msg.sender, "Require that the caller is the owner of the sector.");
-
-        (
-            uint inputCounts,
-            uint[50] memory inputItemIds,
-            uint[50] memory inputQuantities,
-            uint outputCounts,
-            uint[50] memory outputItemIds,
-            uint[50] memory outputQuantities
-        ) = getRecipeProperties(recipeId);
-
-        for(uint i = 0; i < inputCounts; i++){
-            
-        }
-        for(uint i = 0; i < outputCounts; i++){
-
-        }
-
-    }
-
     function tickSector(address sectorAddress) public {
+
+    }
+    function manualTransformation(address sectorAddress, uint transformationId) public returns (
+        bool successful
+    ){
 
     }
 
@@ -94,5 +56,16 @@ contract Game is ItemTypes, RecipeTypes, CraftingManager, SectorTypes{
             selSector.cordinates.xAngle,
             selSector.cordinates.zAngle
         );
+    }
+
+    /**************************************************************
+    Modifiers
+    **************************************************************/
+    modifier callerOwnsSector(address sectorAddress) {
+        require(
+            msg.sender == sectors[sectorAddress].owner,
+            "Require that sector reference by address is owned by the caller"
+        );
+        _;
     }
 }

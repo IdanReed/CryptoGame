@@ -1,51 +1,30 @@
 pragma solidity ^0.5.0;
 
-contract SectorTypes{
-
-    /**************************************************************
-    Sector
-    **************************************************************/
+contract TypesSector{
     struct SectorPlaceable {
         uint itemId;
 
         uint spaceRequired;
     }
-
-    /**************************************************************
-    Silo
-    **************************************************************/
     struct Silo {
         SectorPlaceable placeableData;
 
         uint itemId;
         uint quantity;
     }
-
-    /**************************************************************
-    Extractor
-    **************************************************************/
     struct Extractor {
         SectorPlaceable placeableData;
 
     }
-
-    /**************************************************************
-    Extractor
-    **************************************************************/
     struct Factory {
         SectorPlaceable placeableData;
 
         uint targetRecipe;
     }
-
-    /**************************************************************
-    World
-    **************************************************************/
     struct SphereCordinate{
         uint xAngle; /* address bits from 160 to 80 */
         uint zAngle; /* address bits from 80 to 0   */
     }
-
     struct Sector {
         bool initialized;
 
@@ -58,13 +37,26 @@ contract SectorTypes{
         Extractor[] extractors;
         Factory[] factories;
     }
-    
+    /**************************************************************
+    Internal - production utils
+    **************************************************************/
+    function consume(Sector memory sector, uint itemId, uint quantity) internal returns (
+        bool successful,
+        Sector memory newSector
+    ){
+
+    }
+    function store(Sector memory sector, uint itemId, uint quantity) internal returns (
+        bool successful,
+        Sector memory newSector
+    ){
+
+    }
 
     /**************************************************************
-    Public Views/Pure
+    Public Views/Pure - type utils
     **************************************************************/
     function convertAddressToCordinateTuple(address addressToConvert) public pure returns (uint xAngle, uint zAngle) {
-        
         uint rightMask = (1 << 80) - 1;
         uint addressCasted = uint(addressToConvert);
 
@@ -72,16 +64,4 @@ contract SectorTypes{
         zAngle = addressCasted & rightMask;
         return (xAngle, zAngle);
     }
-    // function tickExtractor(address sectorAddress, uint extractorIndex) public {
-    //     Sector storage selSector = sectors[sectorAddress];
-
-    //     if(
-    //         selSector.initialized &&
-    //         selSector.owner == msg.sender &&
-    //         extractorIndex < selSector.extractors.length
-    //         ) {
-
-    //         //Extractor storage selExtractor = selSector.extractors[extractorIndex];
-    //     }
-    // }
 }

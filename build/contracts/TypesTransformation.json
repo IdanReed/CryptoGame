@@ -1,25 +1,25 @@
 {
-  "contractName": "RecipeTypes",
+  "contractName": "TypesTransformation",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/RecipeTypes.sol\":\"RecipeTypes\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/RecipeTypes.sol\":{\"keccak256\":\"0x2dd97bd1e50fb8cdb0522f138c8624e96114d05789a4d38f414659cb05828176\",\"urls\":[\"bzzr://b80db5e99b2303d7531153d25d59ad603f7db59a67c261f8f830ade3b8005c6d\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a72305820e72431371cdf8b8e2cef5f7d80c6cd340af1fa6ae81ed6f06e9eaeaa10447da30029",
-  "deployedBytecode": "0x6080604052600080fdfea165627a7a72305820e72431371cdf8b8e2cef5f7d80c6cd340af1fa6ae81ed6f06e9eaeaa10447da30029",
-  "sourceMap": "25:213:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:213:4;;;;;;;",
-  "deployedSourceMap": "25:213:4:-;;;;;",
-  "source": "pragma solidity ^0.5.0;\n\ncontract RecipeTypes{\n    struct RecipeElement{\n        uint itemId;\n        uint quantity;\n    }\n    struct Recipe{\n        uint recipeId;\n        RecipeElement[] inputs;\n        RecipeElement[] outputs;\n    }\n\n}",
-  "sourcePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/RecipeTypes.sol",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol\":\"TypesTransformation\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol\":{\"keccak256\":\"0xefa863079362dd150a5a92a4ed0d63ad071c5c3e583cb50788682230c47a424d\",\"urls\":[\"bzzr://4f5884090f2bb8a7858cc7f4154ec44e7acbd58d2602c29d6e2a8fcd31eeb110\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a72305820038db80c25359f35e76def6a11f33838e349e6b85ec14768da41e1afc3a5bbc10029",
+  "deployedBytecode": "0x6080604052600080fdfea165627a7a72305820038db80c25359f35e76def6a11f33838e349e6b85ec14768da41e1afc3a5bbc10029",
+  "sourceMap": "25:260:6:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:260:6;;;;;;;",
+  "deployedSourceMap": "25:260:6:-;;;;;",
+  "source": "pragma solidity ^0.5.0;\n\ncontract TypesTransformation{\n    struct TransformationElement{\n        uint itemId;\n        uint quantity;\n    }\n    struct Transformation{\n        uint transformationId;\n        TransformationElement[] inputs;\n        TransformationElement[] outputs;\n    }\n}",
+  "sourcePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol",
   "ast": {
-    "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/RecipeTypes.sol",
+    "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol",
     "exportedSymbols": {
-      "RecipeTypes": [
-        569
+      "TypesTransformation": [
+        592
       ]
     },
-    "id": 570,
+    "id": 593,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 554,
+        "id": 577,
         "literals": [
           "solidity",
           "^",
@@ -27,7 +27,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:4"
+        "src": "0:23:6"
       },
       {
         "baseContracts": [],
@@ -35,24 +35,24 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 569,
+        "id": 592,
         "linearizedBaseContracts": [
-          569
+          592
         ],
-        "name": "RecipeTypes",
+        "name": "TypesTransformation",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "canonicalName": "RecipeTypes.RecipeElement",
-            "id": 559,
+            "canonicalName": "TypesTransformation.TransformationElement",
+            "id": 582,
             "members": [
               {
                 "constant": false,
-                "id": 556,
+                "id": 579,
                 "name": "itemId",
                 "nodeType": "VariableDeclaration",
-                "scope": 559,
-                "src": "81:11:4",
+                "scope": 582,
+                "src": "97:11:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -60,10 +60,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 555,
+                  "id": 578,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "81:4:4",
+                  "src": "97:4:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -74,11 +74,11 @@
               },
               {
                 "constant": false,
-                "id": 558,
+                "id": 581,
                 "name": "quantity",
                 "nodeType": "VariableDeclaration",
-                "scope": 559,
-                "src": "102:13:4",
+                "scope": 582,
+                "src": "118:13:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -86,10 +86,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 557,
+                  "id": 580,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "102:4:4",
+                  "src": "118:4:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -99,23 +99,23 @@
                 "visibility": "internal"
               }
             ],
-            "name": "RecipeElement",
+            "name": "TransformationElement",
             "nodeType": "StructDefinition",
-            "scope": 569,
-            "src": "51:71:4",
+            "scope": 592,
+            "src": "59:79:6",
             "visibility": "public"
           },
           {
-            "canonicalName": "RecipeTypes.Recipe",
-            "id": 568,
+            "canonicalName": "TypesTransformation.Transformation",
+            "id": 591,
             "members": [
               {
                 "constant": false,
-                "id": 561,
-                "name": "recipeId",
+                "id": 584,
+                "name": "transformationId",
                 "nodeType": "VariableDeclaration",
-                "scope": 568,
-                "src": "150:13:4",
+                "scope": 591,
+                "src": "174:21:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -123,10 +123,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 560,
+                  "id": 583,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "150:4:4",
+                  "src": "174:4:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -137,37 +137,37 @@
               },
               {
                 "constant": false,
-                "id": 564,
+                "id": 587,
                 "name": "inputs",
                 "nodeType": "VariableDeclaration",
-                "scope": 568,
-                "src": "173:22:4",
+                "scope": 591,
+                "src": "205:30:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_array$_t_struct$_RecipeElement_$559_storage_$dyn_storage_ptr",
-                  "typeString": "struct RecipeTypes.RecipeElement[]"
+                  "typeIdentifier": "t_array$_t_struct$_TransformationElement_$582_storage_$dyn_storage_ptr",
+                  "typeString": "struct TypesTransformation.TransformationElement[]"
                 },
                 "typeName": {
                   "baseType": {
                     "contractScope": null,
-                    "id": 562,
-                    "name": "RecipeElement",
+                    "id": 585,
+                    "name": "TransformationElement",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 559,
-                    "src": "173:13:4",
+                    "referencedDeclaration": 582,
+                    "src": "205:21:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_RecipeElement_$559_storage_ptr",
-                      "typeString": "struct RecipeTypes.RecipeElement"
+                      "typeIdentifier": "t_struct$_TransformationElement_$582_storage_ptr",
+                      "typeString": "struct TypesTransformation.TransformationElement"
                     }
                   },
-                  "id": 563,
+                  "id": 586,
                   "length": null,
                   "nodeType": "ArrayTypeName",
-                  "src": "173:15:4",
+                  "src": "205:23:6",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_RecipeElement_$559_storage_$dyn_storage_ptr",
-                    "typeString": "struct RecipeTypes.RecipeElement[]"
+                    "typeIdentifier": "t_array$_t_struct$_TransformationElement_$582_storage_$dyn_storage_ptr",
+                    "typeString": "struct TypesTransformation.TransformationElement[]"
                   }
                 },
                 "value": null,
@@ -175,68 +175,68 @@
               },
               {
                 "constant": false,
-                "id": 567,
+                "id": 590,
                 "name": "outputs",
                 "nodeType": "VariableDeclaration",
-                "scope": 568,
-                "src": "205:23:4",
+                "scope": 591,
+                "src": "245:31:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_array$_t_struct$_RecipeElement_$559_storage_$dyn_storage_ptr",
-                  "typeString": "struct RecipeTypes.RecipeElement[]"
+                  "typeIdentifier": "t_array$_t_struct$_TransformationElement_$582_storage_$dyn_storage_ptr",
+                  "typeString": "struct TypesTransformation.TransformationElement[]"
                 },
                 "typeName": {
                   "baseType": {
                     "contractScope": null,
-                    "id": 565,
-                    "name": "RecipeElement",
+                    "id": 588,
+                    "name": "TransformationElement",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 559,
-                    "src": "205:13:4",
+                    "referencedDeclaration": 582,
+                    "src": "245:21:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_RecipeElement_$559_storage_ptr",
-                      "typeString": "struct RecipeTypes.RecipeElement"
+                      "typeIdentifier": "t_struct$_TransformationElement_$582_storage_ptr",
+                      "typeString": "struct TypesTransformation.TransformationElement"
                     }
                   },
-                  "id": 566,
+                  "id": 589,
                   "length": null,
                   "nodeType": "ArrayTypeName",
-                  "src": "205:15:4",
+                  "src": "245:23:6",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_RecipeElement_$559_storage_$dyn_storage_ptr",
-                    "typeString": "struct RecipeTypes.RecipeElement[]"
+                    "typeIdentifier": "t_array$_t_struct$_TransformationElement_$582_storage_$dyn_storage_ptr",
+                    "typeString": "struct TypesTransformation.TransformationElement[]"
                   }
                 },
                 "value": null,
                 "visibility": "internal"
               }
             ],
-            "name": "Recipe",
+            "name": "Transformation",
             "nodeType": "StructDefinition",
-            "scope": 569,
-            "src": "127:108:4",
+            "scope": 592,
+            "src": "143:140:6",
             "visibility": "public"
           }
         ],
-        "scope": 570,
-        "src": "25:213:4"
+        "scope": 593,
+        "src": "25:260:6"
       }
     ],
-    "src": "0:238:4"
+    "src": "0:285:6"
   },
   "legacyAST": {
-    "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/RecipeTypes.sol",
+    "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol",
     "exportedSymbols": {
-      "RecipeTypes": [
-        569
+      "TypesTransformation": [
+        592
       ]
     },
-    "id": 570,
+    "id": 593,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 554,
+        "id": 577,
         "literals": [
           "solidity",
           "^",
@@ -244,7 +244,7 @@
           ".0"
         ],
         "nodeType": "PragmaDirective",
-        "src": "0:23:4"
+        "src": "0:23:6"
       },
       {
         "baseContracts": [],
@@ -252,24 +252,24 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 569,
+        "id": 592,
         "linearizedBaseContracts": [
-          569
+          592
         ],
-        "name": "RecipeTypes",
+        "name": "TypesTransformation",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "canonicalName": "RecipeTypes.RecipeElement",
-            "id": 559,
+            "canonicalName": "TypesTransformation.TransformationElement",
+            "id": 582,
             "members": [
               {
                 "constant": false,
-                "id": 556,
+                "id": 579,
                 "name": "itemId",
                 "nodeType": "VariableDeclaration",
-                "scope": 559,
-                "src": "81:11:4",
+                "scope": 582,
+                "src": "97:11:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -277,10 +277,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 555,
+                  "id": 578,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "81:4:4",
+                  "src": "97:4:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -291,11 +291,11 @@
               },
               {
                 "constant": false,
-                "id": 558,
+                "id": 581,
                 "name": "quantity",
                 "nodeType": "VariableDeclaration",
-                "scope": 559,
-                "src": "102:13:4",
+                "scope": 582,
+                "src": "118:13:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -303,10 +303,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 557,
+                  "id": 580,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "102:4:4",
+                  "src": "118:4:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -316,23 +316,23 @@
                 "visibility": "internal"
               }
             ],
-            "name": "RecipeElement",
+            "name": "TransformationElement",
             "nodeType": "StructDefinition",
-            "scope": 569,
-            "src": "51:71:4",
+            "scope": 592,
+            "src": "59:79:6",
             "visibility": "public"
           },
           {
-            "canonicalName": "RecipeTypes.Recipe",
-            "id": 568,
+            "canonicalName": "TypesTransformation.Transformation",
+            "id": 591,
             "members": [
               {
                 "constant": false,
-                "id": 561,
-                "name": "recipeId",
+                "id": 584,
+                "name": "transformationId",
                 "nodeType": "VariableDeclaration",
-                "scope": 568,
-                "src": "150:13:4",
+                "scope": 591,
+                "src": "174:21:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -340,10 +340,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 560,
+                  "id": 583,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "150:4:4",
+                  "src": "174:4:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -354,37 +354,37 @@
               },
               {
                 "constant": false,
-                "id": 564,
+                "id": 587,
                 "name": "inputs",
                 "nodeType": "VariableDeclaration",
-                "scope": 568,
-                "src": "173:22:4",
+                "scope": 591,
+                "src": "205:30:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_array$_t_struct$_RecipeElement_$559_storage_$dyn_storage_ptr",
-                  "typeString": "struct RecipeTypes.RecipeElement[]"
+                  "typeIdentifier": "t_array$_t_struct$_TransformationElement_$582_storage_$dyn_storage_ptr",
+                  "typeString": "struct TypesTransformation.TransformationElement[]"
                 },
                 "typeName": {
                   "baseType": {
                     "contractScope": null,
-                    "id": 562,
-                    "name": "RecipeElement",
+                    "id": 585,
+                    "name": "TransformationElement",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 559,
-                    "src": "173:13:4",
+                    "referencedDeclaration": 582,
+                    "src": "205:21:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_RecipeElement_$559_storage_ptr",
-                      "typeString": "struct RecipeTypes.RecipeElement"
+                      "typeIdentifier": "t_struct$_TransformationElement_$582_storage_ptr",
+                      "typeString": "struct TypesTransformation.TransformationElement"
                     }
                   },
-                  "id": 563,
+                  "id": 586,
                   "length": null,
                   "nodeType": "ArrayTypeName",
-                  "src": "173:15:4",
+                  "src": "205:23:6",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_RecipeElement_$559_storage_$dyn_storage_ptr",
-                    "typeString": "struct RecipeTypes.RecipeElement[]"
+                    "typeIdentifier": "t_array$_t_struct$_TransformationElement_$582_storage_$dyn_storage_ptr",
+                    "typeString": "struct TypesTransformation.TransformationElement[]"
                   }
                 },
                 "value": null,
@@ -392,55 +392,55 @@
               },
               {
                 "constant": false,
-                "id": 567,
+                "id": 590,
                 "name": "outputs",
                 "nodeType": "VariableDeclaration",
-                "scope": 568,
-                "src": "205:23:4",
+                "scope": 591,
+                "src": "245:31:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_array$_t_struct$_RecipeElement_$559_storage_$dyn_storage_ptr",
-                  "typeString": "struct RecipeTypes.RecipeElement[]"
+                  "typeIdentifier": "t_array$_t_struct$_TransformationElement_$582_storage_$dyn_storage_ptr",
+                  "typeString": "struct TypesTransformation.TransformationElement[]"
                 },
                 "typeName": {
                   "baseType": {
                     "contractScope": null,
-                    "id": 565,
-                    "name": "RecipeElement",
+                    "id": 588,
+                    "name": "TransformationElement",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 559,
-                    "src": "205:13:4",
+                    "referencedDeclaration": 582,
+                    "src": "245:21:6",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_RecipeElement_$559_storage_ptr",
-                      "typeString": "struct RecipeTypes.RecipeElement"
+                      "typeIdentifier": "t_struct$_TransformationElement_$582_storage_ptr",
+                      "typeString": "struct TypesTransformation.TransformationElement"
                     }
                   },
-                  "id": 566,
+                  "id": 589,
                   "length": null,
                   "nodeType": "ArrayTypeName",
-                  "src": "205:15:4",
+                  "src": "245:23:6",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_RecipeElement_$559_storage_$dyn_storage_ptr",
-                    "typeString": "struct RecipeTypes.RecipeElement[]"
+                    "typeIdentifier": "t_array$_t_struct$_TransformationElement_$582_storage_$dyn_storage_ptr",
+                    "typeString": "struct TypesTransformation.TransformationElement[]"
                   }
                 },
                 "value": null,
                 "visibility": "internal"
               }
             ],
-            "name": "Recipe",
+            "name": "Transformation",
             "nodeType": "StructDefinition",
-            "scope": 569,
-            "src": "127:108:4",
+            "scope": 592,
+            "src": "143:140:6",
             "visibility": "public"
           }
         ],
-        "scope": 570,
-        "src": "25:213:4"
+        "scope": 593,
+        "src": "25:260:6"
       }
     ],
-    "src": "0:238:4"
+    "src": "0:285:6"
   },
   "compiler": {
     "name": "solc",
@@ -448,7 +448,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-31T20:25:01.473Z",
+  "updatedAt": "2019-10-31T21:45:31.646Z",
   "devdoc": {
     "methods": {}
   },

@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-contract ItemTypes{
+contract TypesItem{
     enum ItemType{
         NaturalReasource,
         Component,
@@ -10,7 +10,6 @@ contract ItemTypes{
     struct ExtractorProperties{
         uint targetRecipe;
     }
-
     struct OptionalItemProperties{
         ExtractorProperties extractor;
     }
@@ -23,5 +22,4 @@ contract ItemTypes{
 
         OptionalItemProperties optionalProperties;
     }
-
 }

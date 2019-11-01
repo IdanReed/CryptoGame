@@ -8,6 +8,9 @@ contract TestGame {
     Game game = Game(DeployedAddresses.Game());
     uint public initialBalance = 10 ether;
 
+    function testFunction_nothing() public {
+
+    }
     function testFunction_convertAddressToCordinateTuple() public {
 
         uint x;
@@ -45,9 +48,9 @@ contract TestGame {
     function setupRoutine_addRecipes() private {
         game.addItem(1, 0);
         game.addItem(2, 1);
-        game.addRecipe();
-        game.addRecipeElement(true, 0, 1);
-        game.addRecipeElement(false, 1, 2);
+        game.addTransformation();
+        game.addTransformationElement(true, 0, 1);
+        game.addTransformationElement(false, 1, 2);
     }
 
     function testSetupRoutine_addRecipes() public {
@@ -55,7 +58,7 @@ contract TestGame {
 
         (   uint itemCount,
             uint recipeCount
-        ) = game.getCraftingMapRanges();
+        ) = game.getProductionMapRanges();
 
         Assert.equal(itemCount, 2, "Verify that item count equals expected.");
         Assert.equal(recipeCount, 1, "verify that recipe count equals expected.");
@@ -83,7 +86,7 @@ contract TestGame {
             uint outputCounts,
             uint[50] memory outputItemIds,
             uint[50] memory outputQuantities
-        ) = game.getRecipeProperties(0);
+        ) = game.getTransformationProperties(0);
 
         Assert.equal(inputCounts, 1, "Item 2 property density equals expected.");
         Assert.equal(outputCounts, 1, "Item 2 property density equals expected.");
@@ -95,7 +98,7 @@ contract TestGame {
         Assert.equal(outputQuantities[0], 2, "Item 2 property density equals expected.");
     }
 
-    function testFunction_craftRecipe() public {
-        game.craftRecipe(DeployedAddresses.Game(), 0);
-    }
+    // function testFunction_craftRecipe() public {
+    //     game.craftRecipe(DeployedAddresses.Game(), 0);
+    // }
 }
