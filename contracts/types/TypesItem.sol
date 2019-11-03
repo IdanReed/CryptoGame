@@ -2,7 +2,7 @@ pragma solidity ^0.5.0;
 
 contract TypesItem{
     enum ItemType{
-        NaturalReasource,
+        NaturalResource,
         Component,
         Extractor,
         Factory

@@ -83,25 +83,25 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"addTransformation\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"addExtractorProps\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"density\",\"type\":\"uint256\"},{\"name\":\"itemType\",\"type\":\"uint256\"}],\"name\":\"addItem\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"addressToConvert\",\"type\":\"address\"}],\"name\":\"convertAddressToCordinateTuple\",\"outputs\":[{\"name\":\"xAngle\",\"type\":\"uint256\"},{\"name\":\"zAngle\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"isInput\",\"type\":\"bool\"},{\"name\":\"itemId\",\"type\":\"uint256\"},{\"name\":\"quantity\",\"type\":\"uint256\"}],\"name\":\"addTransformationElement\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{\"addItem(uint256,uint256)\":{\"notice\":\"************************************************************ Item loading*************************************************************\"},\"addTransformation()\":{\"notice\":\"************************************************************ Transformation loading*************************************************************\"},\"convertAddressToCordinateTuple(address)\":{\"notice\":\"************************************************************ Public Views/Pure - type utils*************************************************************\"}},\"notice\":\"ProductionMap contract: stores all possible production transformations and items\"}},\"settings\":{\"compilationTarget\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/ProductionMap.sol\":\"ProductionMap\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/ProductionMap.sol\":{\"keccak256\":\"0x8467731383cce5a4a8d2e445626937dd83e9b82722b9ba258c68605897ed19f9\",\"urls\":[\"bzzr://4d743dd4a2767234d14c9388caacd9c2589bbadf34c006060000c663363855ca\"]},\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesItem.sol\":{\"keccak256\":\"0x6a013757e70bf34835073e7eabba91c2a2d8b4098cc04024dfbfa93bee433457\",\"urls\":[\"bzzr://44bf6feaf5c2f541fdb5dafe0b61f6cd6fe6de0bd5316b7be8489ee35dc33457\"]},\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesSector.sol\":{\"keccak256\":\"0xc8190e28f880602bde81f02782db6a1d4db68a27b27cf069ef2d22159eada269\",\"urls\":[\"bzzr://f051b21e6bbc242d63b5adeae370c6a7d7b8349f657937fc45cbaad5e43a54b4\"]},\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol\":{\"keccak256\":\"0xefa863079362dd150a5a92a4ed0d63ad071c5c3e583cb50788682230c47a424d\",\"urls\":[\"bzzr://4f5884090f2bb8a7858cc7f4154ec44e7acbd58d2602c29d6e2a8fcd31eeb110\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5061050b806100206000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c8063352c1c1f1461005c578063581228ac14610066578063a212523214610070578063ba2371c5146100a8578063d5bbd77914610107575b600080fd5b61006461014b565b005b61006e610166565b005b6100a66004803603604081101561008657600080fd5b810190808035906020019092919080359060200190929190505050610168565b005b6100ea600480360360208110156100be57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061024c565b604051808381526020018281526020019250505060405180910390f35b6101496004803603606081101561011d57600080fd5b810190808035151590602001909291908035906020019092919080359060200190929190505050610295565b005b6001600081818054905001915081610163919061037b565b50565b565b6101706103ad565b6101786103c6565b6040518060800160405280600180805490500381526020018581526020018460038111156101a257fe5b60038111156101ad57fe5b815260200183815250905060018190806001815401808255809150509060018203906000526020600020906004020160009091929091909150600082015181600001556020820151816001015560408201518160020160006101000a81548160ff0219169083600381111561021e57fe5b0217905550606082015181600301600082015181600001600082015181600001555050505050505050505050565b600080600069ffffffffffffffffffff905060008473ffffffffffffffffffffffffffffffffffffffff169050605082198216901c935081811692508383935093505050915091565b600080600160008054905003815481106102ab57fe5b906000526020600020906003020190506102c36103ff565b6040518060400160405280858152602001848152509050841561032c578160010181908060018154018082558091505090600182039060005260206000209060020201600090919290919091506000820151816000015560208201518160010155505050610374565b81600201819080600181540180825580915050906001820390600052602060002090600202016000909192909190915060008201518160000155602082015181600101555050505b5050505050565b8154818355818111156103a8576003028160030283600052602060002091820191016103a79190610419565b5b505050565b60405180602001604052806103c0610460565b81525090565b60405180608001604052806000815260200160008152602001600060038111156103ec57fe5b81526020016103f9610473565b81525090565b604051806040016040528060008152602001600081525090565b61045d91905b8082111561045957600080820160009055600182016000610440919061048c565b600282016000610450919061048c565b5060030161041f565b5090565b90565b6040518060200160405280600081525090565b6040518060200160405280610486610460565b81525090565b50805460008255600202906000526020600020908101906104ad91906104b0565b50565b6104dc91905b808211156104d8576000808201600090556001820160009055506002016104b6565b5090565b9056fea165627a7a723058205c598752ead34c93e466c45db5c8927cee2bb828dbccd396ed573ae6954287230029",
-  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100575760003560e01c8063352c1c1f1461005c578063581228ac14610066578063a212523214610070578063ba2371c5146100a8578063d5bbd77914610107575b600080fd5b61006461014b565b005b61006e610166565b005b6100a66004803603604081101561008657600080fd5b810190808035906020019092919080359060200190929190505050610168565b005b6100ea600480360360208110156100be57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061024c565b604051808381526020018281526020019250505060405180910390f35b6101496004803603606081101561011d57600080fd5b810190808035151590602001909291908035906020019092919080359060200190929190505050610295565b005b6001600081818054905001915081610163919061037b565b50565b565b6101706103ad565b6101786103c6565b6040518060800160405280600180805490500381526020018581526020018460038111156101a257fe5b60038111156101ad57fe5b815260200183815250905060018190806001815401808255809150509060018203906000526020600020906004020160009091929091909150600082015181600001556020820151816001015560408201518160020160006101000a81548160ff0219169083600381111561021e57fe5b0217905550606082015181600301600082015181600001600082015181600001555050505050505050505050565b600080600069ffffffffffffffffffff905060008473ffffffffffffffffffffffffffffffffffffffff169050605082198216901c935081811692508383935093505050915091565b600080600160008054905003815481106102ab57fe5b906000526020600020906003020190506102c36103ff565b6040518060400160405280858152602001848152509050841561032c578160010181908060018154018082558091505090600182039060005260206000209060020201600090919290919091506000820151816000015560208201518160010155505050610374565b81600201819080600181540180825580915050906001820390600052602060002090600202016000909192909190915060008201518160000155602082015181600101555050505b5050505050565b8154818355818111156103a8576003028160030283600052602060002091820191016103a79190610419565b5b505050565b60405180602001604052806103c0610460565b81525090565b60405180608001604052806000815260200160008152602001600060038111156103ec57fe5b81526020016103f9610473565b81525090565b604051806040016040528060008152602001600081525090565b61045d91905b8082111561045957600080820160009055600182016000610440919061048c565b600282016000610450919061048c565b5060030161041f565b5090565b90565b6040518060200160405280600081525090565b6040518060200160405280610486610460565b81525090565b50805460008255600202906000526020600020908101906104ad91906104b0565b50565b6104dc91905b808211156104d8576000808201600090556001820160009055506002016104b6565b5090565b9056fea165627a7a723058205c598752ead34c93e466c45db5c8927cee2bb828dbccd396ed573ae6954287230029",
-  "sourceMap": "226:1360:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;226:1360:3;;;;;;;",
-  "deployedSourceMap": "226:1360:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;226:1360:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1080:80;;;:::i;:::-;;867:44;;;:::i;:::-;;531:331;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;531:331:3;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1466:344:5;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1466:344:5;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;1165:419:3;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1165:419:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1080:80;1152:1;1126:15;:27;;;;;;;;;;;;;;:::i;:::-;;1080:80::o;867:44::-;:::o;531:331::-;594:47;;:::i;:::-;652:31;;:::i;:::-;686:138;;;;;;;;729:1;714:5;:12;;;;:16;686:138;;;;744:7;686:138;;;;774:8;765:18;;;;;;;;686:138;;;;;;;;;;;;797:17;686:138;;;652:172;;834:5;845:9;834:21;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;834:21:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;531:331;;;;:::o;1466:344:5:-;1553:11;1566;1589:14;1606:13;1589:30;;1629:18;1655:16;1650:22;;1629:43;;1724:2;1710:9;1709:10;1693:13;:26;1692:34;;1683:43;;1761:9;1745:13;:25;1736:34;;1788:6;1796;1780:23;;;;;;1466:344;;;:::o;1165:419:3:-;1259:37;1299:15;1340:1;1315:15;:22;;;;:26;1299:43;;;;;;;;;;;;;;;;;;1259:83;;1352:36;;:::i;:::-;1391:39;;;;;;;;1413:6;1391:39;;;;1421:8;1391:39;;;1352:78;;1444:7;1441:137;;;1467:14;:21;;1494:7;1467:35;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;1467:35:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1441:137;;;1531:14;:22;;1559:7;1531:36;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;1531:36:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1441:137;1165:419;;;;;:::o;226:1360::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;:::i;:::-;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity ^0.5.0;\n\nimport \"./types/TypesSector.sol\";\nimport \"./types/TypesItem.sol\";\nimport \"./types/TypesTransformation.sol\";\n\n/**\nProductionMap contract:\n    stores all possible production transformations and items\n*/\ncontract ProductionMap is\n    TypesItem, TypesTransformation, TypesSector\n    {\n\n    Transformation[] transformations;\n    ItemProperties[] items;\n\n    /**************************************************************\n    Item loading\n    **************************************************************/\n    function addItem(uint density, uint itemType) public {\n        OptionalItemProperties memory itemPropsOptional;\n\n        ItemProperties memory itemProps = ItemProperties(\n            items.length - 1,\n            density,\n            ItemType(itemType),\n            itemPropsOptional\n        );\n        items.push(itemProps);\n    }\n    function addExtractorProps() public {\n\n    }\n\n    /**************************************************************\n    Transformation loading\n    **************************************************************/\n    function addTransformation() public {\n        transformations.length += 1;\n    }\n    function addTransformationElement(bool isInput, uint itemId, uint quantity) public {\n\n        Transformation storage transformation = transformations[transformations.length - 1];\n        TransformationElement memory element = TransformationElement(itemId, quantity);\n\n        if(isInput) {\n            transformation.inputs.push(element);\n        }else{\n            transformation.outputs.push(element);\n        }\n    }\n}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"addTransformation\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"addExtractorProps\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"density\",\"type\":\"uint256\"},{\"name\":\"itemType\",\"type\":\"uint256\"}],\"name\":\"addItem\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"addressToConvert\",\"type\":\"address\"}],\"name\":\"convertAddressToCordinateTuple\",\"outputs\":[{\"name\":\"xAngle\",\"type\":\"uint256\"},{\"name\":\"zAngle\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"pure\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"isInput\",\"type\":\"bool\"},{\"name\":\"itemId\",\"type\":\"uint256\"},{\"name\":\"quantity\",\"type\":\"uint256\"}],\"name\":\"addTransformationElement\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{\"addItem(uint256,uint256)\":{\"notice\":\"************************************************************ Item loading*************************************************************\"},\"addTransformation()\":{\"notice\":\"************************************************************ Transformation loading*************************************************************\"},\"convertAddressToCordinateTuple(address)\":{\"notice\":\"************************************************************ Public Views/Pure*************************************************************\"}},\"notice\":\"ProductionMap contract: stores all possible production transformations and items\"}},\"settings\":{\"compilationTarget\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/ProductionMap.sol\":\"ProductionMap\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/ProductionMap.sol\":{\"keccak256\":\"0x4101eed266fbd8b3f3391cc1645fa1f9123cdf375dfc39370f744db39f43b983\",\"urls\":[\"bzzr://9e1d98910f500dbbffd3d7b699b58931ee753098fd39dd2a2273972ab75b1ff1\"]},\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesItem.sol\":{\"keccak256\":\"0xc32c31d9c9d4bc24dc139f03f1ca04ec04f71a64d53c1bd64b0d19cba37636c8\",\"urls\":[\"bzzr://7ca77e7f617309395cacb58a46a047c4edc4557d7727e309de687dda6daa15e4\"]},\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesSector.sol\":{\"keccak256\":\"0x18510e9ddb95f6583106be76c1e190b940df663d2a4275da007f5676b8e1d279\",\"urls\":[\"bzzr://0a08ee1fa134aa68625db9ff2fedc06ba38cf6dbab2d99c8626ead0d5894dcf0\"]},\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol\":{\"keccak256\":\"0xefa863079362dd150a5a92a4ed0d63ad071c5c3e583cb50788682230c47a424d\",\"urls\":[\"bzzr://4f5884090f2bb8a7858cc7f4154ec44e7acbd58d2602c29d6e2a8fcd31eeb110\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061050b806100206000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c8063352c1c1f1461005c578063581228ac14610066578063a212523214610070578063ba2371c5146100a8578063d5bbd77914610107575b600080fd5b61006461014b565b005b61006e610166565b005b6100a66004803603604081101561008657600080fd5b810190808035906020019092919080359060200190929190505050610168565b005b6100ea600480360360208110156100be57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061024c565b604051808381526020018281526020019250505060405180910390f35b6101496004803603606081101561011d57600080fd5b810190808035151590602001909291908035906020019092919080359060200190929190505050610295565b005b6001600081818054905001915081610163919061037b565b50565b565b6101706103ad565b6101786103c6565b6040518060800160405280600180805490500381526020018581526020018460038111156101a257fe5b60038111156101ad57fe5b815260200183815250905060018190806001815401808255809150509060018203906000526020600020906004020160009091929091909150600082015181600001556020820151816001015560408201518160020160006101000a81548160ff0219169083600381111561021e57fe5b0217905550606082015181600301600082015181600001600082015181600001555050505050505050505050565b600080600069ffffffffffffffffffff905060008473ffffffffffffffffffffffffffffffffffffffff169050605082198216901c935081811692508383935093505050915091565b600080600160008054905003815481106102ab57fe5b906000526020600020906003020190506102c36103ff565b6040518060400160405280858152602001848152509050841561032c578160010181908060018154018082558091505090600182039060005260206000209060020201600090919290919091506000820151816000015560208201518160010155505050610374565b81600201819080600181540180825580915050906001820390600052602060002090600202016000909192909190915060008201518160000155602082015181600101555050505b5050505050565b8154818355818111156103a8576003028160030283600052602060002091820191016103a79190610419565b5b505050565b60405180602001604052806103c0610460565b81525090565b60405180608001604052806000815260200160008152602001600060038111156103ec57fe5b81526020016103f9610473565b81525090565b604051806040016040528060008152602001600081525090565b61045d91905b8082111561045957600080820160009055600182016000610440919061048c565b600282016000610450919061048c565b5060030161041f565b5090565b90565b6040518060200160405280600081525090565b6040518060200160405280610486610460565b81525090565b50805460008255600202906000526020600020908101906104ad91906104b0565b50565b6104dc91905b808211156104d8576000808201600090556001820160009055506002016104b6565b5090565b9056fea165627a7a72305820bc93f7801152a86b28f922748d5fcb31e4c5ca63a255bb59e03a11045d8db5a50029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100575760003560e01c8063352c1c1f1461005c578063581228ac14610066578063a212523214610070578063ba2371c5146100a8578063d5bbd77914610107575b600080fd5b61006461014b565b005b61006e610166565b005b6100a66004803603604081101561008657600080fd5b810190808035906020019092919080359060200190929190505050610168565b005b6100ea600480360360208110156100be57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061024c565b604051808381526020018281526020019250505060405180910390f35b6101496004803603606081101561011d57600080fd5b810190808035151590602001909291908035906020019092919080359060200190929190505050610295565b005b6001600081818054905001915081610163919061037b565b50565b565b6101706103ad565b6101786103c6565b6040518060800160405280600180805490500381526020018581526020018460038111156101a257fe5b60038111156101ad57fe5b815260200183815250905060018190806001815401808255809150509060018203906000526020600020906004020160009091929091909150600082015181600001556020820151816001015560408201518160020160006101000a81548160ff0219169083600381111561021e57fe5b0217905550606082015181600301600082015181600001600082015181600001555050505050505050505050565b600080600069ffffffffffffffffffff905060008473ffffffffffffffffffffffffffffffffffffffff169050605082198216901c935081811692508383935093505050915091565b600080600160008054905003815481106102ab57fe5b906000526020600020906003020190506102c36103ff565b6040518060400160405280858152602001848152509050841561032c578160010181908060018154018082558091505090600182039060005260206000209060020201600090919290919091506000820151816000015560208201518160010155505050610374565b81600201819080600181540180825580915050906001820390600052602060002090600202016000909192909190915060008201518160000155602082015181600101555050505b5050505050565b8154818355818111156103a8576003028160030283600052602060002091820191016103a79190610419565b5b505050565b60405180602001604052806103c0610460565b81525090565b60405180608001604052806000815260200160008152602001600060038111156103ec57fe5b81526020016103f9610473565b81525090565b604051806040016040528060008152602001600081525090565b61045d91905b8082111561045957600080820160009055600182016000610440919061048c565b600282016000610450919061048c565b5060030161041f565b5090565b90565b6040518060200160405280600081525090565b6040518060200160405280610486610460565b81525090565b50805460008255600202906000526020600020908101906104ad91906104b0565b50565b6104dc91905b808211156104d8576000808201600090556001820160009055506002016104b6565b5090565b9056fea165627a7a72305820bc93f7801152a86b28f922748d5fcb31e4c5ca63a255bb59e03a11045d8db5a50029",
+  "sourceMap": "226:1372:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;226:1372:3;;;;;;;",
+  "deployedSourceMap": "226:1372:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;226:1372:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1084:82;;;:::i;:::-;;869:46;;;:::i;:::-;;531:333;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;531:333:3;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;4357:374:5;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;4357:374:5;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;1171:425:3;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1171:425:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1084:82;1158:1;1132:15;:27;;;;;;;;;;;;;;:::i;:::-;;1084:82::o;869:46::-;:::o;531:333::-;596:47;;:::i;:::-;654:31;;:::i;:::-;688:138;;;;;;;;731:1;716:5;:12;;;;:16;688:138;;;;746:7;688:138;;;;776:8;767:18;;;;;;;;688:138;;;;;;;;;;;;799:17;688:138;;;654:172;;836:5;847:9;836:21;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;836:21:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;531:333;;;;:::o;4357:374:5:-;4470:11;4483;4510:14;4527:13;4510:30;;4550:18;4576:16;4571:22;;4550:43;;4645:2;4631:9;4630:10;4614:13;:26;4613:34;;4604:43;;4682:9;4666:13;:25;4657:34;;4709:6;4717;4701:23;;;;;;4357:374;;;:::o;1171:425:3:-;1267:37;1307:15;1348:1;1323:15;:22;;;;:26;1307:43;;;;;;;;;;;;;;;;;;1267:83;;1360:36;;:::i;:::-;1399:39;;;;;;;;1421:6;1399:39;;;;1429:8;1399:39;;;1360:78;;1456:7;1453:137;;;1479:14;:21;;1506:7;1479:35;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;1479:35:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1453:137;;;1543:14;:22;;1571:7;1543:36;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;1543:36:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1453:137;1171:425;;;;;:::o;226:1372::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;:::i;:::-;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;;;;:::o;:::-;;;;;;;;;;;:::i;:::-;;;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\n\nimport \"./types/TypesSector.sol\";\nimport \"./types/TypesItem.sol\";\nimport \"./types/TypesTransformation.sol\";\n\n/**\nProductionMap contract:\n    stores all possible production transformations and items\n*/\ncontract ProductionMap is\n    TypesItem, TypesTransformation, TypesSector\n    {\n\n    Transformation[] transformations;\n    ItemProperties[] items;\n\n    /**************************************************************\n    Item loading\n    **************************************************************/\n    function addItem(uint density, uint itemType) external {\n        OptionalItemProperties memory itemPropsOptional;\n\n        ItemProperties memory itemProps = ItemProperties(\n            items.length - 1,\n            density,\n            ItemType(itemType),\n            itemPropsOptional\n        );\n        items.push(itemProps);\n    }\n    function addExtractorProps() external {\n\n    }\n\n    /**************************************************************\n    Transformation loading\n    **************************************************************/\n    function addTransformation() external {\n        transformations.length += 1;\n    }\n    function addTransformationElement(bool isInput, uint itemId, uint quantity) external {\n\n        Transformation storage transformation = transformations[transformations.length - 1];\n        TransformationElement memory element = TransformationElement(itemId, quantity);\n    \n        if(isInput) {\n            transformation.inputs.push(element);\n        }else{\n            transformation.outputs.push(element);\n        }\n    }\n}",
   "sourcePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/ProductionMap.sol",
   "ast": {
     "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/ProductionMap.sol",
     "exportedSymbols": {
       "ProductionMap": [
-        476
+        540
       ]
     },
-    "id": 477,
+    "id": 541,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 369,
+        "id": 433,
         "literals": [
           "solidity",
           "^",
@@ -114,10 +114,10 @@
       {
         "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesSector.sol",
         "file": "./types/TypesSector.sol",
-        "id": 370,
+        "id": 434,
         "nodeType": "ImportDirective",
-        "scope": 477,
-        "sourceUnit": 619,
+        "scope": 541,
+        "sourceUnit": 906,
         "src": "25:33:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -125,10 +125,10 @@
       {
         "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesItem.sol",
         "file": "./types/TypesItem.sol",
-        "id": 371,
+        "id": 435,
         "nodeType": "ImportDirective",
-        "scope": 477,
-        "sourceUnit": 500,
+        "scope": 541,
+        "sourceUnit": 564,
         "src": "59:31:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -136,10 +136,10 @@
       {
         "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol",
         "file": "./types/TypesTransformation.sol",
-        "id": 372,
+        "id": 436,
         "nodeType": "ImportDirective",
-        "scope": 477,
-        "sourceUnit": 636,
+        "scope": 541,
+        "sourceUnit": 923,
         "src": "91:41:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -150,17 +150,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 373,
+              "id": 437,
               "name": "TypesItem",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 499,
+              "referencedDeclaration": 563,
               "src": "256:9:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TypesItem_$499",
+                "typeIdentifier": "t_contract$_TypesItem_$563",
                 "typeString": "contract TypesItem"
               }
             },
-            "id": 374,
+            "id": 438,
             "nodeType": "InheritanceSpecifier",
             "src": "256:9:3"
           },
@@ -168,17 +168,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 375,
+              "id": 439,
               "name": "TypesTransformation",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 635,
+              "referencedDeclaration": 922,
               "src": "267:19:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TypesTransformation_$635",
+                "typeIdentifier": "t_contract$_TypesTransformation_$922",
                 "typeString": "contract TypesTransformation"
               }
             },
-            "id": 376,
+            "id": 440,
             "nodeType": "InheritanceSpecifier",
             "src": "267:19:3"
           },
@@ -186,71 +186,71 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 377,
+              "id": 441,
               "name": "TypesSector",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 618,
+              "referencedDeclaration": 905,
               "src": "288:11:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TypesSector_$618",
+                "typeIdentifier": "t_contract$_TypesSector_$905",
                 "typeString": "contract TypesSector"
               }
             },
-            "id": 378,
+            "id": 442,
             "nodeType": "InheritanceSpecifier",
             "src": "288:11:3"
           }
         ],
         "contractDependencies": [
-          618,
-          635,
-          499
+          905,
+          922,
+          563
         ],
         "contractKind": "contract",
         "documentation": "ProductionMap contract:\nstores all possible production transformations and items",
         "fullyImplemented": true,
-        "id": 476,
+        "id": 540,
         "linearizedBaseContracts": [
-          476,
-          618,
-          635,
-          499
+          540,
+          905,
+          922,
+          563
         ],
         "name": "ProductionMap",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 381,
+            "id": 445,
             "name": "transformations",
             "nodeType": "VariableDeclaration",
-            "scope": 476,
+            "scope": 540,
             "src": "311:32:3",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_array$_t_struct$_Transformation_$634_storage_$dyn_storage",
+              "typeIdentifier": "t_array$_t_struct$_Transformation_$921_storage_$dyn_storage",
               "typeString": "struct TypesTransformation.Transformation[]"
             },
             "typeName": {
               "baseType": {
                 "contractScope": null,
-                "id": 379,
+                "id": 443,
                 "name": "Transformation",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 634,
+                "referencedDeclaration": 921,
                 "src": "311:14:3",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Transformation_$634_storage_ptr",
+                  "typeIdentifier": "t_struct$_Transformation_$921_storage_ptr",
                   "typeString": "struct TypesTransformation.Transformation"
                 }
               },
-              "id": 380,
+              "id": 444,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "311:16:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_array$_t_struct$_Transformation_$634_storage_$dyn_storage_ptr",
+                "typeIdentifier": "t_array$_t_struct$_Transformation_$921_storage_$dyn_storage_ptr",
                 "typeString": "struct TypesTransformation.Transformation[]"
               }
             },
@@ -259,36 +259,36 @@
           },
           {
             "constant": false,
-            "id": 384,
+            "id": 448,
             "name": "items",
             "nodeType": "VariableDeclaration",
-            "scope": 476,
+            "scope": 540,
             "src": "349:22:3",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_array$_t_struct$_ItemProperties_$498_storage_$dyn_storage",
+              "typeIdentifier": "t_array$_t_struct$_ItemProperties_$562_storage_$dyn_storage",
               "typeString": "struct TypesItem.ItemProperties[]"
             },
             "typeName": {
               "baseType": {
                 "contractScope": null,
-                "id": 382,
+                "id": 446,
                 "name": "ItemProperties",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 498,
+                "referencedDeclaration": 562,
                 "src": "349:14:3",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ItemProperties_$498_storage_ptr",
+                  "typeIdentifier": "t_struct$_ItemProperties_$562_storage_ptr",
                   "typeString": "struct TypesItem.ItemProperties"
                 }
               },
-              "id": 383,
+              "id": 447,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "349:16:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_array$_t_struct$_ItemProperties_$498_storage_$dyn_storage_ptr",
+                "typeIdentifier": "t_array$_t_struct$_ItemProperties_$562_storage_$dyn_storage_ptr",
                 "typeString": "struct TypesItem.ItemProperties[]"
               }
             },
@@ -297,37 +297,37 @@
           },
           {
             "body": {
-              "id": 414,
+              "id": 478,
               "nodeType": "Block",
-              "src": "584:278:3",
+              "src": "586:278:3",
               "statements": [
                 {
                   "assignments": [
-                    392
+                    456
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 392,
+                      "id": 456,
                       "name": "itemPropsOptional",
                       "nodeType": "VariableDeclaration",
-                      "scope": 414,
-                      "src": "594:47:3",
+                      "scope": 478,
+                      "src": "596:47:3",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_OptionalItemProperties_$489_memory_ptr",
+                        "typeIdentifier": "t_struct$_OptionalItemProperties_$553_memory_ptr",
                         "typeString": "struct TypesItem.OptionalItemProperties"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 391,
+                        "id": 455,
                         "name": "OptionalItemProperties",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 489,
-                        "src": "594:22:3",
+                        "referencedDeclaration": 553,
+                        "src": "596:22:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_OptionalItemProperties_$489_storage_ptr",
+                          "typeIdentifier": "t_struct$_OptionalItemProperties_$553_storage_ptr",
                           "typeString": "struct TypesItem.OptionalItemProperties"
                         }
                       },
@@ -335,38 +335,38 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 393,
+                  "id": 457,
                   "initialValue": null,
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "594:47:3"
+                  "src": "596:47:3"
                 },
                 {
                   "assignments": [
-                    395
+                    459
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 395,
+                      "id": 459,
                       "name": "itemProps",
                       "nodeType": "VariableDeclaration",
-                      "scope": 414,
-                      "src": "652:31:3",
+                      "scope": 478,
+                      "src": "654:31:3",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_ItemProperties_$498_memory_ptr",
+                        "typeIdentifier": "t_struct$_ItemProperties_$562_memory_ptr",
                         "typeString": "struct TypesItem.ItemProperties"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 394,
+                        "id": 458,
                         "name": "ItemProperties",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 498,
-                        "src": "652:14:3",
+                        "referencedDeclaration": 562,
+                        "src": "654:14:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ItemProperties_$498_storage_ptr",
+                          "typeIdentifier": "t_struct$_ItemProperties_$562_storage_ptr",
                           "typeString": "struct TypesItem.ItemProperties"
                         }
                       },
@@ -374,7 +374,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 407,
+                  "id": 471,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -384,7 +384,7 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 400,
+                        "id": 464,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -393,18 +393,18 @@
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-                            "id": 397,
+                            "id": 461,
                             "name": "items",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 384,
-                            "src": "714:5:3",
+                            "referencedDeclaration": 448,
+                            "src": "716:5:3",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_array$_t_struct$_ItemProperties_$498_storage_$dyn_storage",
+                              "typeIdentifier": "t_array$_t_struct$_ItemProperties_$562_storage_$dyn_storage",
                               "typeString": "struct TypesItem.ItemProperties storage ref[] storage ref"
                             }
                           },
-                          "id": 398,
+                          "id": 462,
                           "isConstant": false,
                           "isLValue": true,
                           "isPure": false,
@@ -412,7 +412,7 @@
                           "memberName": "length",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": null,
-                          "src": "714:12:3",
+                          "src": "716:12:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -423,14 +423,14 @@
                         "rightExpression": {
                           "argumentTypes": null,
                           "hexValue": "31",
-                          "id": 399,
+                          "id": 463,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "729:1:3",
+                          "src": "731:1:3",
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_1_by_1",
@@ -438,7 +438,7 @@
                           },
                           "value": "1"
                         },
-                        "src": "714:16:3",
+                        "src": "716:16:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -446,12 +446,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 401,
+                        "id": 465,
                         "name": "density",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 386,
-                        "src": "744:7:3",
+                        "referencedDeclaration": 450,
+                        "src": "746:7:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -462,12 +462,12 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 403,
+                            "id": 467,
                             "name": "itemType",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 388,
-                            "src": "774:8:3",
+                            "referencedDeclaration": 452,
+                            "src": "776:8:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -481,18 +481,18 @@
                               "typeString": "uint256"
                             }
                           ],
-                          "id": 402,
+                          "id": 466,
                           "name": "ItemType",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 483,
-                          "src": "765:8:3",
+                          "referencedDeclaration": 547,
+                          "src": "767:8:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_enum$_ItemType_$483_$",
+                            "typeIdentifier": "t_type$_t_enum$_ItemType_$547_$",
                             "typeString": "type(enum TypesItem.ItemType)"
                           }
                         },
-                        "id": 404,
+                        "id": 468,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -500,22 +500,22 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "765:18:3",
+                        "src": "767:18:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_ItemType_$483",
+                          "typeIdentifier": "t_enum$_ItemType_$547",
                           "typeString": "enum TypesItem.ItemType"
                         }
                       },
                       {
                         "argumentTypes": null,
-                        "id": 405,
+                        "id": 469,
                         "name": "itemPropsOptional",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 392,
-                        "src": "797:17:3",
+                        "referencedDeclaration": 456,
+                        "src": "799:17:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_OptionalItemProperties_$489_memory_ptr",
+                          "typeIdentifier": "t_struct$_OptionalItemProperties_$553_memory_ptr",
                           "typeString": "struct TypesItem.OptionalItemProperties memory"
                         }
                       }
@@ -531,26 +531,26 @@
                           "typeString": "uint256"
                         },
                         {
-                          "typeIdentifier": "t_enum$_ItemType_$483",
+                          "typeIdentifier": "t_enum$_ItemType_$547",
                           "typeString": "enum TypesItem.ItemType"
                         },
                         {
-                          "typeIdentifier": "t_struct$_OptionalItemProperties_$489_memory_ptr",
+                          "typeIdentifier": "t_struct$_OptionalItemProperties_$553_memory_ptr",
                           "typeString": "struct TypesItem.OptionalItemProperties memory"
                         }
                       ],
-                      "id": 396,
+                      "id": 460,
                       "name": "ItemProperties",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 498,
-                      "src": "686:14:3",
+                      "referencedDeclaration": 562,
+                      "src": "688:14:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_ItemProperties_$498_storage_ptr_$",
+                        "typeIdentifier": "t_type$_t_struct$_ItemProperties_$562_storage_ptr_$",
                         "typeString": "type(struct TypesItem.ItemProperties storage pointer)"
                       }
                     },
-                    "id": 406,
+                    "id": 470,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -558,14 +558,14 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "686:138:3",
+                    "src": "688:138:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_ItemProperties_$498_memory",
+                      "typeIdentifier": "t_struct$_ItemProperties_$562_memory",
                       "typeString": "struct TypesItem.ItemProperties memory"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "652:172:3"
+                  "src": "654:172:3"
                 },
                 {
                   "expression": {
@@ -573,14 +573,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 411,
+                        "id": 475,
                         "name": "itemProps",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 395,
-                        "src": "845:9:3",
+                        "referencedDeclaration": 459,
+                        "src": "847:9:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ItemProperties_$498_memory_ptr",
+                          "typeIdentifier": "t_struct$_ItemProperties_$562_memory_ptr",
                           "typeString": "struct TypesItem.ItemProperties memory"
                         }
                       }
@@ -588,24 +588,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_ItemProperties_$498_memory_ptr",
+                          "typeIdentifier": "t_struct$_ItemProperties_$562_memory_ptr",
                           "typeString": "struct TypesItem.ItemProperties memory"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 408,
+                        "id": 472,
                         "name": "items",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 384,
-                        "src": "834:5:3",
+                        "referencedDeclaration": 448,
+                        "src": "836:5:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_ItemProperties_$498_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_ItemProperties_$562_storage_$dyn_storage",
                           "typeString": "struct TypesItem.ItemProperties storage ref[] storage ref"
                         }
                       },
-                      "id": 410,
+                      "id": 474,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -613,13 +613,13 @@
                       "memberName": "push",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "834:10:3",
+                      "src": "836:10:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_ItemProperties_$498_storage_$returns$_t_uint256_$",
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_ItemProperties_$562_storage_$returns$_t_uint256_$",
                         "typeString": "function (struct TypesItem.ItemProperties storage ref) returns (uint256)"
                       }
                     },
-                    "id": 412,
+                    "id": 476,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -627,35 +627,35 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "834:21:3",
+                    "src": "836:21:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 413,
+                  "id": 477,
                   "nodeType": "ExpressionStatement",
-                  "src": "834:21:3"
+                  "src": "836:21:3"
                 }
               ]
             },
             "documentation": "************************************************************\nItem loading*************************************************************",
-            "id": 415,
+            "id": 479,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "addItem",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 389,
+              "id": 453,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 386,
+                  "id": 450,
                   "name": "density",
                   "nodeType": "VariableDeclaration",
-                  "scope": 415,
+                  "scope": 479,
                   "src": "548:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -664,7 +664,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 385,
+                    "id": 449,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "548:4:3",
@@ -678,10 +678,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 388,
+                  "id": 452,
                   "name": "itemType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 415,
+                  "scope": 479,
                   "src": "562:13:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -690,7 +690,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 387,
+                    "id": 451,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "562:4:3",
@@ -706,59 +706,59 @@
               "src": "547:29:3"
             },
             "returnParameters": {
-              "id": 390,
+              "id": 454,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "584:0:3"
+              "src": "586:0:3"
             },
-            "scope": 476,
-            "src": "531:331:3",
+            "scope": 540,
+            "src": "531:333:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
-            "visibility": "public"
+            "visibility": "external"
           },
           {
             "body": {
-              "id": 418,
+              "id": 482,
               "nodeType": "Block",
-              "src": "903:8:3",
+              "src": "907:8:3",
               "statements": []
             },
             "documentation": null,
-            "id": 419,
+            "id": 483,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "addExtractorProps",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 416,
+              "id": 480,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "893:2:3"
+              "src": "895:2:3"
             },
             "returnParameters": {
-              "id": 417,
+              "id": 481,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "903:0:3"
+              "src": "907:0:3"
             },
-            "scope": 476,
-            "src": "867:44:3",
+            "scope": 540,
+            "src": "869:46:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
-            "visibility": "public"
+            "visibility": "external"
           },
           {
             "body": {
-              "id": 428,
+              "id": 492,
               "nodeType": "Block",
-              "src": "1116:44:3",
+              "src": "1122:44:3",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 426,
+                    "id": 490,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -767,18 +767,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 422,
+                        "id": 486,
                         "name": "transformations",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 381,
-                        "src": "1126:15:3",
+                        "referencedDeclaration": 445,
+                        "src": "1132:15:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Transformation_$634_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_Transformation_$921_storage_$dyn_storage",
                           "typeString": "struct TypesTransformation.Transformation storage ref[] storage ref"
                         }
                       },
-                      "id": 424,
+                      "id": 488,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
@@ -786,7 +786,7 @@
                       "memberName": "length",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "1126:22:3",
+                      "src": "1132:22:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -797,14 +797,14 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "31",
-                      "id": 425,
+                      "id": 489,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "1152:1:3",
+                      "src": "1158:1:3",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_1_by_1",
@@ -812,76 +812,76 @@
                       },
                       "value": "1"
                     },
-                    "src": "1126:27:3",
+                    "src": "1132:27:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 427,
+                  "id": 491,
                   "nodeType": "ExpressionStatement",
-                  "src": "1126:27:3"
+                  "src": "1132:27:3"
                 }
               ]
             },
             "documentation": "************************************************************\nTransformation loading*************************************************************",
-            "id": 429,
+            "id": 493,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "addTransformation",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 420,
+              "id": 484,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1106:2:3"
+              "src": "1110:2:3"
             },
             "returnParameters": {
-              "id": 421,
+              "id": 485,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1116:0:3"
+              "src": "1122:0:3"
             },
-            "scope": 476,
-            "src": "1080:80:3",
+            "scope": 540,
+            "src": "1084:82:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
-            "visibility": "public"
+            "visibility": "external"
           },
           {
             "body": {
-              "id": 474,
+              "id": 538,
               "nodeType": "Block",
-              "src": "1248:336:3",
+              "src": "1256:340:3",
               "statements": [
                 {
                   "assignments": [
-                    439
+                    503
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 439,
+                      "id": 503,
                       "name": "transformation",
                       "nodeType": "VariableDeclaration",
-                      "scope": 474,
-                      "src": "1259:37:3",
+                      "scope": 538,
+                      "src": "1267:37:3",
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Transformation_$634_storage_ptr",
+                        "typeIdentifier": "t_struct$_Transformation_$921_storage_ptr",
                         "typeString": "struct TypesTransformation.Transformation"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 438,
+                        "id": 502,
                         "name": "Transformation",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 634,
-                        "src": "1259:14:3",
+                        "referencedDeclaration": 921,
+                        "src": "1267:14:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Transformation_$634_storage_ptr",
+                          "typeIdentifier": "t_struct$_Transformation_$921_storage_ptr",
                           "typeString": "struct TypesTransformation.Transformation"
                         }
                       },
@@ -889,30 +889,30 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 446,
+                  "id": 510,
                   "initialValue": {
                     "argumentTypes": null,
                     "baseExpression": {
                       "argumentTypes": null,
-                      "id": 440,
+                      "id": 504,
                       "name": "transformations",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 381,
-                      "src": "1299:15:3",
+                      "referencedDeclaration": 445,
+                      "src": "1307:15:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_array$_t_struct$_Transformation_$634_storage_$dyn_storage",
+                        "typeIdentifier": "t_array$_t_struct$_Transformation_$921_storage_$dyn_storage",
                         "typeString": "struct TypesTransformation.Transformation storage ref[] storage ref"
                       }
                     },
-                    "id": 445,
+                    "id": 509,
                     "indexExpression": {
                       "argumentTypes": null,
                       "commonType": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 444,
+                      "id": 508,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -921,18 +921,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 441,
+                          "id": 505,
                           "name": "transformations",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 381,
-                          "src": "1315:15:3",
+                          "referencedDeclaration": 445,
+                          "src": "1323:15:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_array$_t_struct$_Transformation_$634_storage_$dyn_storage",
+                            "typeIdentifier": "t_array$_t_struct$_Transformation_$921_storage_$dyn_storage",
                             "typeString": "struct TypesTransformation.Transformation storage ref[] storage ref"
                           }
                         },
-                        "id": 442,
+                        "id": 506,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -940,7 +940,7 @@
                         "memberName": "length",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "1315:22:3",
+                        "src": "1323:22:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -951,14 +951,14 @@
                       "rightExpression": {
                         "argumentTypes": null,
                         "hexValue": "31",
-                        "id": 443,
+                        "id": 507,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1340:1:3",
+                        "src": "1348:1:3",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_1_by_1",
@@ -966,7 +966,7 @@
                         },
                         "value": "1"
                       },
-                      "src": "1315:26:3",
+                      "src": "1323:26:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -977,42 +977,42 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "1299:43:3",
+                    "src": "1307:43:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Transformation_$634_storage",
+                      "typeIdentifier": "t_struct$_Transformation_$921_storage",
                       "typeString": "struct TypesTransformation.Transformation storage ref"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "1259:83:3"
+                  "src": "1267:83:3"
                 },
                 {
                   "assignments": [
-                    448
+                    512
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 448,
+                      "id": 512,
                       "name": "element",
                       "nodeType": "VariableDeclaration",
-                      "scope": 474,
-                      "src": "1352:36:3",
+                      "scope": 538,
+                      "src": "1360:36:3",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_TransformationElement_$625_memory_ptr",
+                        "typeIdentifier": "t_struct$_TransformationElement_$912_memory_ptr",
                         "typeString": "struct TypesTransformation.TransformationElement"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 447,
+                        "id": 511,
                         "name": "TransformationElement",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 625,
-                        "src": "1352:21:3",
+                        "referencedDeclaration": 912,
+                        "src": "1360:21:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_TransformationElement_$625_storage_ptr",
+                          "typeIdentifier": "t_struct$_TransformationElement_$912_storage_ptr",
                           "typeString": "struct TypesTransformation.TransformationElement"
                         }
                       },
@@ -1020,18 +1020,18 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 453,
+                  "id": 517,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 450,
+                        "id": 514,
                         "name": "itemId",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 433,
-                        "src": "1413:6:3",
+                        "referencedDeclaration": 497,
+                        "src": "1421:6:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1039,12 +1039,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 451,
+                        "id": 515,
                         "name": "quantity",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 435,
-                        "src": "1421:8:3",
+                        "referencedDeclaration": 499,
+                        "src": "1429:8:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1062,18 +1062,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 449,
+                      "id": 513,
                       "name": "TransformationElement",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 625,
-                      "src": "1391:21:3",
+                      "referencedDeclaration": 912,
+                      "src": "1399:21:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_TransformationElement_$625_storage_ptr_$",
+                        "typeIdentifier": "t_type$_t_struct$_TransformationElement_$912_storage_ptr_$",
                         "typeString": "type(struct TypesTransformation.TransformationElement storage pointer)"
                       }
                     },
-                    "id": 452,
+                    "id": 516,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1081,33 +1081,33 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1391:39:3",
+                    "src": "1399:39:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TransformationElement_$625_memory",
+                      "typeIdentifier": "t_struct$_TransformationElement_$912_memory",
                       "typeString": "struct TypesTransformation.TransformationElement memory"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "1352:78:3"
+                  "src": "1360:78:3"
                 },
                 {
                   "condition": {
                     "argumentTypes": null,
-                    "id": 454,
+                    "id": 518,
                     "name": "isInput",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 431,
-                    "src": "1444:7:3",
+                    "referencedDeclaration": 495,
+                    "src": "1456:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
                   "falseBody": {
-                    "id": 472,
+                    "id": 536,
                     "nodeType": "Block",
-                    "src": "1517:61:3",
+                    "src": "1529:61:3",
                     "statements": [
                       {
                         "expression": {
@@ -1115,14 +1115,14 @@
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 469,
+                              "id": 533,
                               "name": "element",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 448,
-                              "src": "1559:7:3",
+                              "referencedDeclaration": 512,
+                              "src": "1571:7:3",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_TransformationElement_$625_memory_ptr",
+                                "typeIdentifier": "t_struct$_TransformationElement_$912_memory_ptr",
                                 "typeString": "struct TypesTransformation.TransformationElement memory"
                               }
                             }
@@ -1130,7 +1130,7 @@
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_struct$_TransformationElement_$625_memory_ptr",
+                                "typeIdentifier": "t_struct$_TransformationElement_$912_memory_ptr",
                                 "typeString": "struct TypesTransformation.TransformationElement memory"
                               }
                             ],
@@ -1138,32 +1138,32 @@
                               "argumentTypes": null,
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 464,
+                                "id": 528,
                                 "name": "transformation",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 439,
-                                "src": "1531:14:3",
+                                "referencedDeclaration": 503,
+                                "src": "1543:14:3",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Transformation_$634_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Transformation_$921_storage_ptr",
                                   "typeString": "struct TypesTransformation.Transformation storage pointer"
                                 }
                               },
-                              "id": 467,
+                              "id": 531,
                               "isConstant": false,
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
                               "memberName": "outputs",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 633,
-                              "src": "1531:22:3",
+                              "referencedDeclaration": 920,
+                              "src": "1543:22:3",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_array$_t_struct$_TransformationElement_$625_storage_$dyn_storage",
+                                "typeIdentifier": "t_array$_t_struct$_TransformationElement_$912_storage_$dyn_storage",
                                 "typeString": "struct TypesTransformation.TransformationElement storage ref[] storage ref"
                               }
                             },
-                            "id": 468,
+                            "id": 532,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -1171,13 +1171,13 @@
                             "memberName": "push",
                             "nodeType": "MemberAccess",
                             "referencedDeclaration": null,
-                            "src": "1531:27:3",
+                            "src": "1543:27:3",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_TransformationElement_$625_storage_$returns$_t_uint256_$",
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_TransformationElement_$912_storage_$returns$_t_uint256_$",
                               "typeString": "function (struct TypesTransformation.TransformationElement storage ref) returns (uint256)"
                             }
                           },
-                          "id": 470,
+                          "id": 534,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1185,25 +1185,25 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "1531:36:3",
+                          "src": "1543:36:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "id": 471,
+                        "id": 535,
                         "nodeType": "ExpressionStatement",
-                        "src": "1531:36:3"
+                        "src": "1543:36:3"
                       }
                     ]
                   },
-                  "id": 473,
+                  "id": 537,
                   "nodeType": "IfStatement",
-                  "src": "1441:137:3",
+                  "src": "1453:137:3",
                   "trueBody": {
-                    "id": 463,
+                    "id": 527,
                     "nodeType": "Block",
-                    "src": "1453:60:3",
+                    "src": "1465:60:3",
                     "statements": [
                       {
                         "expression": {
@@ -1211,14 +1211,14 @@
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 460,
+                              "id": 524,
                               "name": "element",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 448,
-                              "src": "1494:7:3",
+                              "referencedDeclaration": 512,
+                              "src": "1506:7:3",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_TransformationElement_$625_memory_ptr",
+                                "typeIdentifier": "t_struct$_TransformationElement_$912_memory_ptr",
                                 "typeString": "struct TypesTransformation.TransformationElement memory"
                               }
                             }
@@ -1226,7 +1226,7 @@
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_struct$_TransformationElement_$625_memory_ptr",
+                                "typeIdentifier": "t_struct$_TransformationElement_$912_memory_ptr",
                                 "typeString": "struct TypesTransformation.TransformationElement memory"
                               }
                             ],
@@ -1234,32 +1234,32 @@
                               "argumentTypes": null,
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 455,
+                                "id": 519,
                                 "name": "transformation",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 439,
-                                "src": "1467:14:3",
+                                "referencedDeclaration": 503,
+                                "src": "1479:14:3",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Transformation_$634_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Transformation_$921_storage_ptr",
                                   "typeString": "struct TypesTransformation.Transformation storage pointer"
                                 }
                               },
-                              "id": 458,
+                              "id": 522,
                               "isConstant": false,
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
                               "memberName": "inputs",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 630,
-                              "src": "1467:21:3",
+                              "referencedDeclaration": 917,
+                              "src": "1479:21:3",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_array$_t_struct$_TransformationElement_$625_storage_$dyn_storage",
+                                "typeIdentifier": "t_array$_t_struct$_TransformationElement_$912_storage_$dyn_storage",
                                 "typeString": "struct TypesTransformation.TransformationElement storage ref[] storage ref"
                               }
                             },
-                            "id": 459,
+                            "id": 523,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -1267,13 +1267,13 @@
                             "memberName": "push",
                             "nodeType": "MemberAccess",
                             "referencedDeclaration": null,
-                            "src": "1467:26:3",
+                            "src": "1479:26:3",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_TransformationElement_$625_storage_$returns$_t_uint256_$",
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_TransformationElement_$912_storage_$returns$_t_uint256_$",
                               "typeString": "function (struct TypesTransformation.TransformationElement storage ref) returns (uint256)"
                             }
                           },
-                          "id": 461,
+                          "id": 525,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1281,15 +1281,15 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "1467:35:3",
+                          "src": "1479:35:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "id": 462,
+                        "id": 526,
                         "nodeType": "ExpressionStatement",
-                        "src": "1467:35:3"
+                        "src": "1479:35:3"
                       }
                     ]
                   }
@@ -1297,23 +1297,23 @@
               ]
             },
             "documentation": null,
-            "id": 475,
+            "id": 539,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "addTransformationElement",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 436,
+              "id": 500,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 431,
+                  "id": 495,
                   "name": "isInput",
                   "nodeType": "VariableDeclaration",
-                  "scope": 475,
-                  "src": "1199:12:3",
+                  "scope": 539,
+                  "src": "1205:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1321,10 +1321,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 430,
+                    "id": 494,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1199:4:3",
+                    "src": "1205:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -1335,11 +1335,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 433,
+                  "id": 497,
                   "name": "itemId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 475,
-                  "src": "1213:11:3",
+                  "scope": 539,
+                  "src": "1219:11:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1347,10 +1347,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 432,
+                    "id": 496,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1213:4:3",
+                    "src": "1219:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1361,11 +1361,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 435,
+                  "id": 499,
                   "name": "quantity",
                   "nodeType": "VariableDeclaration",
-                  "scope": 475,
-                  "src": "1226:13:3",
+                  "scope": 539,
+                  "src": "1232:13:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1373,10 +1373,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 434,
+                    "id": 498,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1226:4:3",
+                    "src": "1232:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1386,39 +1386,39 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1198:42:3"
+              "src": "1204:42:3"
             },
             "returnParameters": {
-              "id": 437,
+              "id": 501,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1248:0:3"
+              "src": "1256:0:3"
             },
-            "scope": 476,
-            "src": "1165:419:3",
+            "scope": 540,
+            "src": "1171:425:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
-            "visibility": "public"
+            "visibility": "external"
           }
         ],
-        "scope": 477,
-        "src": "226:1360:3"
+        "scope": 541,
+        "src": "226:1372:3"
       }
     ],
-    "src": "0:1586:3"
+    "src": "0:1598:3"
   },
   "legacyAST": {
     "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/ProductionMap.sol",
     "exportedSymbols": {
       "ProductionMap": [
-        476
+        540
       ]
     },
-    "id": 477,
+    "id": 541,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 369,
+        "id": 433,
         "literals": [
           "solidity",
           "^",
@@ -1431,10 +1431,10 @@
       {
         "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesSector.sol",
         "file": "./types/TypesSector.sol",
-        "id": 370,
+        "id": 434,
         "nodeType": "ImportDirective",
-        "scope": 477,
-        "sourceUnit": 619,
+        "scope": 541,
+        "sourceUnit": 906,
         "src": "25:33:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1442,10 +1442,10 @@
       {
         "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesItem.sol",
         "file": "./types/TypesItem.sol",
-        "id": 371,
+        "id": 435,
         "nodeType": "ImportDirective",
-        "scope": 477,
-        "sourceUnit": 500,
+        "scope": 541,
+        "sourceUnit": 564,
         "src": "59:31:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1453,10 +1453,10 @@
       {
         "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol",
         "file": "./types/TypesTransformation.sol",
-        "id": 372,
+        "id": 436,
         "nodeType": "ImportDirective",
-        "scope": 477,
-        "sourceUnit": 636,
+        "scope": 541,
+        "sourceUnit": 923,
         "src": "91:41:3",
         "symbolAliases": [],
         "unitAlias": ""
@@ -1467,17 +1467,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 373,
+              "id": 437,
               "name": "TypesItem",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 499,
+              "referencedDeclaration": 563,
               "src": "256:9:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TypesItem_$499",
+                "typeIdentifier": "t_contract$_TypesItem_$563",
                 "typeString": "contract TypesItem"
               }
             },
-            "id": 374,
+            "id": 438,
             "nodeType": "InheritanceSpecifier",
             "src": "256:9:3"
           },
@@ -1485,17 +1485,17 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 375,
+              "id": 439,
               "name": "TypesTransformation",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 635,
+              "referencedDeclaration": 922,
               "src": "267:19:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TypesTransformation_$635",
+                "typeIdentifier": "t_contract$_TypesTransformation_$922",
                 "typeString": "contract TypesTransformation"
               }
             },
-            "id": 376,
+            "id": 440,
             "nodeType": "InheritanceSpecifier",
             "src": "267:19:3"
           },
@@ -1503,71 +1503,71 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 377,
+              "id": 441,
               "name": "TypesSector",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 618,
+              "referencedDeclaration": 905,
               "src": "288:11:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_TypesSector_$618",
+                "typeIdentifier": "t_contract$_TypesSector_$905",
                 "typeString": "contract TypesSector"
               }
             },
-            "id": 378,
+            "id": 442,
             "nodeType": "InheritanceSpecifier",
             "src": "288:11:3"
           }
         ],
         "contractDependencies": [
-          618,
-          635,
-          499
+          905,
+          922,
+          563
         ],
         "contractKind": "contract",
         "documentation": "ProductionMap contract:\nstores all possible production transformations and items",
         "fullyImplemented": true,
-        "id": 476,
+        "id": 540,
         "linearizedBaseContracts": [
-          476,
-          618,
-          635,
-          499
+          540,
+          905,
+          922,
+          563
         ],
         "name": "ProductionMap",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-            "id": 381,
+            "id": 445,
             "name": "transformations",
             "nodeType": "VariableDeclaration",
-            "scope": 476,
+            "scope": 540,
             "src": "311:32:3",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_array$_t_struct$_Transformation_$634_storage_$dyn_storage",
+              "typeIdentifier": "t_array$_t_struct$_Transformation_$921_storage_$dyn_storage",
               "typeString": "struct TypesTransformation.Transformation[]"
             },
             "typeName": {
               "baseType": {
                 "contractScope": null,
-                "id": 379,
+                "id": 443,
                 "name": "Transformation",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 634,
+                "referencedDeclaration": 921,
                 "src": "311:14:3",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Transformation_$634_storage_ptr",
+                  "typeIdentifier": "t_struct$_Transformation_$921_storage_ptr",
                   "typeString": "struct TypesTransformation.Transformation"
                 }
               },
-              "id": 380,
+              "id": 444,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "311:16:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_array$_t_struct$_Transformation_$634_storage_$dyn_storage_ptr",
+                "typeIdentifier": "t_array$_t_struct$_Transformation_$921_storage_$dyn_storage_ptr",
                 "typeString": "struct TypesTransformation.Transformation[]"
               }
             },
@@ -1576,36 +1576,36 @@
           },
           {
             "constant": false,
-            "id": 384,
+            "id": 448,
             "name": "items",
             "nodeType": "VariableDeclaration",
-            "scope": 476,
+            "scope": 540,
             "src": "349:22:3",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_array$_t_struct$_ItemProperties_$498_storage_$dyn_storage",
+              "typeIdentifier": "t_array$_t_struct$_ItemProperties_$562_storage_$dyn_storage",
               "typeString": "struct TypesItem.ItemProperties[]"
             },
             "typeName": {
               "baseType": {
                 "contractScope": null,
-                "id": 382,
+                "id": 446,
                 "name": "ItemProperties",
                 "nodeType": "UserDefinedTypeName",
-                "referencedDeclaration": 498,
+                "referencedDeclaration": 562,
                 "src": "349:14:3",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ItemProperties_$498_storage_ptr",
+                  "typeIdentifier": "t_struct$_ItemProperties_$562_storage_ptr",
                   "typeString": "struct TypesItem.ItemProperties"
                 }
               },
-              "id": 383,
+              "id": 447,
               "length": null,
               "nodeType": "ArrayTypeName",
               "src": "349:16:3",
               "typeDescriptions": {
-                "typeIdentifier": "t_array$_t_struct$_ItemProperties_$498_storage_$dyn_storage_ptr",
+                "typeIdentifier": "t_array$_t_struct$_ItemProperties_$562_storage_$dyn_storage_ptr",
                 "typeString": "struct TypesItem.ItemProperties[]"
               }
             },
@@ -1614,37 +1614,37 @@
           },
           {
             "body": {
-              "id": 414,
+              "id": 478,
               "nodeType": "Block",
-              "src": "584:278:3",
+              "src": "586:278:3",
               "statements": [
                 {
                   "assignments": [
-                    392
+                    456
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 392,
+                      "id": 456,
                       "name": "itemPropsOptional",
                       "nodeType": "VariableDeclaration",
-                      "scope": 414,
-                      "src": "594:47:3",
+                      "scope": 478,
+                      "src": "596:47:3",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_OptionalItemProperties_$489_memory_ptr",
+                        "typeIdentifier": "t_struct$_OptionalItemProperties_$553_memory_ptr",
                         "typeString": "struct TypesItem.OptionalItemProperties"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 391,
+                        "id": 455,
                         "name": "OptionalItemProperties",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 489,
-                        "src": "594:22:3",
+                        "referencedDeclaration": 553,
+                        "src": "596:22:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_OptionalItemProperties_$489_storage_ptr",
+                          "typeIdentifier": "t_struct$_OptionalItemProperties_$553_storage_ptr",
                           "typeString": "struct TypesItem.OptionalItemProperties"
                         }
                       },
@@ -1652,38 +1652,38 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 393,
+                  "id": 457,
                   "initialValue": null,
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "594:47:3"
+                  "src": "596:47:3"
                 },
                 {
                   "assignments": [
-                    395
+                    459
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 395,
+                      "id": 459,
                       "name": "itemProps",
                       "nodeType": "VariableDeclaration",
-                      "scope": 414,
-                      "src": "652:31:3",
+                      "scope": 478,
+                      "src": "654:31:3",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_ItemProperties_$498_memory_ptr",
+                        "typeIdentifier": "t_struct$_ItemProperties_$562_memory_ptr",
                         "typeString": "struct TypesItem.ItemProperties"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 394,
+                        "id": 458,
                         "name": "ItemProperties",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 498,
-                        "src": "652:14:3",
+                        "referencedDeclaration": 562,
+                        "src": "654:14:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ItemProperties_$498_storage_ptr",
+                          "typeIdentifier": "t_struct$_ItemProperties_$562_storage_ptr",
                           "typeString": "struct TypesItem.ItemProperties"
                         }
                       },
@@ -1691,7 +1691,7 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 407,
+                  "id": 471,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
@@ -1701,7 +1701,7 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 400,
+                        "id": 464,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1710,18 +1710,18 @@
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-                            "id": 397,
+                            "id": 461,
                             "name": "items",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 384,
-                            "src": "714:5:3",
+                            "referencedDeclaration": 448,
+                            "src": "716:5:3",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_array$_t_struct$_ItemProperties_$498_storage_$dyn_storage",
+                              "typeIdentifier": "t_array$_t_struct$_ItemProperties_$562_storage_$dyn_storage",
                               "typeString": "struct TypesItem.ItemProperties storage ref[] storage ref"
                             }
                           },
-                          "id": 398,
+                          "id": 462,
                           "isConstant": false,
                           "isLValue": true,
                           "isPure": false,
@@ -1729,7 +1729,7 @@
                           "memberName": "length",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": null,
-                          "src": "714:12:3",
+                          "src": "716:12:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1740,14 +1740,14 @@
                         "rightExpression": {
                           "argumentTypes": null,
                           "hexValue": "31",
-                          "id": 399,
+                          "id": 463,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
                           "kind": "number",
                           "lValueRequested": false,
                           "nodeType": "Literal",
-                          "src": "729:1:3",
+                          "src": "731:1:3",
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_1_by_1",
@@ -1755,7 +1755,7 @@
                           },
                           "value": "1"
                         },
-                        "src": "714:16:3",
+                        "src": "716:16:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1763,12 +1763,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 401,
+                        "id": 465,
                         "name": "density",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 386,
-                        "src": "744:7:3",
+                        "referencedDeclaration": 450,
+                        "src": "746:7:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -1779,12 +1779,12 @@
                         "arguments": [
                           {
                             "argumentTypes": null,
-                            "id": 403,
+                            "id": 467,
                             "name": "itemType",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 388,
-                            "src": "774:8:3",
+                            "referencedDeclaration": 452,
+                            "src": "776:8:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -1798,18 +1798,18 @@
                               "typeString": "uint256"
                             }
                           ],
-                          "id": 402,
+                          "id": 466,
                           "name": "ItemType",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 483,
-                          "src": "765:8:3",
+                          "referencedDeclaration": 547,
+                          "src": "767:8:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_type$_t_enum$_ItemType_$483_$",
+                            "typeIdentifier": "t_type$_t_enum$_ItemType_$547_$",
                             "typeString": "type(enum TypesItem.ItemType)"
                           }
                         },
-                        "id": 404,
+                        "id": 468,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -1817,22 +1817,22 @@
                         "lValueRequested": false,
                         "names": [],
                         "nodeType": "FunctionCall",
-                        "src": "765:18:3",
+                        "src": "767:18:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_enum$_ItemType_$483",
+                          "typeIdentifier": "t_enum$_ItemType_$547",
                           "typeString": "enum TypesItem.ItemType"
                         }
                       },
                       {
                         "argumentTypes": null,
-                        "id": 405,
+                        "id": 469,
                         "name": "itemPropsOptional",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 392,
-                        "src": "797:17:3",
+                        "referencedDeclaration": 456,
+                        "src": "799:17:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_OptionalItemProperties_$489_memory_ptr",
+                          "typeIdentifier": "t_struct$_OptionalItemProperties_$553_memory_ptr",
                           "typeString": "struct TypesItem.OptionalItemProperties memory"
                         }
                       }
@@ -1848,26 +1848,26 @@
                           "typeString": "uint256"
                         },
                         {
-                          "typeIdentifier": "t_enum$_ItemType_$483",
+                          "typeIdentifier": "t_enum$_ItemType_$547",
                           "typeString": "enum TypesItem.ItemType"
                         },
                         {
-                          "typeIdentifier": "t_struct$_OptionalItemProperties_$489_memory_ptr",
+                          "typeIdentifier": "t_struct$_OptionalItemProperties_$553_memory_ptr",
                           "typeString": "struct TypesItem.OptionalItemProperties memory"
                         }
                       ],
-                      "id": 396,
+                      "id": 460,
                       "name": "ItemProperties",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 498,
-                      "src": "686:14:3",
+                      "referencedDeclaration": 562,
+                      "src": "688:14:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_ItemProperties_$498_storage_ptr_$",
+                        "typeIdentifier": "t_type$_t_struct$_ItemProperties_$562_storage_ptr_$",
                         "typeString": "type(struct TypesItem.ItemProperties storage pointer)"
                       }
                     },
-                    "id": 406,
+                    "id": 470,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1875,14 +1875,14 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "686:138:3",
+                    "src": "688:138:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_ItemProperties_$498_memory",
+                      "typeIdentifier": "t_struct$_ItemProperties_$562_memory",
                       "typeString": "struct TypesItem.ItemProperties memory"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "652:172:3"
+                  "src": "654:172:3"
                 },
                 {
                   "expression": {
@@ -1890,14 +1890,14 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 411,
+                        "id": 475,
                         "name": "itemProps",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 395,
-                        "src": "845:9:3",
+                        "referencedDeclaration": 459,
+                        "src": "847:9:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ItemProperties_$498_memory_ptr",
+                          "typeIdentifier": "t_struct$_ItemProperties_$562_memory_ptr",
                           "typeString": "struct TypesItem.ItemProperties memory"
                         }
                       }
@@ -1905,24 +1905,24 @@
                     "expression": {
                       "argumentTypes": [
                         {
-                          "typeIdentifier": "t_struct$_ItemProperties_$498_memory_ptr",
+                          "typeIdentifier": "t_struct$_ItemProperties_$562_memory_ptr",
                           "typeString": "struct TypesItem.ItemProperties memory"
                         }
                       ],
                       "expression": {
                         "argumentTypes": null,
-                        "id": 408,
+                        "id": 472,
                         "name": "items",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 384,
-                        "src": "834:5:3",
+                        "referencedDeclaration": 448,
+                        "src": "836:5:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_ItemProperties_$498_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_ItemProperties_$562_storage_$dyn_storage",
                           "typeString": "struct TypesItem.ItemProperties storage ref[] storage ref"
                         }
                       },
-                      "id": 410,
+                      "id": 474,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -1930,13 +1930,13 @@
                       "memberName": "push",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "834:10:3",
+                      "src": "836:10:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_ItemProperties_$498_storage_$returns$_t_uint256_$",
+                        "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_ItemProperties_$562_storage_$returns$_t_uint256_$",
                         "typeString": "function (struct TypesItem.ItemProperties storage ref) returns (uint256)"
                       }
                     },
-                    "id": 412,
+                    "id": 476,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1944,35 +1944,35 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "834:21:3",
+                    "src": "836:21:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 413,
+                  "id": 477,
                   "nodeType": "ExpressionStatement",
-                  "src": "834:21:3"
+                  "src": "836:21:3"
                 }
               ]
             },
             "documentation": "************************************************************\nItem loading*************************************************************",
-            "id": 415,
+            "id": 479,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "addItem",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 389,
+              "id": 453,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 386,
+                  "id": 450,
                   "name": "density",
                   "nodeType": "VariableDeclaration",
-                  "scope": 415,
+                  "scope": 479,
                   "src": "548:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -1981,7 +1981,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 385,
+                    "id": 449,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "548:4:3",
@@ -1995,10 +1995,10 @@
                 },
                 {
                   "constant": false,
-                  "id": 388,
+                  "id": 452,
                   "name": "itemType",
                   "nodeType": "VariableDeclaration",
-                  "scope": 415,
+                  "scope": 479,
                   "src": "562:13:3",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -2007,7 +2007,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 387,
+                    "id": 451,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
                     "src": "562:4:3",
@@ -2023,59 +2023,59 @@
               "src": "547:29:3"
             },
             "returnParameters": {
-              "id": 390,
+              "id": 454,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "584:0:3"
+              "src": "586:0:3"
             },
-            "scope": 476,
-            "src": "531:331:3",
+            "scope": 540,
+            "src": "531:333:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
-            "visibility": "public"
+            "visibility": "external"
           },
           {
             "body": {
-              "id": 418,
+              "id": 482,
               "nodeType": "Block",
-              "src": "903:8:3",
+              "src": "907:8:3",
               "statements": []
             },
             "documentation": null,
-            "id": 419,
+            "id": 483,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "addExtractorProps",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 416,
+              "id": 480,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "893:2:3"
+              "src": "895:2:3"
             },
             "returnParameters": {
-              "id": 417,
+              "id": 481,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "903:0:3"
+              "src": "907:0:3"
             },
-            "scope": 476,
-            "src": "867:44:3",
+            "scope": 540,
+            "src": "869:46:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
-            "visibility": "public"
+            "visibility": "external"
           },
           {
             "body": {
-              "id": 428,
+              "id": 492,
               "nodeType": "Block",
-              "src": "1116:44:3",
+              "src": "1122:44:3",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-                    "id": 426,
+                    "id": 490,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2084,18 +2084,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-                        "id": 422,
+                        "id": 486,
                         "name": "transformations",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 381,
-                        "src": "1126:15:3",
+                        "referencedDeclaration": 445,
+                        "src": "1132:15:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_array$_t_struct$_Transformation_$634_storage_$dyn_storage",
+                          "typeIdentifier": "t_array$_t_struct$_Transformation_$921_storage_$dyn_storage",
                           "typeString": "struct TypesTransformation.Transformation storage ref[] storage ref"
                         }
                       },
-                      "id": 424,
+                      "id": 488,
                       "isConstant": false,
                       "isLValue": true,
                       "isPure": false,
@@ -2103,7 +2103,7 @@
                       "memberName": "length",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-                      "src": "1126:22:3",
+                      "src": "1132:22:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2114,14 +2114,14 @@
                     "rightHandSide": {
                       "argumentTypes": null,
                       "hexValue": "31",
-                      "id": 425,
+                      "id": 489,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
                       "kind": "number",
                       "lValueRequested": false,
                       "nodeType": "Literal",
-                      "src": "1152:1:3",
+                      "src": "1158:1:3",
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_1_by_1",
@@ -2129,76 +2129,76 @@
                       },
                       "value": "1"
                     },
-                    "src": "1126:27:3",
+                    "src": "1132:27:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
-                  "id": 427,
+                  "id": 491,
                   "nodeType": "ExpressionStatement",
-                  "src": "1126:27:3"
+                  "src": "1132:27:3"
                 }
               ]
             },
             "documentation": "************************************************************\nTransformation loading*************************************************************",
-            "id": 429,
+            "id": 493,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "addTransformation",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 420,
+              "id": 484,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1106:2:3"
+              "src": "1110:2:3"
             },
             "returnParameters": {
-              "id": 421,
+              "id": 485,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1116:0:3"
+              "src": "1122:0:3"
             },
-            "scope": 476,
-            "src": "1080:80:3",
+            "scope": 540,
+            "src": "1084:82:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
-            "visibility": "public"
+            "visibility": "external"
           },
           {
             "body": {
-              "id": 474,
+              "id": 538,
               "nodeType": "Block",
-              "src": "1248:336:3",
+              "src": "1256:340:3",
               "statements": [
                 {
                   "assignments": [
-                    439
+                    503
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 439,
+                      "id": 503,
                       "name": "transformation",
                       "nodeType": "VariableDeclaration",
-                      "scope": 474,
-                      "src": "1259:37:3",
+                      "scope": 538,
+                      "src": "1267:37:3",
                       "stateVariable": false,
                       "storageLocation": "storage",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_Transformation_$634_storage_ptr",
+                        "typeIdentifier": "t_struct$_Transformation_$921_storage_ptr",
                         "typeString": "struct TypesTransformation.Transformation"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 438,
+                        "id": 502,
                         "name": "Transformation",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 634,
-                        "src": "1259:14:3",
+                        "referencedDeclaration": 921,
+                        "src": "1267:14:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_Transformation_$634_storage_ptr",
+                          "typeIdentifier": "t_struct$_Transformation_$921_storage_ptr",
                           "typeString": "struct TypesTransformation.Transformation"
                         }
                       },
@@ -2206,30 +2206,30 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 446,
+                  "id": 510,
                   "initialValue": {
                     "argumentTypes": null,
                     "baseExpression": {
                       "argumentTypes": null,
-                      "id": 440,
+                      "id": 504,
                       "name": "transformations",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 381,
-                      "src": "1299:15:3",
+                      "referencedDeclaration": 445,
+                      "src": "1307:15:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_array$_t_struct$_Transformation_$634_storage_$dyn_storage",
+                        "typeIdentifier": "t_array$_t_struct$_Transformation_$921_storage_$dyn_storage",
                         "typeString": "struct TypesTransformation.Transformation storage ref[] storage ref"
                       }
                     },
-                    "id": 445,
+                    "id": 509,
                     "indexExpression": {
                       "argumentTypes": null,
                       "commonType": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       },
-                      "id": 444,
+                      "id": 508,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -2238,18 +2238,18 @@
                         "argumentTypes": null,
                         "expression": {
                           "argumentTypes": null,
-                          "id": 441,
+                          "id": 505,
                           "name": "transformations",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 381,
-                          "src": "1315:15:3",
+                          "referencedDeclaration": 445,
+                          "src": "1323:15:3",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_array$_t_struct$_Transformation_$634_storage_$dyn_storage",
+                            "typeIdentifier": "t_array$_t_struct$_Transformation_$921_storage_$dyn_storage",
                             "typeString": "struct TypesTransformation.Transformation storage ref[] storage ref"
                           }
                         },
-                        "id": 442,
+                        "id": 506,
                         "isConstant": false,
                         "isLValue": true,
                         "isPure": false,
@@ -2257,7 +2257,7 @@
                         "memberName": "length",
                         "nodeType": "MemberAccess",
                         "referencedDeclaration": null,
-                        "src": "1315:22:3",
+                        "src": "1323:22:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2268,14 +2268,14 @@
                       "rightExpression": {
                         "argumentTypes": null,
                         "hexValue": "31",
-                        "id": 443,
+                        "id": 507,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
                         "kind": "number",
                         "lValueRequested": false,
                         "nodeType": "Literal",
-                        "src": "1340:1:3",
+                        "src": "1348:1:3",
                         "subdenomination": null,
                         "typeDescriptions": {
                           "typeIdentifier": "t_rational_1_by_1",
@@ -2283,7 +2283,7 @@
                         },
                         "value": "1"
                       },
-                      "src": "1315:26:3",
+                      "src": "1323:26:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2294,42 +2294,42 @@
                     "isPure": false,
                     "lValueRequested": false,
                     "nodeType": "IndexAccess",
-                    "src": "1299:43:3",
+                    "src": "1307:43:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_Transformation_$634_storage",
+                      "typeIdentifier": "t_struct$_Transformation_$921_storage",
                       "typeString": "struct TypesTransformation.Transformation storage ref"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "1259:83:3"
+                  "src": "1267:83:3"
                 },
                 {
                   "assignments": [
-                    448
+                    512
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 448,
+                      "id": 512,
                       "name": "element",
                       "nodeType": "VariableDeclaration",
-                      "scope": 474,
-                      "src": "1352:36:3",
+                      "scope": 538,
+                      "src": "1360:36:3",
                       "stateVariable": false,
                       "storageLocation": "memory",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_struct$_TransformationElement_$625_memory_ptr",
+                        "typeIdentifier": "t_struct$_TransformationElement_$912_memory_ptr",
                         "typeString": "struct TypesTransformation.TransformationElement"
                       },
                       "typeName": {
                         "contractScope": null,
-                        "id": 447,
+                        "id": 511,
                         "name": "TransformationElement",
                         "nodeType": "UserDefinedTypeName",
-                        "referencedDeclaration": 625,
-                        "src": "1352:21:3",
+                        "referencedDeclaration": 912,
+                        "src": "1360:21:3",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_TransformationElement_$625_storage_ptr",
+                          "typeIdentifier": "t_struct$_TransformationElement_$912_storage_ptr",
                           "typeString": "struct TypesTransformation.TransformationElement"
                         }
                       },
@@ -2337,18 +2337,18 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 453,
+                  "id": 517,
                   "initialValue": {
                     "argumentTypes": null,
                     "arguments": [
                       {
                         "argumentTypes": null,
-                        "id": 450,
+                        "id": 514,
                         "name": "itemId",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 433,
-                        "src": "1413:6:3",
+                        "referencedDeclaration": 497,
+                        "src": "1421:6:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2356,12 +2356,12 @@
                       },
                       {
                         "argumentTypes": null,
-                        "id": 451,
+                        "id": 515,
                         "name": "quantity",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 435,
-                        "src": "1421:8:3",
+                        "referencedDeclaration": 499,
+                        "src": "1429:8:3",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2379,18 +2379,18 @@
                           "typeString": "uint256"
                         }
                       ],
-                      "id": 449,
+                      "id": 513,
                       "name": "TransformationElement",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 625,
-                      "src": "1391:21:3",
+                      "referencedDeclaration": 912,
+                      "src": "1399:21:3",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_type$_t_struct$_TransformationElement_$625_storage_ptr_$",
+                        "typeIdentifier": "t_type$_t_struct$_TransformationElement_$912_storage_ptr_$",
                         "typeString": "type(struct TypesTransformation.TransformationElement storage pointer)"
                       }
                     },
-                    "id": 452,
+                    "id": 516,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2398,33 +2398,33 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-                    "src": "1391:39:3",
+                    "src": "1399:39:3",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TransformationElement_$625_memory",
+                      "typeIdentifier": "t_struct$_TransformationElement_$912_memory",
                       "typeString": "struct TypesTransformation.TransformationElement memory"
                     }
                   },
                   "nodeType": "VariableDeclarationStatement",
-                  "src": "1352:78:3"
+                  "src": "1360:78:3"
                 },
                 {
                   "condition": {
                     "argumentTypes": null,
-                    "id": 454,
+                    "id": 518,
                     "name": "isInput",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 431,
-                    "src": "1444:7:3",
+                    "referencedDeclaration": 495,
+                    "src": "1456:7:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
                   "falseBody": {
-                    "id": 472,
+                    "id": 536,
                     "nodeType": "Block",
-                    "src": "1517:61:3",
+                    "src": "1529:61:3",
                     "statements": [
                       {
                         "expression": {
@@ -2432,14 +2432,14 @@
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 469,
+                              "id": 533,
                               "name": "element",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 448,
-                              "src": "1559:7:3",
+                              "referencedDeclaration": 512,
+                              "src": "1571:7:3",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_TransformationElement_$625_memory_ptr",
+                                "typeIdentifier": "t_struct$_TransformationElement_$912_memory_ptr",
                                 "typeString": "struct TypesTransformation.TransformationElement memory"
                               }
                             }
@@ -2447,7 +2447,7 @@
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_struct$_TransformationElement_$625_memory_ptr",
+                                "typeIdentifier": "t_struct$_TransformationElement_$912_memory_ptr",
                                 "typeString": "struct TypesTransformation.TransformationElement memory"
                               }
                             ],
@@ -2455,32 +2455,32 @@
                               "argumentTypes": null,
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 464,
+                                "id": 528,
                                 "name": "transformation",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 439,
-                                "src": "1531:14:3",
+                                "referencedDeclaration": 503,
+                                "src": "1543:14:3",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Transformation_$634_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Transformation_$921_storage_ptr",
                                   "typeString": "struct TypesTransformation.Transformation storage pointer"
                                 }
                               },
-                              "id": 467,
+                              "id": 531,
                               "isConstant": false,
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
                               "memberName": "outputs",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 633,
-                              "src": "1531:22:3",
+                              "referencedDeclaration": 920,
+                              "src": "1543:22:3",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_array$_t_struct$_TransformationElement_$625_storage_$dyn_storage",
+                                "typeIdentifier": "t_array$_t_struct$_TransformationElement_$912_storage_$dyn_storage",
                                 "typeString": "struct TypesTransformation.TransformationElement storage ref[] storage ref"
                               }
                             },
-                            "id": 468,
+                            "id": 532,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -2488,13 +2488,13 @@
                             "memberName": "push",
                             "nodeType": "MemberAccess",
                             "referencedDeclaration": null,
-                            "src": "1531:27:3",
+                            "src": "1543:27:3",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_TransformationElement_$625_storage_$returns$_t_uint256_$",
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_TransformationElement_$912_storage_$returns$_t_uint256_$",
                               "typeString": "function (struct TypesTransformation.TransformationElement storage ref) returns (uint256)"
                             }
                           },
-                          "id": 470,
+                          "id": 534,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -2502,25 +2502,25 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "1531:36:3",
+                          "src": "1543:36:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "id": 471,
+                        "id": 535,
                         "nodeType": "ExpressionStatement",
-                        "src": "1531:36:3"
+                        "src": "1543:36:3"
                       }
                     ]
                   },
-                  "id": 473,
+                  "id": 537,
                   "nodeType": "IfStatement",
-                  "src": "1441:137:3",
+                  "src": "1453:137:3",
                   "trueBody": {
-                    "id": 463,
+                    "id": 527,
                     "nodeType": "Block",
-                    "src": "1453:60:3",
+                    "src": "1465:60:3",
                     "statements": [
                       {
                         "expression": {
@@ -2528,14 +2528,14 @@
                           "arguments": [
                             {
                               "argumentTypes": null,
-                              "id": 460,
+                              "id": 524,
                               "name": "element",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 448,
-                              "src": "1494:7:3",
+                              "referencedDeclaration": 512,
+                              "src": "1506:7:3",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_struct$_TransformationElement_$625_memory_ptr",
+                                "typeIdentifier": "t_struct$_TransformationElement_$912_memory_ptr",
                                 "typeString": "struct TypesTransformation.TransformationElement memory"
                               }
                             }
@@ -2543,7 +2543,7 @@
                           "expression": {
                             "argumentTypes": [
                               {
-                                "typeIdentifier": "t_struct$_TransformationElement_$625_memory_ptr",
+                                "typeIdentifier": "t_struct$_TransformationElement_$912_memory_ptr",
                                 "typeString": "struct TypesTransformation.TransformationElement memory"
                               }
                             ],
@@ -2551,32 +2551,32 @@
                               "argumentTypes": null,
                               "expression": {
                                 "argumentTypes": null,
-                                "id": 455,
+                                "id": 519,
                                 "name": "transformation",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 439,
-                                "src": "1467:14:3",
+                                "referencedDeclaration": 503,
+                                "src": "1479:14:3",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_struct$_Transformation_$634_storage_ptr",
+                                  "typeIdentifier": "t_struct$_Transformation_$921_storage_ptr",
                                   "typeString": "struct TypesTransformation.Transformation storage pointer"
                                 }
                               },
-                              "id": 458,
+                              "id": 522,
                               "isConstant": false,
                               "isLValue": true,
                               "isPure": false,
                               "lValueRequested": false,
                               "memberName": "inputs",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 630,
-                              "src": "1467:21:3",
+                              "referencedDeclaration": 917,
+                              "src": "1479:21:3",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_array$_t_struct$_TransformationElement_$625_storage_$dyn_storage",
+                                "typeIdentifier": "t_array$_t_struct$_TransformationElement_$912_storage_$dyn_storage",
                                 "typeString": "struct TypesTransformation.TransformationElement storage ref[] storage ref"
                               }
                             },
-                            "id": 459,
+                            "id": 523,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -2584,13 +2584,13 @@
                             "memberName": "push",
                             "nodeType": "MemberAccess",
                             "referencedDeclaration": null,
-                            "src": "1467:26:3",
+                            "src": "1479:26:3",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_TransformationElement_$625_storage_$returns$_t_uint256_$",
+                              "typeIdentifier": "t_function_arraypush_nonpayable$_t_struct$_TransformationElement_$912_storage_$returns$_t_uint256_$",
                               "typeString": "function (struct TypesTransformation.TransformationElement storage ref) returns (uint256)"
                             }
                           },
-                          "id": 461,
+                          "id": 525,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -2598,15 +2598,15 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-                          "src": "1467:35:3",
+                          "src": "1479:35:3",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
-                        "id": 462,
+                        "id": 526,
                         "nodeType": "ExpressionStatement",
-                        "src": "1467:35:3"
+                        "src": "1479:35:3"
                       }
                     ]
                   }
@@ -2614,23 +2614,23 @@
               ]
             },
             "documentation": null,
-            "id": 475,
+            "id": 539,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "addTransformationElement",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 436,
+              "id": 500,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 431,
+                  "id": 495,
                   "name": "isInput",
                   "nodeType": "VariableDeclaration",
-                  "scope": 475,
-                  "src": "1199:12:3",
+                  "scope": 539,
+                  "src": "1205:12:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2638,10 +2638,10 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 430,
+                    "id": 494,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1199:4:3",
+                    "src": "1205:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
@@ -2652,11 +2652,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 433,
+                  "id": 497,
                   "name": "itemId",
                   "nodeType": "VariableDeclaration",
-                  "scope": 475,
-                  "src": "1213:11:3",
+                  "scope": 539,
+                  "src": "1219:11:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2664,10 +2664,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 432,
+                    "id": 496,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1213:4:3",
+                    "src": "1219:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2678,11 +2678,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 435,
+                  "id": 499,
                   "name": "quantity",
                   "nodeType": "VariableDeclaration",
-                  "scope": 475,
-                  "src": "1226:13:3",
+                  "scope": 539,
+                  "src": "1232:13:3",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2690,10 +2690,10 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 434,
+                    "id": 498,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "1226:4:3",
+                    "src": "1232:4:3",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2703,26 +2703,26 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "1198:42:3"
+              "src": "1204:42:3"
             },
             "returnParameters": {
-              "id": 437,
+              "id": 501,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "1248:0:3"
+              "src": "1256:0:3"
             },
-            "scope": 476,
-            "src": "1165:419:3",
+            "scope": 540,
+            "src": "1171:425:3",
             "stateMutability": "nonpayable",
             "superFunction": null,
-            "visibility": "public"
+            "visibility": "external"
           }
         ],
-        "scope": 477,
-        "src": "226:1360:3"
+        "scope": 541,
+        "src": "226:1372:3"
       }
     ],
-    "src": "0:1586:3"
+    "src": "0:1598:3"
   },
   "compiler": {
     "name": "solc",
@@ -2730,7 +2730,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-10-31T22:03:20.561Z",
+  "updatedAt": "2019-11-03T20:09:03.231Z",
   "devdoc": {
     "methods": {}
   },
@@ -2743,7 +2743,7 @@
         "notice": "************************************************************ Transformation loading*************************************************************"
       },
       "convertAddressToCordinateTuple(address)": {
-        "notice": "************************************************************ Public Views/Pure - type utils*************************************************************"
+        "notice": "************************************************************ Public Views/Pure*************************************************************"
       }
     },
     "notice": "ProductionMap contract: stores all possible production transformations and items"

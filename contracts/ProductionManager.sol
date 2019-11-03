@@ -15,9 +15,6 @@ contract ProductionManager is
     ProductionMap
 {
 
-    /**************************************************************
-    Public pure/views
-    **************************************************************/
     function getTransformationProperties(uint transformationId) public view returns (
         uint inputCounts,
         uint[50] memory inputItemIds,
@@ -73,13 +70,27 @@ contract ProductionManager is
         );
     }
 
-    /**************************************************************
-    Production
-    **************************************************************/
     function proccessTransformation(Sector memory sector, Transformation memory transformation) internal returns(
-        bool successful,
-        Sector memory newSector
+        bool successful
     ){
+        TransformationElement memory trElem;
+        ItemProperties memory itemProps;
 
+        for(uint i = 0; i < transformation.inputs.length; i++){
+            trElem = transformation.inputs[i];
+            itemProps = items[trElem.itemId];
+
+            if(!consumeResource(sector, itemProps.itemType, trElem.itemId, trElem.quantity)){
+                return false;
+            }
+        }
+        for(uint i = 0; i < transformation.outputs.length; i++){
+            trElem = transformation.outputs[i];
+            itemProps = items[trElem.itemId];
+
+            if(!storeResource(sector, itemProps.itemType, trElem.itemId, trElem.quantity)){
+                return false;
+            }
+        }
     }
 }

@@ -11,42 +11,44 @@ contract Game is
     ProductionManager
     {
 
+    /**************************************************************
+    Data
+    **************************************************************/
     mapping (address => Sector) sectors;
 
     /**************************************************************
-    Public ABI
+    Public functions   - full
     **************************************************************/
     function initializeNativeSector() public {
         Sector storage nativeSector = sectors[msg.sender];
-
-        if (!nativeSector.initialized) {
-            nativeSector.initialized = true;
-            nativeSector.owner = msg.sender;
-
-            (   uint xAngle,
-                uint zAngle
-            ) = convertAddressToCordinateTuple(nativeSector.owner);
-
-            nativeSector.cordinates = SphereCordinate(xAngle, zAngle);
+        if(!nativeSector.initialized){
+            initializeSector(nativeSector, msg.sender);
         }
     }
+
     function tickSector(address sectorAddress) public {
 
     }
-    function manualTransformation(address sectorAddress, uint transformationId) public returns (
+
+    function manualTransformation(
+        address sectorAddress,
+        uint transformationId
+    )
+    public returns (
         bool successful
     ){
 
     }
 
     /**************************************************************
-    Public Views/Pure
+    Public functions   - view, pure
     **************************************************************/
     function getSectorAttributes(address sectorAddress) public view returns (
         bool initialized,
         address owner,
         uint xAngle,
-        uint zAngle ){
+        uint zAngle
+    ){
 
         Sector memory selSector = sectors[sectorAddress];
 

@@ -45,7 +45,13 @@ contract TestGame {
         Assert.equal(zAngleInit, zAngleConverted, "Verify initialized xAngle matches a direct conversion");
     }
 
-    function setupRoutine_addRecipes() private {
+    /**
+    This function simulates the external calls that would be made to add 
+    production recipies.
+    The idea is for XML to be read and make these calls like they are here 
+    now
+    */
+    function setupRoutine_addTransformations() private {
         game.addItem(1, 0);
         game.addItem(2, 1);
         game.addTransformation();
@@ -53,8 +59,8 @@ contract TestGame {
         game.addTransformationElement(false, 1, 2);
     }
 
-    function testSetupRoutine_addRecipes() public {
-        setupRoutine_addRecipes();
+    function testSetupRoutine_addTransformations() public {
+        setupRoutine_addTransformations();
 
         (   uint itemCount,
             uint recipeCount
@@ -98,7 +104,8 @@ contract TestGame {
         Assert.equal(outputQuantities[0], 2, "Item 2 property density equals expected.");
     }
 
-    // function testFunction_craftRecipe() public {
-    //     game.craftRecipe(DeployedAddresses.Game(), 0);
-    // }
+    function testFunction_manualTransformation() public {
+        game.manualTransformation(address(this), 0);
+    }
+
 }
