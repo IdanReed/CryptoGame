@@ -1,0 +1,100 @@
+
+{
+    "type" : "contract_info",
+    "itemTypesEnum" : {
+        "elements" : ["NaturalResources", "Ore", "Component", "Extractor", "Factory"] 
+    },
+    "items" : [
+        {
+            "type" : "Extractor",
+            "id" : 0,
+            "extractorProperties" : {
+                "recipeReference" : "TODO"
+            }
+        },
+        {
+            "type" : "NaturalReasource",
+            "id" : 1
+        },
+        {
+            "type" : "Factory",
+            "id" : 0,
+            "factoryProperties" : {
+                "recipeReference" : "TODO"
+            }
+        },
+        {
+            "type" : "Component",
+            "id" : 3
+        },
+        {
+            "type" : "Component",
+            "id" : 4
+        }
+    ],
+    "transformations" : [
+        {
+            "id" : 0,
+            "inputs" : [],
+            "outputs" : [
+                {
+                    "itemId" : 0,
+                    "quantity" : 1
+                }
+            ]
+        },
+        {
+            "id" : 1,
+            "inputs" : [
+                {
+                    "itemId" : 0,
+                    "quantity" : 1
+                },
+                {
+                    "itemId" : 1,
+                    "quantity" : 1
+                }
+            ],
+            "outputs" : [
+                {
+                    "itemId" : 3,
+                    "quantity" : 1
+                }
+            ]
+        },
+        {
+            "id" : 2,
+            "inputs" : [
+                {
+                    "itemId" : 3,
+                    "quantity" : 1
+                }
+            ],
+            "outputs" : [
+                {
+                    "itemId" : 2,
+                    "quantity" : 1
+                }
+            ]
+        },
+        {
+            "id" : 3,
+            "inputs" : [
+                {
+                    "itemId" : 2,
+                    "quantity" : 1
+                },
+                {
+                    "itemId" : 3,
+                    "quantity" : 1
+                }
+            ],
+            "outputs" : [
+                {
+                    "itemId" : 4,
+                    "quantity" : 1
+                }
+            ]
+        }
+    ]
+}

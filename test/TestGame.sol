@@ -8,9 +8,7 @@ contract TestGame {
     Game game = Game(DeployedAddresses.Game());
     uint public initialBalance = 10 ether;
 
-    function testFunction_nothing() public {
 
-    }
     function testFunction_convertAddressToCordinateTuple() public {
 
         uint x;
@@ -22,12 +20,17 @@ contract TestGame {
         );
 
         (x, z) = game.convertAddressToCordinateTuple(testAddress);
-        Assert.equal(x, z, "Verify that cordinate xAngle and zAngle are equal");
+        Assert.equal(
+            x,
+            z,
+
+            "Verify that cordinate xAngle and zAngle are equal");
         Assert.notEqual((x+z), 0, "Verify that cordinate xAngle and zAngle are not zero");
     }
 
     function testFunction_initializeNativeSector() public {
         game.initializeNativeSector();
+
         (   bool initialized,
             address owner,
             uint xAngleInit,
@@ -46,9 +49,9 @@ contract TestGame {
     }
 
     /**
-    This function simulates the external calls that would be made to add 
+    This function simulates the external calls that would be made to add
     production recipies.
-    The idea is for XML to be read and make these calls like they are here 
+    The idea is for JSON to be read and make these calls like they are here
     now
     */
     function setupRoutine_addTransformations() private {
@@ -66,7 +69,11 @@ contract TestGame {
             uint recipeCount
         ) = game.getProductionMapRanges();
 
-        Assert.equal(itemCount, 2, "Verify that item count equals expected.");
+        Assert.equal(
+            itemCount,
+            2,
+            "Verify that item count equals expected."
+        );
         Assert.equal(recipeCount, 1, "verify that recipe count equals expected.");
 
         (   uint density,
@@ -105,7 +112,8 @@ contract TestGame {
     }
 
     function testFunction_manualTransformation() public {
-        game.manualTransformation(address(this), 0);
+        bool status = game.manualTransformation(address(this), 0);
+        Assert.equal(status, true, "");
     }
 
 }

@@ -1,7 +1,7 @@
 <craftingMap>
     <contractInfo>
         <itemTypesEnum>
-            NaturalReasource,
+            NaturalResource,
             Ore,
             Component,
             Extractor,

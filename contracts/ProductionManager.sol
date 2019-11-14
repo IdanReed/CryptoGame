@@ -15,7 +15,10 @@ contract ProductionManager is
     ProductionMap
 {
 
-    function getTransformationProperties(uint transformationId) public view returns (
+    function getTransformationProperties(
+        uint transformationId
+    )
+    public view returns (
         uint inputCounts,
         uint[50] memory inputItemIds,
         uint[50] memory inputQuantities,
@@ -23,7 +26,8 @@ contract ProductionManager is
         uint[50] memory outputItemIds,
         uint[50] memory outputQuantities
     ){
-        Transformation memory transformation = transformations[transformationId];
+        Transformation memory transformation =
+            transformations[transformationId];
 
         uint i;
 
@@ -51,9 +55,12 @@ contract ProductionManager is
         uint density,
         uint itemType
     ){
-        //require(itemId < items.length, "Require that itemId is within range of valid items.");
-        ItemProperties memory item = items[itemId];
+        require(
+            itemId < items.length,
+            "Require that itemId is within range of valid items."
+        );
 
+        ItemProperties memory item = items[itemId];
         return (
             item.density,
             uint(item.itemType)
@@ -70,7 +77,10 @@ contract ProductionManager is
         );
     }
 
-    function proccessTransformation(Sector memory sector, Transformation memory transformation) internal returns(
+    function proccessTransformation(
+        Sector memory sector,
+        Transformation memory transformation
+    ) internal returns(
         bool successful
     ){
         TransformationElement memory trElem;
@@ -80,7 +90,12 @@ contract ProductionManager is
             trElem = transformation.inputs[i];
             itemProps = items[trElem.itemId];
 
-            if(!consumeResource(sector, itemProps.itemType, trElem.itemId, trElem.quantity)){
+            if(!consumeResource(
+                sector,
+                itemProps.itemType,
+                trElem.itemId,
+                trElem.quantity
+            )){
                 return false;
             }
         }
@@ -88,7 +103,12 @@ contract ProductionManager is
             trElem = transformation.outputs[i];
             itemProps = items[trElem.itemId];
 
-            if(!storeResource(sector, itemProps.itemType, trElem.itemId, trElem.quantity)){
+            if(!storeResource(
+                sector,
+                itemProps.itemType,
+                trElem.itemId,
+                trElem.quantity
+            )){
                 return false;
             }
         }

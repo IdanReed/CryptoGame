@@ -66,7 +66,8 @@ contract TypesSector is TypesItem{
     - Assumes owner is previously set
     */
     function initializeSector(
-        Sector memory sector,
+        Sector storage sector,
+        address owner, /* the new owner */
         address sectorAddress /* the key in the address -> sector map */
     )
     internal {
@@ -74,10 +75,9 @@ contract TypesSector is TypesItem{
             !sector.initialized,
             "Require that given sector has not been initialized"
         );
-        require(
-            sector.owner != address(0),
-            "Require that given sector has set owner"
-        );
+
+        sector.owner = owner;
+        sector.initialized = true;
 
         (   uint xAngle,
             uint zAngle
@@ -149,6 +149,14 @@ contract TypesSector is TypesItem{
     internal returns(
         bool successful
     ){
+
+    }
+
+    function memcpy(
+        Sector memory sectorSource,
+        Sector storage sectorDest
+    )
+    internal {
 
     }
 

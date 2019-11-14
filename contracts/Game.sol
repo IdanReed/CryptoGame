@@ -22,7 +22,7 @@ contract Game is
     function initializeNativeSector() public {
         Sector storage nativeSector = sectors[msg.sender];
         if(!nativeSector.initialized){
-            initializeSector(nativeSector, msg.sender);
+            initializeSector(nativeSector, msg.sender, msg.sender);
         }
     }
 
@@ -34,10 +34,21 @@ contract Game is
         address sectorAddress,
         uint transformationId
     )
-    public returns (
+    public callerOwnsSector(sectorAddress) returns (
         bool successful
     ){
+        Sector memory sector = sectors[sectorAddress];
 
+        successful = proccessTransformation(
+            sector,
+            transformations[transformationId]
+        );
+
+        if(successful){
+            sectors[sectorAddress].silos.length = sector.silos.length;
+        }
+
+        return successful;
     }
 
     /**************************************************************
