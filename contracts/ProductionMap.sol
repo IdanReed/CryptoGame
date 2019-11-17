@@ -18,13 +18,18 @@ contract ProductionMap is
     /**************************************************************
     Item loading
     **************************************************************/
-    function addItem(uint density, uint itemType) external {
+    function addItem(
+        uint density,
+        uint itemType,
+        uint itemPlaceableType
+    ) external {
         OptionalItemProperties memory itemPropsOptional;
 
         ItemProperties memory itemProps = ItemProperties(
             items.length - 1,
             density,
             ItemType(itemType),
+            ItemPlaceableType(itemPlaceableType),
             itemPropsOptional
         );
         items.push(itemProps);
@@ -39,11 +44,20 @@ contract ProductionMap is
     function addTransformation() external {
         transformations.length += 1;
     }
-    function addTransformationElement(bool isInput, uint itemId, uint quantity) external {
+    function addTransformationElement(
+        bool isInput,
+        uint itemId,
+        uint quantity
+    ) external {
 
-        Transformation storage transformation = transformations[transformations.length - 1];
-        TransformationElement memory element = TransformationElement(itemId, quantity);
-    
+        Transformation storage transformation = transformations[
+            transformations.length - 1
+        ];
+        TransformationElement memory element = TransformationElement(
+            itemId,
+            quantity
+        );
+
         if(isInput) {
             transformation.inputs.push(element);
         }else{

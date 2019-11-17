@@ -50,16 +50,17 @@ contract TestGame {
 
     /**
     This function simulates the external calls that would be made to add
-    production recipies.
+    production transformations.
     The idea is for JSON to be read and make these calls like they are here
     now
     */
     function setupRoutine_addTransformations() private {
-        game.addItem(1, 0);
-        game.addItem(2, 1);
-        game.addTransformation();
-        game.addTransformationElement(true, 0, 1);
-        game.addTransformationElement(false, 1, 2);
+        game.addItem(1, 2, 1); // silo
+        game.addTransformation(); // free silo
+        game.addTransformationElement(false, 0, 1);
+
+        game.addItem(1, 1, 0); // component
+
     }
 
     function testSetupRoutine_addTransformations() public {
@@ -112,8 +113,14 @@ contract TestGame {
     }
 
     function testFunction_manualTransformation() public {
-        bool status = game.manualTransformation(address(this), 0);
-        Assert.equal(status, true, "");
-    }
+        // bool successful = game.giveItem(address(this), 0, 1);
+        // Assert.equal(successful, true, "");
+        // (
+        //     uint[] memory itemIds,
+        //     uint[] memory itemQuantities
+        // ) = game.getSectorSilos(address(this));
 
+
+        // Assert.equal(itemIds.length, 1, "");
+    }
 }

@@ -14,11 +14,13 @@ contract ProductionManager is
     TypesItem, TypesTransformation, TypesSector,
     ProductionMap
 {
-
+    /**************************************************************
+    External functions - view, pure
+    **************************************************************/
     function getTransformationProperties(
         uint transformationId
     )
-    public view returns (
+    external view returns (
         uint inputCounts,
         uint[50] memory inputItemIds,
         uint[50] memory inputQuantities,
@@ -26,16 +28,15 @@ contract ProductionManager is
         uint[50] memory outputItemIds,
         uint[50] memory outputQuantities
     ){
-        Transformation memory transformation =
-            transformations[transformationId];
+        Transformation memory transformation = transformations[
+            transformationId
+        ];
 
-        uint i;
-
-        for(i = 0; i < transformation.inputs.length; i++){
+        for(uint i = 0; i < transformation.inputs.length; i++){
             inputItemIds[i] = transformation.inputs[i].itemId;
             inputQuantities[i] = transformation.inputs[i].quantity;
         }
-        for(i = 0; i < transformation.outputs.length; i++){
+        for(uint i = 0; i < transformation.outputs.length; i++){
             outputItemIds[i] = transformation.outputs[i].itemId;
             outputQuantities[i] = transformation.outputs[i].quantity;
         }
@@ -76,15 +77,24 @@ contract ProductionManager is
             transformations.length
         );
     }
+    /**************************************************************
+    Internal functions - full
+    **************************************************************/
 
+    /**
+    This function is called by manualTransformation or tickSector to
+    execute production transformations on a sector.
+    */
     function proccessTransformation(
-        Sector memory sector,
+        Sector storage sector,
         Transformation memory transformation
     ) internal returns(
         bool successful
     ){
         TransformationElement memory trElem;
         ItemProperties memory itemProps;
+
+        Sector memory sectorBackup = sector;
 
         for(uint i = 0; i < transformation.inputs.length; i++){
             trElem = transformation.inputs[i];
@@ -96,6 +106,7 @@ contract ProductionManager is
                 trElem.itemId,
                 trElem.quantity
             )){
+                memcpyItemData(sectorBackup, sector);
                 return false;
             }
         }
@@ -105,12 +116,13 @@ contract ProductionManager is
 
             if(!storeResource(
                 sector,
-                itemProps.itemType,
-                trElem.itemId,
+                itemProps,
                 trElem.quantity
             )){
+                memcpyItemData(sectorBackup, sector);
                 return false;
             }
         }
     }
+
 }

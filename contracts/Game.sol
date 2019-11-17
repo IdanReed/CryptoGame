@@ -19,6 +19,11 @@ contract Game is
     /**************************************************************
     Public functions   - full
     **************************************************************/
+
+    /**
+    Native sector is one with the same key address as the caller. If this
+    sector hasn't been annexed or initialized this will do so.
+    */
     function initializeNativeSector() public {
         Sector storage nativeSector = sectors[msg.sender];
         if(!nativeSector.initialized){
@@ -26,29 +31,29 @@ contract Game is
         }
     }
 
+    /**
+    A primary game function that is called to make a sector's buildings act.
+    */
     function tickSector(address sectorAddress) public {
+
 
     }
 
+    /**
+    This function attempts to execute a transformation that was externally
+    called. Intended for building placeable items in a sector.
+    */
     function manualTransformation(
         address sectorAddress,
         uint transformationId
     )
-    public callerOwnsSector(sectorAddress) returns (
+    external callerOwnsSector(sectorAddress) returns (
         bool successful
     ){
-        Sector memory sector = sectors[sectorAddress];
-
-        successful = proccessTransformation(
-            sector,
+        return proccessTransformation(
+            sectors[sectorAddress],
             transformations[transformationId]
         );
-
-        if(successful){
-            sectors[sectorAddress].silos.length = sector.silos.length;
-        }
-
-        return successful;
     }
 
     /**************************************************************
@@ -60,7 +65,6 @@ contract Game is
         uint xAngle,
         uint zAngle
     ){
-
         Sector memory selSector = sectors[sectorAddress];
 
         return (
@@ -71,13 +75,35 @@ contract Game is
         );
     }
 
+    function getSectorSilos(address sectorAddress) public view returns (
+        uint[] memory itemIds,
+        uint[] memory itemQuantities
+    ){
+
+        Sector memory selSector = sectors[sectorAddress];
+        uint siloCount = selSector.silos.length;
+
+        itemIds = new uint[](siloCount);
+        itemQuantities = new uint[](siloCount);
+
+        for(uint i = 0; i < selSector.silos.length; i++){
+            itemIds[i] = selSector.silos[i].targetItemId;
+            itemQuantities[i] = selSector.silos[i].curQuantity;
+        }
+
+        return (
+            itemIds,
+            itemQuantities
+        );
+    }
+
     /**************************************************************
     Modifiers
     **************************************************************/
     modifier callerOwnsSector(address sectorAddress) {
         require(
             msg.sender == sectors[sectorAddress].owner,
-            "Require that sector reference by address is owned by the caller"
+            "Require that sector referenced by address is owned by the caller"
         );
         _;
     }
