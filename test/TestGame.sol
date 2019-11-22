@@ -55,72 +55,99 @@ contract TestGame {
     now
     */
     function setupRoutine_addTransformations() private {
-        game.addItem(1, 2, 1); // silo
-        game.addTransformation(); // free silo
+
+        game.addItem(
+            0,
+            2, /* placeable */
+            1 /* silo */
+        );
+        game.addSiloProperties(2, 100);
+
+        game.addItem(
+            1,
+            2, /* placeable */
+            1 /* silo */
+        );
+        game.addSiloProperties(3, 100);
+
+
+        game.addItem(
+            2,
+            1, /* component */
+            1 /* none */
+        );
+
+        game.addItem(
+            3,
+            1, /* component */
+            1 /* none */
+        );
+
+        game.addItem(
+            3,
+            2, /* placeable */
+            1 /* none */
+        );
+
+        game.addItem(
+            4,
+            2, /* placeable */
+            3 /* Assembler */
+        );
+        addAssemblerProperties(3);
+
+        game.addTransformation(0); // free silo 0
         game.addTransformationElement(false, 0, 1);
 
-        game.addItem(1, 1, 0); // component
+        game.addTransformation(1); // free silo 1
+        game.addTransformationElement(false, 1, 1);
 
+
+        game.addTransformation(2); // free component 2
+        game.addTransformationElement(false, 2, 75);
+
+        game.addTransformation(3); // component 2 -> assembler
+        game.addTransformationElement(false, 2, 75);
+
+        game.addTransformation(3); // component 2 + assembler -> component 3
+        game.addTransformationElement(true, 2, 25);
+        game.addTransformationElement(true, 4, 1);
+        game.addTransformationElement(false, 3, 1);
     }
+
 
     function testSetupRoutine_addTransformations() public {
         setupRoutine_addTransformations();
-
-        (   uint itemCount,
-            uint recipeCount
-        ) = game.getProductionMapRanges();
-
-        Assert.equal(
-            itemCount,
-            2,
-            "Verify that item count equals expected."
-        );
-        Assert.equal(recipeCount, 1, "verify that recipe count equals expected.");
-
-        (   uint density,
-            uint itemType
-        ) = game.getItemProperties(0);
-
-        Assert.equal(density, 1, "Item 1 property density equals expected.");
-        Assert.equal(itemType, 0, "Item 1 property itemType equals expected.");
-
-        (   density,
-            itemType
-        ) = game.getItemProperties(1);
-
-        Assert.equal(density, 2, "Item 2 property density equals expected.");
-        Assert.equal(itemType, 1, "Item 2 property itemType equals expected.");
-
-        // game.getRecipeProperties(0);
-
-        (   uint inputCounts,
-            uint[50] memory inputItemIds,
-            uint[50] memory inputQuantities,
-
-            uint outputCounts,
-            uint[50] memory outputItemIds,
-            uint[50] memory outputQuantities
-        ) = game.getTransformationProperties(0);
-
-        Assert.equal(inputCounts, 1, "Item 2 property density equals expected.");
-        Assert.equal(outputCounts, 1, "Item 2 property density equals expected.");
-
-        Assert.equal(inputItemIds[0], 0, "Item 2 property density equals expected.");
-        Assert.equal(inputQuantities[0], 1, "Item 2 property density equals expected.");
-
-        Assert.equal(outputItemIds[0], 1, "Item 2 property density equals expected.");
-        Assert.equal(outputQuantities[0], 2, "Item 2 property density equals expected.");
+        Assert.equal(true, true, "");
     }
 
     function testFunction_manualTransformation() public {
-        // bool successful = game.giveItem(address(this), 0, 1);
-        // Assert.equal(successful, true, "");
-        // (
-        //     uint[] memory itemIds,
-        //     uint[] memory itemQuantities
-        // ) = game.getSectorSilos(address(this));
+        // makes silos
+        game.manualTransformation(address(this), 0);
+        game.manualTransformation(address(this), 1);
 
 
-        // Assert.equal(itemIds.length, 1, "");
+        (   uint[] memory itemIds,
+            uint[] memory itemQuantities
+        ) = game.getSectorSilos(address(this));
+
+        Assert.equal(itemIds.length, 2, "");
+        Assert.equal(itemIds[0], 2, "");
+        Assert.equal(itemIds[1], 3, "");
+
+        // store comp
+        game.manualTransformation(address(this), 2);
+
+        // consume and store comp
+        game.manualTransformation(address(this), 3);
+
+        (
+            itemIds,
+            itemQuantities
+        ) = game.getSectorSilos(address(this));
+
+        Assert.equal(itemQuantities[0], 50, "");
+        Assert.equal(itemQuantities[1], 1, "");
+
     }
 }

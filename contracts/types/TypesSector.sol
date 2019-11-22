@@ -9,48 +9,15 @@ TypesSector contract:
 */
 contract TypesSector is TypesItem{
 
-    struct PlaceableProperties {
+    struct NaturalResource{
         uint itemId;
-
-        uint spaceRequired;
+        uint quantity;
+        uint difficulty;
     }
-
-    struct Silo {
-        PlaceableProperties placeableProps;
-
-        uint targetItemId;
-        uint curQuantity;
-        uint maxQuantity;
-    }
-
-    struct Extractor {
-        PlaceableProperties placeableProperties;
-
-    }
-
-    struct Factory {
-        PlaceableProperties placeableProperties;
-
-        uint targetRecipe;
-    }
-
     struct SphereCordinate{
         uint xAngle; /* address bits from 160 to 80 */
         uint zAngle; /* address bits from 80 to 0   */
     }
-
-    struct ExtractionProperties{
-        uint depth;
-        uint heat;
-        uint surroundingHardness;
-    }
-
-    struct NaturalResource{
-        ExtractionProperties extractionProperties;
-        uint itemId;
-        uint quantity;
-    }
-
     struct Sector {
         bool initialized;
 
@@ -61,9 +28,9 @@ contract TypesSector is TypesItem{
         NaturalResource[] naturalResources;
 
         /* Placeables       */
-        Silo[] silos;
-        Extractor[] extractors;
-        Factory[] factories;
+        SiloItem[] silos;
+        ExtractorItem[] extractors;
+        AssemblerItem[] assemblers;
     }
     /**************************************************************
     Internal
@@ -73,7 +40,6 @@ contract TypesSector is TypesItem{
     - When sectors are nativly initialize or taken for the first time via
     confict they need to have their natural properties set. Must be done
     algorithmically.
-    - Assumes owner is previously set
     */
     function initializeSector(
         Sector storage sector,
@@ -99,47 +65,32 @@ contract TypesSector is TypesItem{
     }
 
     function initializeSectorNaturalResources(
-        Sector memory sector
+        Sector storage sector
     ) private view {
 
     }
 
-    function consumeResource(
-        Sector memory sector,
-        ItemType itemType,
-        uint itemId,
+    function consumeItem(
+        Sector storage sector,
+        ItemProperties memory item,
         uint quantityIn
     )
-    internal pure returns (
-            bool successful
+    internal returns (
+        bool successful
     ){
         uint quantity = quantityIn;
 
-        if(itemType == ItemType.NaturalResource){
-            /* Check nat res arr */
-            for(
-                uint i = 0;
-                i < sector.naturalResources.length && quantity > 0;
-                i++
-            ){
-                if(itemId == sector.naturalResources[i].itemId){
-                    if(quantity < sector.naturalResources[i].quantity){
-                        sector.naturalResources[i].quantity -= quantity;
-                        quantity = 0;
-                    }else{
-                        quantity -= sector.naturalResources[i].quantity;
-                        sector.naturalResources[i].quantity = 0;
-                    }
-                }
-            }
-        }else{
-            /* Check silos */
+        if(item.itemType == ItemType.NaturalResource){
+            /* Extract item from sector's potential nat reasource */
+
+        }else if(item.itemType == ItemType.Component){
+            /* Subtract item from sector's silos */
             for(
                 uint i = 0;
                 i < sector.silos.length && quantity > 0;
                 i++
             ){
-                if(itemId == sector.silos[i].targetItemId){
+                if(item.id == sector.silos[i].targetItemId){
                     if(quantity < sector.silos[i].curQuantity){
                         sector.silos[i].curQuantity -= quantity;
                         quantity = 0;
@@ -149,59 +100,63 @@ contract TypesSector is TypesItem{
                     }
                 }
             }
+        }else if(item.itemType == ItemType.Placeable){
+            /* Check if placeable exisits in sector */
         }
         return (quantity == 0);
     }
 
-    function storeResource(
-        Sector memory sector,
+    function storeItem(
+        Sector storage sector,
         ItemProperties memory item,
-        uint quantity
+        uint quantityIn
     )
-    internal pure returns(
+    internal returns(
         bool successful
     ){
+        uint quantity = quantityIn;
+
         if(item.itemType == ItemType.Placeable){
-            if(item.placeableType == ItemPlaceableType.Silo){
-                Silo[] memory silos = new Silo[](sector.silos.length);
-                sector.silos = silos;
-                // sector.silos.length += 1;
+            require(
+                quantity == 1,
+                "Require that placeable are stored one at a time"
+            );
+
+            if(item.itemSubType == ItemSubType.Silo){
+                sector.silos.push(item.optionalProperties.silo);
+            }else if(item.itemSubType == ItemSubType.Extractor){
+                sector.extractors.push(item.optionalProperties.extractor);
+            }else if(item.itemSubType == ItemSubType.Assembler){
+                sector.assemblers.push(item.optionalProperties.assembler);
             }
+
+            quantity = 0;
+
         }else if(item.itemType == ItemType.Component){
             for(uint i = 0; i < sector.silos.length && quantity > 0; i++){
-                if(item.backupItemId == sector.silos[i].targetItemId){
-                    if(quantity < sector.silos[i].curQuantity){
-                        sector.silos[i].curQuantity -= quantity;
-                        quantity = 0;
+
+                if(item.id == sector.silos[i].targetItemId){
+
+                    sector.silos[i].curQuantity += quantity;
+
+                    if(
+                        sector.silos[i].curQuantity
+                        > sector.silos[i].maxQuantity
+                    ){
+                        quantity = sector.silos[i].curQuantity -
+                            sector.silos[i].maxQuantity;
+
+                        sector.silos[i].curQuantity = sector.silos[i].maxQuantity;
                     }else{
-                        quantity -= sector.silos[i].curQuantity;
-                        sector.silos[i].curQuantity = 0;
+                        quantity = 0;
                     }
                 }
             }
         }
+
+        return (quantity == 0);
     }
 
-    function memcpyItemData(
-        Sector memory sectorSource,
-        Sector storage sectorDest
-    )
-    internal {
-        sectorDest.silos.length = sectorSource.silos.length;
-        sectorDest.extractors.length = sectorSource.extractors.length;
-        sectorDest.factories.length = sectorSource.factories.length;
-
-
-        for(uint i = 0; i < sectorDest.silos.length; i++){
-            sectorDest.silos[i] = sectorSource.silos[i];
-        }
-        for(uint i = 0; i < sectorDest.extractors.length; i++){
-            sectorDest.extractors[i] = sectorSource.extractors[i];
-        }
-        for(uint i = 0; i < sectorDest.factories.length; i++){
-            sectorDest.factories[i] = sectorSource.factories[i];
-        }
-    }
 
     /**************************************************************
     Public Views/Pure

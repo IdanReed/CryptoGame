@@ -53,7 +53,6 @@ contract ProductionManager is
     }
 
     function getItemProperties(uint itemId) public view returns (
-        uint density,
         uint itemType
     ){
         require(
@@ -62,10 +61,7 @@ contract ProductionManager is
         );
 
         ItemProperties memory item = items[itemId];
-        return (
-            item.density,
-            uint(item.itemType)
-        );
+        return uint(item.itemType);
     }
 
     function getProductionMapRanges() public view returns (
@@ -88,39 +84,32 @@ contract ProductionManager is
     function proccessTransformation(
         Sector storage sector,
         Transformation memory transformation
-    ) internal returns(
-        bool successful
-    ){
+    ) internal {
         TransformationElement memory trElem;
         ItemProperties memory itemProps;
-
-        Sector memory sectorBackup = sector;
 
         for(uint i = 0; i < transformation.inputs.length; i++){
             trElem = transformation.inputs[i];
             itemProps = items[trElem.itemId];
 
-            if(!consumeResource(
+            if(!consumeItem(
                 sector,
-                itemProps.itemType,
-                trElem.itemId,
+                itemProps,
                 trElem.quantity
             )){
-                memcpyItemData(sectorBackup, sector);
-                return false;
+                revert("Unable to consume input item");
             }
         }
         for(uint i = 0; i < transformation.outputs.length; i++){
             trElem = transformation.outputs[i];
             itemProps = items[trElem.itemId];
 
-            if(!storeResource(
+            if(!storeItem(
                 sector,
                 itemProps,
                 trElem.quantity
             )){
-                memcpyItemData(sectorBackup, sector);
-                return false;
+                revert("Unable to store output item");
             }
         }
     }

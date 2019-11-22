@@ -34,9 +34,17 @@ contract Game is
     /**
     A primary game function that is called to make a sector's buildings act.
     */
-    function tickSector(address sectorAddress) public {
+    function tickSector(
+        address sectorAddress
+    ) external callerOwnsSector(sectorAddress) {
+        Sector storage sector = sectors[sectorAddress];
 
-
+        for(uint i = 0; i < sector.extractors.length; i++){
+            proccessTransformation(
+                sector,
+                transformations[sector.extractors[i].targetTransformationId]
+            );
+        }
     }
 
     /**
@@ -47,10 +55,8 @@ contract Game is
         address sectorAddress,
         uint transformationId
     )
-    external callerOwnsSector(sectorAddress) returns (
-        bool successful
-    ){
-        return proccessTransformation(
+    external callerOwnsSector(sectorAddress){
+        proccessTransformation(
             sectors[sectorAddress],
             transformations[transformationId]
         );

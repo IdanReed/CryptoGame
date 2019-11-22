@@ -15,35 +15,67 @@ contract ProductionMap is
     Transformation[] transformations;
     ItemProperties[] items;
 
-    /**************************************************************
-    Item loading
-    **************************************************************/
     function addItem(
-        uint density,
+        uint itemId,
         uint itemType,
-        uint itemPlaceableType
+        uint itemSubType
     ) external {
+        require(
+            items.length == itemId,
+            "Require that caller know the id of item being added"
+        );
+
         OptionalItemProperties memory itemPropsOptional;
 
         ItemProperties memory itemProps = ItemProperties(
-            items.length - 1,
-            density,
+            items.length,
+            7, // mass
+            7, // volume
             ItemType(itemType),
-            ItemPlaceableType(itemPlaceableType),
+            ItemSubType(itemSubType),
             itemPropsOptional
         );
         items.push(itemProps);
     }
-    function addExtractorProps() external {
+
+    function addAssemblerProperties(uint targetTransformationId) external {
+        AssemblerItem storage curAssembler = items[
+            items.length - 1
+        ].optionalProperties.assembler;
+
+        curAssembler.targetTransformationId = targetTransformationId;
+    }
+
+    function addExtractorProperties(uint targetTransformationId) external {
+        ExtractorItem storage curExtractor = items[
+            items.length - 1
+        ].optionalProperties.extractor;
+
+        curExtractor.targetTransformationId = targetTransformationId;
+    }
+
+    function addSiloProperties(uint targetItemId, uint maxQuantity) external {
+
+        SiloItem storage curSilo =
+            items[items.length - 1].optionalProperties.silo;
+        curSilo.targetItemId = targetItemId;
+        curSilo.maxQuantity = maxQuantity;
+
+        //  = SiloItem(
+        //     ItemSubtype(items.length),
+        //     PlaceableProperties(7),
+        //     targetItemId,
+        //     maxQuantity,
+        //     0
+        // );
+
 
     }
 
-    /**************************************************************
-    Transformation loading
-    **************************************************************/
     function addTransformation() external {
         transformations.length += 1;
     }
+
     function addTransformationElement(
         bool isInput,
         uint itemId,
