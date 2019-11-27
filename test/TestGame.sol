@@ -8,7 +8,6 @@ contract TestGame {
     Game game = Game(DeployedAddresses.Game());
     uint public initialBalance = 10 ether;
 
-
     function testFunction_convertAddressToCordinateTuple() public {
 
         uint x;
@@ -23,9 +22,12 @@ contract TestGame {
         Assert.equal(
             x,
             z,
-
             "Verify that cordinate xAngle and zAngle are equal");
-        Assert.notEqual((x+z), 0, "Verify that cordinate xAngle and zAngle are not zero");
+        Assert.notEqual(
+            (x+z),
+            0,
+            "Verify that cordinate xAngle and zAngle are not zero");
+
     }
 
     function testFunction_initializeNativeSector() public {
@@ -41,11 +43,27 @@ contract TestGame {
             uint zAngleConverted
         ) = game.convertAddressToCordinateTuple(address(this));
 
-        Assert.equal(initialized, true, "Verify that native sector is initialized");
-        Assert.equal(owner, address(this), "Verify that the native sector owner is the test contract");
+        Assert.equal(
+            initialized,
+            true,
+            "Verify that native sector is initialized"
+        );
+        Assert.equal(
+            owner,
+            address(this),
+            "Verify that the native sector owner is the test contract"
+        );
 
-        Assert.equal(xAngleInit, xAngleConverted, "Verify initialized xAngle matches a direct conversion");
-        Assert.equal(zAngleInit, zAngleConverted, "Verify initialized xAngle matches a direct conversion");
+        Assert.equal(
+            xAngleInit,
+            xAngleConverted,
+            "Verify initialized xAngle matches a direct conversion"
+        );
+        Assert.equal(
+            zAngleInit,
+            zAngleConverted,
+            "Verify initialized xAngle matches a direct conversion"
+        );
     }
 
     /**
@@ -70,7 +88,6 @@ contract TestGame {
         );
         game.addSiloProperties(3, 100);
 
-
         game.addItem(
             2,
             1, /* component */
@@ -84,17 +101,11 @@ contract TestGame {
         );
 
         game.addItem(
-            3,
-            2, /* placeable */
-            1 /* none */
-        );
-
-        game.addItem(
             4,
             2, /* placeable */
             3 /* Assembler */
         );
-        addAssemblerProperties(3);
+        game.addAssemblerProperties(4);
 
         game.addTransformation(0); // free silo 0
         game.addTransformationElement(false, 0, 1);
@@ -106,10 +117,12 @@ contract TestGame {
         game.addTransformation(2); // free component 2
         game.addTransformationElement(false, 2, 75);
 
-        game.addTransformation(3); // component 2 -> assembler
-        game.addTransformationElement(false, 2, 75);
+        game.addTransformation(3); // component 2 -> assembler 4
+        game.addTransformationElement(true, 2, 25);
+        game.addTransformationElement(false, 4, 1);
 
-        game.addTransformation(3); // component 2 + assembler -> component 3
+
+        game.addTransformation(4); // component 2 + assembler -> component 3
         game.addTransformationElement(true, 2, 25);
         game.addTransformationElement(true, 4, 1);
         game.addTransformationElement(false, 3, 1);
@@ -126,28 +139,47 @@ contract TestGame {
         game.manualTransformation(address(this), 0);
         game.manualTransformation(address(this), 1);
 
+        // free component 2
+        game.manualTransformation(address(this), 2);
+
+        // component 2 -> assembler 4
+        game.manualTransformation(address(this), 3);
+
+        // component 2 + assembler -> component 3
+        game.manualTransformation(address(this), 4);
 
         (   uint[] memory itemIds,
             uint[] memory itemQuantities
         ) = game.getSectorSilos(address(this));
 
-        Assert.equal(itemIds.length, 2, "");
-        Assert.equal(itemIds[0], 2, "");
-        Assert.equal(itemIds[1], 3, "");
+        Assert.equal(
+            itemIds.length,
+            2,
+            "Verify that number of silos matches expected"
+        );
+        Assert.equal(
+            itemIds[0],
+            2,
+            "Verify that first silo stores component 2"
+        );
+        Assert.equal(
+            itemIds[1],
+            3,
+            "Verify that second silo stores component 3"
+        );
+        Assert.equal(
+            itemQuantities[0],
+            25,
+            "Verify that remaining component 2 matches expected"
+        );
+        Assert.equal(
+            itemQuantities[1],
+            1,
+            "Verify that remaining component 3 matches expected"
+        );
+    }
 
-        // store comp
-        game.manualTransformation(address(this), 2);
-
-        // consume and store comp
-        game.manualTransformation(address(this), 3);
-
-        (
-            itemIds,
-            itemQuantities
-        ) = game.getSectorSilos(address(this));
-
-        Assert.equal(itemQuantities[0], 50, "");
-        Assert.equal(itemQuantities[1], 1, "");
-
+    function testFunction_tickSector() public {
+        game.tickSector(address(this));
     }
 }

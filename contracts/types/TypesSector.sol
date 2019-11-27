@@ -14,10 +14,12 @@ contract TypesSector is TypesItem{
         uint quantity;
         uint difficulty;
     }
+
     struct SphereCordinate{
         uint xAngle; /* address bits from 160 to 80 */
         uint zAngle; /* address bits from 80 to 0   */
     }
+
     struct Sector {
         bool initialized;
 
@@ -32,8 +34,10 @@ contract TypesSector is TypesItem{
         ExtractorItem[] extractors;
         AssemblerItem[] assemblers;
     }
+
+
     /**************************************************************
-    Internal
+    Internal functions - full
     **************************************************************/
 
     /**
@@ -66,7 +70,7 @@ contract TypesSector is TypesItem{
 
     function initializeSectorNaturalResources(
         Sector storage sector
-    ) private view {
+    ) private {
 
     }
 
@@ -102,6 +106,16 @@ contract TypesSector is TypesItem{
             }
         }else if(item.itemType == ItemType.Placeable){
             /* Check if placeable exisits in sector */
+
+            if(item.itemSubtypePlaceable == ItemSubtypePlaceable.Assembler){
+                for(uint i = 0; i < sector.assemblers.length && quantity > 0; i++){
+                    if(sector.assemblers[i].itemIntf.itemId == item.id){
+                        quantity -= 1;
+                    }
+                }
+            }else if(item.itemSubtypePlaceable == ItemSubtypePlaceable.Extractor){
+
+            }
         }
         return (quantity == 0);
     }
@@ -120,14 +134,14 @@ contract TypesSector is TypesItem{
             require(
                 quantity == 1,
                 "Require that placeable are stored one at a time"
-            );
+            );  // TODO
 
-            if(item.itemSubType == ItemSubType.Silo){
-                sector.silos.push(item.optionalProperties.silo);
-            }else if(item.itemSubType == ItemSubType.Extractor){
-                sector.extractors.push(item.optionalProperties.extractor);
-            }else if(item.itemSubType == ItemSubType.Assembler){
-                sector.assemblers.push(item.optionalProperties.assembler);
+            if(item.itemSubtypePlaceable == ItemSubtypePlaceable.Silo){
+                sector.silos.push(item.placeableSubtypes.silo);
+            }else if(item.itemSubtypePlaceable == ItemSubtypePlaceable.Extractor){
+                sector.extractors.push(item.placeableSubtypes.extractor);
+            }else if(item.itemSubtypePlaceable == ItemSubtypePlaceable.Assembler){
+                sector.assemblers.push(item.placeableSubtypes.assembler);
             }
 
             quantity = 0;

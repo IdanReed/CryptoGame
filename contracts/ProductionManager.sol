@@ -52,7 +52,7 @@ contract ProductionManager is
         );
     }
 
-    function getItemProperties(uint itemId) public view returns (
+    function getItemProperties(uint itemId) external view returns (
         uint itemType
     ){
         require(
@@ -64,7 +64,7 @@ contract ProductionManager is
         return uint(item.itemType);
     }
 
-    function getProductionMapRanges() public view returns (
+    function getProductionMapRanges() external view returns (
         uint itemCount,
         uint transformationCount
     ){
@@ -73,6 +73,7 @@ contract ProductionManager is
             transformations.length
         );
     }
+
     /**************************************************************
     Internal functions - full
     **************************************************************/

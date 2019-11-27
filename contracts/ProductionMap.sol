@@ -15,6 +15,10 @@ contract ProductionMap is
     Transformation[] transformations;
     ItemProperties[] items;
 
+    /**************************************************************
+    External functions - full
+    **************************************************************/
+
     function addItem(
         uint itemId,
         uint itemType,
@@ -25,54 +29,59 @@ contract ProductionMap is
             "Require that caller know the id of item being added"
         );
 
-        OptionalItemProperties memory itemPropsOptional;
+        ItemProperties memory itemProps;
+        itemProps.id = items.length;
+        itemProps.itemType = ItemType(itemType);
 
-        ItemProperties memory itemProps = ItemProperties(
-            items.length,
-            7, // mass
-            7, // volume
-            ItemType(itemType),
-            ItemSubType(itemSubType),
-            itemPropsOptional
-        );
+        if(itemProps.itemType == ItemType.NaturalResource){
+            itemProps.itemSubtypeNaturalResource = ItemSubtypeNaturalResource(
+                itemSubType
+            );
+        }else if(itemProps.itemType == ItemType.Component){
+            itemProps.itemSubtypeComponent = ItemSubtypeComponent(
+                itemSubType
+            );
+        }else if(itemProps.itemType == ItemType.Placeable){
+            itemProps.itemSubtypePlaceable = ItemSubtypePlaceable(
+                itemSubType
+            );
+        }
+
         items.push(itemProps);
     }
 
     function addAssemblerProperties(uint targetTransformationId) external {
-        AssemblerItem storage curAssembler = items[
-            items.length - 1
-        ].optionalProperties.assembler;
+        AssemblerItem storage curAssembler = items[topItemId()]
+            .placeableSubtypes
+            .assembler;
 
+        curAssembler.itemIntf.itemId = topItemId();
         curAssembler.targetTransformationId = targetTransformationId;
     }
 
     function addExtractorProperties(uint targetTransformationId) external {
-        ExtractorItem storage curExtractor = items[
-            items.length - 1
-        ].optionalProperties.extractor;
+        ExtractorItem storage curExtractor = items[topItemId()]
+            .placeableSubtypes
+            .extractor;
 
+        curExtractor.itemIntf.itemId = topItemId();
         curExtractor.targetTransformationId = targetTransformationId;
     }
 
     function addSiloProperties(uint targetItemId, uint maxQuantity) external {
 
-        SiloItem storage curSilo =
-            items[items.length - 1].optionalProperties.silo;
+        SiloItem storage curSilo = items[topItemId()].placeableSubtypes.silo;
+
+        curSilo.itemIntf.itemId = topItemId();
         curSilo.targetItemId = targetItemId;
         curSilo.maxQuantity = maxQuantity;
-
-        //  = SiloItem(
-        //     ItemSubtype(items.length),
-        //     PlaceableProperties(7),
-        //     targetItemId,
-        //     maxQuantity,
-        //     0
-        // );
-
-
     }
 
-    function addTransformation() external {
+    function addTransformation(uint transformationId) external {
+        require(
+            transformations.length == transformationId,
+            "Require that caller know the id the transformation being added"
+        );
         transformations.length += 1;
     }
 
@@ -95,5 +104,13 @@ contract ProductionMap is
         }else{
             transformation.outputs.push(element);
         }
+    }
+
+    /**************************************************************
+    Internal functions - full
+    **************************************************************/
+
+    function topItemId() internal view returns(uint ) {
+        return items.length - 1;
     }
 }

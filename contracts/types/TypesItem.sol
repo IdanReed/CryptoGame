@@ -2,16 +2,24 @@ pragma solidity ^0.5.0;
 
 contract TypesItem{
 
-    enum ItemSubType{
+    enum ItemType{
+        NaturalResource,
+        Component,
+        Placeable
+    }
+    enum ItemSubtypePlaceable{
         None,
         Silo,
         Extractor,
         Assembler
     }
-    enum ItemType{
-        NaturalResource,
-        Component,
-        Placeable
+    enum ItemSubtypeComponent{
+        None,
+        Standard
+    }
+    enum ItemSubtypeNaturalResource{
+        None,
+        Standard
     }
 
     /**
@@ -31,33 +39,39 @@ contract TypesItem{
         uint mass;
         uint volume;
 
-        ItemType itemType; /* Defines general behavior */
+        ItemType itemType; /* Specify which ItemSubtype_____ */
 
-        ItemSubType itemSubType; /* Specify which subtype in optionalProp */
-        OptionalItemProperties optionalProperties;
+        /* optional data */
+        ItemSubtypeNaturalResource itemSubtypeNaturalResource;
+
+        ItemSubtypeComponent itemSubtypeComponent;
+
+        ItemSubtypePlaceable itemSubtypePlaceable;
+        PlaceableSubtypes placeableSubtypes;
     }
 
     /**
     Required struct for item subtypes. Contains a reference back to it's item
     index.
     */
-    struct ItemSubtype{
+    struct ItemSubtypeInterface{
         uint itemId; /* backup itemId */
     }
-    struct OptionalItemProperties{
+
+    struct PlaceableSubtypes{
         SiloItem silo;
         ExtractorItem extractor;
         AssemblerItem assembler;
     }
 
-    struct PlaceableProperties {
+    struct Placeable {
         uint floorSpace;
     }
+
     struct SiloItem {
         /* contant */
-        ItemSubtype itemSubtype;
-
-        PlaceableProperties placeableProps;
+        ItemSubtypeInterface itemIntf;
+        Placeable placeable;
 
         uint targetItemId;
         uint maxQuantity;
@@ -69,20 +83,17 @@ contract TypesItem{
 
     struct ExtractorItem {
         /* contant */
-        ItemSubtype itemSubtype;
-
-        PlaceableProperties placeableProperties;
+        ItemSubtypeInterface itemIntf;
+        Placeable placeable;
 
         uint targetTransformationId;
     }
 
     struct AssemblerItem {
         /* contant */
-        ItemSubtype itemSubtype;
-
-        PlaceableProperties placeableProperties;
+        ItemSubtypeInterface itemIntf;
+        Placeable placeable;
 
         uint targetTransformationId;
     }
-
 }

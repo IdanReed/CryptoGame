@@ -14,22 +14,12 @@ contract Game is
     /**************************************************************
     Data
     **************************************************************/
+
     mapping (address => Sector) sectors;
 
     /**************************************************************
-    Public functions   - full
+    External functions - full
     **************************************************************/
-
-    /**
-    Native sector is one with the same key address as the caller. If this
-    sector hasn't been annexed or initialized this will do so.
-    */
-    function initializeNativeSector() public {
-        Sector storage nativeSector = sectors[msg.sender];
-        if(!nativeSector.initialized){
-            initializeSector(nativeSector, msg.sender, msg.sender);
-        }
-    }
 
     /**
     A primary game function that is called to make a sector's buildings act.
@@ -44,6 +34,24 @@ contract Game is
                 sector,
                 transformations[sector.extractors[i].targetTransformationId]
             );
+        }
+
+        for(uint i = 0; i < sector.assemblers.length; i++){
+            proccessTransformation(
+                sector,
+                transformations[sector.assemblers[i].targetTransformationId]
+            );
+        }
+    }
+
+    /**
+    Native sector is one with the same key address as the caller. If this
+    sector hasn't been annexed or initialized this will do so .
+    */
+    function initializeNativeSector() external {
+        Sector storage nativeSector = sectors[msg.sender];
+        if(!nativeSector.initialized){
+            initializeSector(nativeSector, msg.sender, msg.sender);
         }
     }
 
@@ -65,6 +73,7 @@ contract Game is
     /**************************************************************
     Public functions   - view, pure
     **************************************************************/
+
     function getSectorAttributes(address sectorAddress) public view returns (
         bool initialized,
         address owner,
@@ -106,6 +115,7 @@ contract Game is
     /**************************************************************
     Modifiers
     **************************************************************/
+
     modifier callerOwnsSector(address sectorAddress) {
         require(
             msg.sender == sectors[sectorAddress].owner,
