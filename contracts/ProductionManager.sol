@@ -85,7 +85,11 @@ contract ProductionManager is
     function proccessTransformation(
         Sector storage sector,
         Transformation memory transformation
-    ) internal {
+    ) internal returns (
+        bool successful
+    ){
+        Sector memory sectorBackup = sector;
+
         TransformationElement memory trElem;
         ItemProperties memory itemProps;
 
@@ -98,7 +102,8 @@ contract ProductionManager is
                 itemProps,
                 trElem.quantity
             )){
-                revert("Unable to consume input item");
+                memcpyPlaceable(sectorBackup, sector);
+                return false;
             }
         }
         for(uint i = 0; i < transformation.outputs.length; i++){
@@ -110,9 +115,12 @@ contract ProductionManager is
                 itemProps,
                 trElem.quantity
             )){
-                revert("Unable to store output item");
+                memcpyPlaceable(sectorBackup, sector);
+                return false;
             }
         }
+
+        return true;
     }
 
 }

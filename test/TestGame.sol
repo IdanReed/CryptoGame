@@ -128,7 +128,6 @@ contract TestGame {
         game.addTransformationElement(false, 3, 1);
     }
 
-
     function testSetupRoutine_addTransformations() public {
         setupRoutine_addTransformations();
         Assert.equal(true, true, "");
@@ -181,5 +180,64 @@ contract TestGame {
 
     function testFunction_tickSector() public {
         game.tickSector(address(this));
+
+        (   uint[] memory itemIds,
+            uint[] memory itemQuantities
+        ) = game.getSectorSilos(address(this));
+
+        Assert.equal(
+            itemIds.length,
+            2,
+            "Verify that number of silos matches expected"
+        );
+        Assert.equal(
+            itemIds[0],
+            2,
+            "Verify that first silo stores component 2"
+        );
+        Assert.equal(
+            itemIds[1],
+            3,
+            "Verify that second silo stores component 3"
+        );
+        Assert.equal(
+            itemQuantities[0],
+            0,
+            "Verify that remaining component 2 matches expected"
+        );
+        Assert.equal(
+            itemQuantities[1],
+            2,
+            "Verify that remaining component 3 matches expected"
+        );
     }
+
+
+    function testFunction_manualTransformationFailCase() public {
+
+        (   uint[] memory itemIds1,
+            uint[] memory itemQuantities1
+        ) = game.getSectorSilos(address(this));
+
+        bool rtn = game.manualTransformation(address(this), 3);
+
+        Assert.equal(
+            rtn,
+            false,
+            "Verify that the transformation was unsuccessful."
+        );
+
+        (   uint[] memory itemIds2,
+            uint[] memory itemQuantities2
+        ) = game.getSectorSilos(address(this));
+
+        Assert.equal(
+            itemQuantities2[0],
+            itemQuantities1[0],
+            "Verify that the sector's component 2 stored counts match."
+        );
+
+    }
+
+
 }

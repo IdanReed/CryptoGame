@@ -7,16 +7,19 @@ contract TypesItem{
         Component,
         Placeable
     }
+
     enum ItemSubtypePlaceable{
         None,
         Silo,
         Extractor,
         Assembler
     }
+
     enum ItemSubtypeComponent{
         None,
         Standard
     }
+
     enum ItemSubtypeNaturalResource{
         None,
         Standard
@@ -39,15 +42,31 @@ contract TypesItem{
         uint mass;
         uint volume;
 
-        ItemType itemType; /* Specify which ItemSubtype_____ */
+        // ItemType itemType; /* Specify which ItemSubtype_____ */
 
         /* optional data */
-        ItemSubtypeNaturalResource itemSubtypeNaturalResource;
 
-        ItemSubtypeComponent itemSubtypeComponent;
+        ItemTypeFull itemType1;
 
-        ItemSubtypePlaceable itemSubtypePlaceable;
+        // ItemSubtypeNaturalResource itemSubtypeNaturalResource;
+
+        // ItemSubtypeComponent itemSubtypeComponent;
+
+        // ItemSubtypePlaceable itemSubtypePlaceable;
         PlaceableSubtypes placeableSubtypes;
+    }
+
+
+    /*
+    TODO convert enum members into cast based type to allow for less
+    annoying type checking
+    */
+    struct ItemTypeFull{
+        ItemType itemType;
+
+        ItemSubtypeNaturalResource itemSubtypeNaturalResource;
+        ItemSubtypeComponent itemSubtypeComponent;
+        ItemSubtypePlaceable itemSubtypePlaceable;
     }
 
     /**

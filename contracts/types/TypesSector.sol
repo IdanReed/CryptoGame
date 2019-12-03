@@ -2,6 +2,7 @@ pragma solidity ^0.5.0;
 
 import "./TypesItem.sol";
 
+
 /**
 TypesSector contract:
     is for the structs resposible for holding the data about a sector.
@@ -20,7 +21,7 @@ contract TypesSector is TypesItem{
         uint zAngle; /* address bits from 80 to 0   */
     }
 
-    struct Sector {
+    struct Sector{
         bool initialized;
 
         address owner;
@@ -35,6 +36,23 @@ contract TypesSector is TypesItem{
         AssemblerItem[] assemblers;
     }
 
+    struct SectorItemReference{
+        ItemSubtypePlaceable itemType;
+        uint itemIndex;
+        uint originalVal;
+    }
+
+    /**
+    Transformations are applied step-by-step and acts directly on storage (to
+    prevent excess copying). Each step creates one these structs to perserve
+    the original Sector data incase a following step fails.
+    */
+    struct SectorModification{
+        ItemSubtypePlaceable itemSubtypePlaceable;
+        uint itemIndex;
+        uint originalValue;
+        mapping (uint  => uint) thing;
+    }
 
     /**************************************************************
     Internal functions - full
@@ -108,14 +126,27 @@ contract TypesSector is TypesItem{
             /* Check if placeable exisits in sector */
 
             if(item.itemSubtypePlaceable == ItemSubtypePlaceable.Assembler){
-                for(uint i = 0; i < sector.assemblers.length && quantity > 0; i++){
+                for(uint i = 0;
+                    i < sector.assemblers.length && quantity > 0;
+                    i++
+                ){
                     if(sector.assemblers[i].itemIntf.itemId == item.id){
                         quantity -= 1;
                     }
                 }
-            }else if(item.itemSubtypePlaceable == ItemSubtypePlaceable.Extractor){
-
+            }else if(
+                item.itemSubtypePlaceable == ItemSubtypePlaceable.Extractor
+            ){
+                for(uint i = 0;
+                    i < sector.extractors.length && quantity > 0;
+                    i++
+                ){
+                    if(sector.extractors[i].itemIntf.itemId == item.id){
+                        quantity -= 1;
+                    }
+                }
             }
+
         }
         return (quantity == 0);
     }
@@ -131,10 +162,6 @@ contract TypesSector is TypesItem{
         uint quantity = quantityIn;
 
         if(item.itemType == ItemType.Placeable){
-            require(
-                quantity == 1,
-                "Require that placeable are stored one at a time"
-            );  // TODO
 
             if(item.itemSubtypePlaceable == ItemSubtypePlaceable.Silo){
                 sector.silos.push(item.placeableSubtypes.silo);
@@ -171,6 +198,27 @@ contract TypesSector is TypesItem{
         return (quantity == 0);
     }
 
+    function memcpyPlaceable(
+        Sector memory sectorMem,
+        Sector storage sectorStor
+    )
+    internal {
+
+        sectorStor.silos.length = sectorMem.silos.length;
+        for(uint i = 0; i < sectorMem.silos.length; i++ ){
+            sectorStor.silos[i] = sectorMem.silos[i];
+        }
+
+        sectorStor.extractors.length = sectorMem.extractors.length;
+        for(uint i = 0; i < sectorMem.extractors.length; i++ ){
+            sectorStor.extractors[i] = sectorMem.extractors[i];
+        }
+
+        sectorStor.assemblers.length = sectorMem.assemblers.length;
+        for(uint i = 0; i < sectorMem.assemblers.length; i++ ){
+            sectorStor.assemblers[i] = sectorMem.assemblers[i];
+        }
+    }
 
     /**************************************************************
     Public Views/Pure

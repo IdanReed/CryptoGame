@@ -20,6 +20,13 @@ contract Game is
     /**************************************************************
     External functions - full
     **************************************************************/
+    function test(address sectorAddress) external{
+        Sector storage sectorStor = sectors[sectorAddress];
+        Sector memory sectorMem = sectorStor;
+
+        memcpyPlaceable(sectorMem, sectorStor);
+
+    }
 
     /**
     A primary game function that is called to make a sector's buildings act.
@@ -63,8 +70,9 @@ contract Game is
         address sectorAddress,
         uint transformationId
     )
-    external callerOwnsSector(sectorAddress){
-        proccessTransformation(
+    external callerOwnsSector(sectorAddress)
+    returns (bool){
+        return proccessTransformation(
             sectors[sectorAddress],
             transformations[transformationId]
         );
