@@ -52,8 +52,9 @@ contract ProductionManager is
         );
     }
 
-    function getItemProperties(uint itemId) external view returns (
-        uint itemType
+    function getItemType(uint itemId) external view returns (
+        uint itemCategory,
+        uint itemSubtype
     ){
         require(
             itemId < items.length,
@@ -61,7 +62,10 @@ contract ProductionManager is
         );
 
         ItemProperties memory item = items[itemId];
-        return uint(item.itemType);
+        return (
+            uint(item.itemType.itemCategory),
+            item.itemType.itemSubtype
+        );
     }
 
     function getProductionMapRanges() external view returns (

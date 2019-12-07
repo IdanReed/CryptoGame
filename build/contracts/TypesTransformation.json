@@ -1,25 +1,25 @@
 {
   "contractName": "TypesTransformation",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol\":\"TypesTransformation\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol\":{\"keccak256\":\"0xefa863079362dd150a5a92a4ed0d63ad071c5c3e583cb50788682230c47a424d\",\"urls\":[\"bzzr://4f5884090f2bb8a7858cc7f4154ec44e7acbd58d2602c29d6e2a8fcd31eeb110\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a72305820038db80c25359f35e76def6a11f33838e349e6b85ec14768da41e1afc3a5bbc10029",
-  "deployedBytecode": "0x6080604052600080fdfea165627a7a72305820038db80c25359f35e76def6a11f33838e349e6b85ec14768da41e1afc3a5bbc10029",
-  "sourceMap": "25:260:6:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:260:6;;;;;;;",
-  "deployedSourceMap": "25:260:6:-;;;;;",
-  "source": "pragma solidity ^0.5.0;\n\ncontract TypesTransformation{\n    struct TransformationElement{\n        uint itemId;\n        uint quantity;\n    }\n    struct Transformation{\n        uint transformationId;\n        TransformationElement[] inputs;\n        TransformationElement[] outputs;\n    }\n}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol\":\"TypesTransformation\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol\":{\"keccak256\":\"0x02d9c1614b46da772f53381a0bfc9bfe379d13bf2836d5f96f86baccac888452\",\"urls\":[\"bzzr://75392bdc6af9295bff03b9456ab265202c1271910296df4225101658438b8ed8\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a72305820bd1a2317d803569060a97085dd45231af5a9d7a41ae7adffa40cfbb3db81c41d0029",
+  "deployedBytecode": "0x6080604052600080fdfea165627a7a72305820bd1a2317d803569060a97085dd45231af5a9d7a41ae7adffa40cfbb3db81c41d0029",
+  "sourceMap": "25:378:6:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:378:6;;;;;;;",
+  "deployedSourceMap": "25:378:6:-;;;;;",
+  "source": "pragma solidity ^0.5.0;\n\ncontract TypesTransformation {\n\n    /**\n    This struct contains a 'recipe' that specifies a transformation one item\n    set into another.\n    */\n    struct Transformation{\n        uint transformationId;\n        TransformationElement[] inputs;\n        TransformationElement[] outputs;\n    }\n\n    struct TransformationElement{\n        uint itemId;\n        uint quantity;\n    }\n\n}",
   "sourcePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol",
   "ast": {
     "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol",
     "exportedSymbols": {
       "TypesTransformation": [
-        1263
+        1606
       ]
     },
-    "id": 1264,
+    "id": 1607,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1248,
+        "id": 1591,
         "literals": [
           "solidity",
           "^",
@@ -35,24 +35,24 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1263,
+        "id": 1606,
         "linearizedBaseContracts": [
-          1263
+          1606
         ],
         "name": "TypesTransformation",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "canonicalName": "TypesTransformation.TransformationElement",
-            "id": 1253,
+            "canonicalName": "TypesTransformation.Transformation",
+            "id": 1600,
             "members": [
               {
                 "constant": false,
-                "id": 1250,
-                "name": "itemId",
+                "id": 1593,
+                "name": "transformationId",
                 "nodeType": "VariableDeclaration",
-                "scope": 1253,
-                "src": "97:11:6",
+                "scope": 1600,
+                "src": "206:21:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -60,10 +60,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1249,
+                  "id": 1592,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "97:4:6",
+                  "src": "206:4:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -74,11 +74,98 @@
               },
               {
                 "constant": false,
-                "id": 1252,
-                "name": "quantity",
+                "id": 1596,
+                "name": "inputs",
                 "nodeType": "VariableDeclaration",
-                "scope": 1253,
-                "src": "118:13:6",
+                "scope": 1600,
+                "src": "237:30:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1605_storage_$dyn_storage_ptr",
+                  "typeString": "struct TypesTransformation.TransformationElement[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "contractScope": null,
+                    "id": 1594,
+                    "name": "TransformationElement",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1605,
+                    "src": "237:21:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TransformationElement_$1605_storage_ptr",
+                      "typeString": "struct TypesTransformation.TransformationElement"
+                    }
+                  },
+                  "id": 1595,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "237:23:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1605_storage_$dyn_storage_ptr",
+                    "typeString": "struct TypesTransformation.TransformationElement[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1599,
+                "name": "outputs",
+                "nodeType": "VariableDeclaration",
+                "scope": 1600,
+                "src": "277:31:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1605_storage_$dyn_storage_ptr",
+                  "typeString": "struct TypesTransformation.TransformationElement[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "contractScope": null,
+                    "id": 1597,
+                    "name": "TransformationElement",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1605,
+                    "src": "277:21:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TransformationElement_$1605_storage_ptr",
+                      "typeString": "struct TypesTransformation.TransformationElement"
+                    }
+                  },
+                  "id": 1598,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "277:23:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1605_storage_$dyn_storage_ptr",
+                    "typeString": "struct TypesTransformation.TransformationElement[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Transformation",
+            "nodeType": "StructDefinition",
+            "scope": 1606,
+            "src": "175:140:6",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "TypesTransformation.TransformationElement",
+            "id": 1605,
+            "members": [
+              {
+                "constant": false,
+                "id": 1602,
+                "name": "itemId",
+                "nodeType": "VariableDeclaration",
+                "scope": 1605,
+                "src": "359:11:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -86,10 +173,36 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1251,
+                  "id": 1601,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "118:4:6",
+                  "src": "359:4:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1604,
+                "name": "quantity",
+                "nodeType": "VariableDeclaration",
+                "scope": 1605,
+                "src": "380:13:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1603,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "380:4:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -101,142 +214,29 @@
             ],
             "name": "TransformationElement",
             "nodeType": "StructDefinition",
-            "scope": 1263,
-            "src": "59:79:6",
-            "visibility": "public"
-          },
-          {
-            "canonicalName": "TypesTransformation.Transformation",
-            "id": 1262,
-            "members": [
-              {
-                "constant": false,
-                "id": 1255,
-                "name": "transformationId",
-                "nodeType": "VariableDeclaration",
-                "scope": 1262,
-                "src": "174:21:6",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
-                },
-                "typeName": {
-                  "id": 1254,
-                  "name": "uint",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "174:4:6",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 1258,
-                "name": "inputs",
-                "nodeType": "VariableDeclaration",
-                "scope": 1262,
-                "src": "205:30:6",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1253_storage_$dyn_storage_ptr",
-                  "typeString": "struct TypesTransformation.TransformationElement[]"
-                },
-                "typeName": {
-                  "baseType": {
-                    "contractScope": null,
-                    "id": 1256,
-                    "name": "TransformationElement",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1253,
-                    "src": "205:21:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TransformationElement_$1253_storage_ptr",
-                      "typeString": "struct TypesTransformation.TransformationElement"
-                    }
-                  },
-                  "id": 1257,
-                  "length": null,
-                  "nodeType": "ArrayTypeName",
-                  "src": "205:23:6",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1253_storage_$dyn_storage_ptr",
-                    "typeString": "struct TypesTransformation.TransformationElement[]"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 1261,
-                "name": "outputs",
-                "nodeType": "VariableDeclaration",
-                "scope": 1262,
-                "src": "245:31:6",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1253_storage_$dyn_storage_ptr",
-                  "typeString": "struct TypesTransformation.TransformationElement[]"
-                },
-                "typeName": {
-                  "baseType": {
-                    "contractScope": null,
-                    "id": 1259,
-                    "name": "TransformationElement",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1253,
-                    "src": "245:21:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TransformationElement_$1253_storage_ptr",
-                      "typeString": "struct TypesTransformation.TransformationElement"
-                    }
-                  },
-                  "id": 1260,
-                  "length": null,
-                  "nodeType": "ArrayTypeName",
-                  "src": "245:23:6",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1253_storage_$dyn_storage_ptr",
-                    "typeString": "struct TypesTransformation.TransformationElement[]"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              }
-            ],
-            "name": "Transformation",
-            "nodeType": "StructDefinition",
-            "scope": 1263,
-            "src": "143:140:6",
+            "scope": 1606,
+            "src": "321:79:6",
             "visibility": "public"
           }
         ],
-        "scope": 1264,
-        "src": "25:260:6"
+        "scope": 1607,
+        "src": "25:378:6"
       }
     ],
-    "src": "0:285:6"
+    "src": "0:403:6"
   },
   "legacyAST": {
     "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesTransformation.sol",
     "exportedSymbols": {
       "TypesTransformation": [
-        1263
+        1606
       ]
     },
-    "id": 1264,
+    "id": 1607,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1248,
+        "id": 1591,
         "literals": [
           "solidity",
           "^",
@@ -252,24 +252,24 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1263,
+        "id": 1606,
         "linearizedBaseContracts": [
-          1263
+          1606
         ],
         "name": "TypesTransformation",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
-            "canonicalName": "TypesTransformation.TransformationElement",
-            "id": 1253,
+            "canonicalName": "TypesTransformation.Transformation",
+            "id": 1600,
             "members": [
               {
                 "constant": false,
-                "id": 1250,
-                "name": "itemId",
+                "id": 1593,
+                "name": "transformationId",
                 "nodeType": "VariableDeclaration",
-                "scope": 1253,
-                "src": "97:11:6",
+                "scope": 1600,
+                "src": "206:21:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -277,10 +277,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1249,
+                  "id": 1592,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "97:4:6",
+                  "src": "206:4:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -291,11 +291,98 @@
               },
               {
                 "constant": false,
-                "id": 1252,
-                "name": "quantity",
+                "id": 1596,
+                "name": "inputs",
                 "nodeType": "VariableDeclaration",
-                "scope": 1253,
-                "src": "118:13:6",
+                "scope": 1600,
+                "src": "237:30:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1605_storage_$dyn_storage_ptr",
+                  "typeString": "struct TypesTransformation.TransformationElement[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "contractScope": null,
+                    "id": 1594,
+                    "name": "TransformationElement",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1605,
+                    "src": "237:21:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TransformationElement_$1605_storage_ptr",
+                      "typeString": "struct TypesTransformation.TransformationElement"
+                    }
+                  },
+                  "id": 1595,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "237:23:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1605_storage_$dyn_storage_ptr",
+                    "typeString": "struct TypesTransformation.TransformationElement[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1599,
+                "name": "outputs",
+                "nodeType": "VariableDeclaration",
+                "scope": 1600,
+                "src": "277:31:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1605_storage_$dyn_storage_ptr",
+                  "typeString": "struct TypesTransformation.TransformationElement[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "contractScope": null,
+                    "id": 1597,
+                    "name": "TransformationElement",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1605,
+                    "src": "277:21:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_TransformationElement_$1605_storage_ptr",
+                      "typeString": "struct TypesTransformation.TransformationElement"
+                    }
+                  },
+                  "id": 1598,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "277:23:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1605_storage_$dyn_storage_ptr",
+                    "typeString": "struct TypesTransformation.TransformationElement[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Transformation",
+            "nodeType": "StructDefinition",
+            "scope": 1606,
+            "src": "175:140:6",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "TypesTransformation.TransformationElement",
+            "id": 1605,
+            "members": [
+              {
+                "constant": false,
+                "id": 1602,
+                "name": "itemId",
+                "nodeType": "VariableDeclaration",
+                "scope": 1605,
+                "src": "359:11:6",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -303,10 +390,36 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 1251,
+                  "id": 1601,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "118:4:6",
+                  "src": "359:4:6",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 1604,
+                "name": "quantity",
+                "nodeType": "VariableDeclaration",
+                "scope": 1605,
+                "src": "380:13:6",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 1603,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "380:4:6",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -318,129 +431,16 @@
             ],
             "name": "TransformationElement",
             "nodeType": "StructDefinition",
-            "scope": 1263,
-            "src": "59:79:6",
-            "visibility": "public"
-          },
-          {
-            "canonicalName": "TypesTransformation.Transformation",
-            "id": 1262,
-            "members": [
-              {
-                "constant": false,
-                "id": 1255,
-                "name": "transformationId",
-                "nodeType": "VariableDeclaration",
-                "scope": 1262,
-                "src": "174:21:6",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
-                },
-                "typeName": {
-                  "id": 1254,
-                  "name": "uint",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "174:4:6",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 1258,
-                "name": "inputs",
-                "nodeType": "VariableDeclaration",
-                "scope": 1262,
-                "src": "205:30:6",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1253_storage_$dyn_storage_ptr",
-                  "typeString": "struct TypesTransformation.TransformationElement[]"
-                },
-                "typeName": {
-                  "baseType": {
-                    "contractScope": null,
-                    "id": 1256,
-                    "name": "TransformationElement",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1253,
-                    "src": "205:21:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TransformationElement_$1253_storage_ptr",
-                      "typeString": "struct TypesTransformation.TransformationElement"
-                    }
-                  },
-                  "id": 1257,
-                  "length": null,
-                  "nodeType": "ArrayTypeName",
-                  "src": "205:23:6",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1253_storage_$dyn_storage_ptr",
-                    "typeString": "struct TypesTransformation.TransformationElement[]"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 1261,
-                "name": "outputs",
-                "nodeType": "VariableDeclaration",
-                "scope": 1262,
-                "src": "245:31:6",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1253_storage_$dyn_storage_ptr",
-                  "typeString": "struct TypesTransformation.TransformationElement[]"
-                },
-                "typeName": {
-                  "baseType": {
-                    "contractScope": null,
-                    "id": 1259,
-                    "name": "TransformationElement",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1253,
-                    "src": "245:21:6",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_TransformationElement_$1253_storage_ptr",
-                      "typeString": "struct TypesTransformation.TransformationElement"
-                    }
-                  },
-                  "id": 1260,
-                  "length": null,
-                  "nodeType": "ArrayTypeName",
-                  "src": "245:23:6",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_array$_t_struct$_TransformationElement_$1253_storage_$dyn_storage_ptr",
-                    "typeString": "struct TypesTransformation.TransformationElement[]"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              }
-            ],
-            "name": "Transformation",
-            "nodeType": "StructDefinition",
-            "scope": 1263,
-            "src": "143:140:6",
+            "scope": 1606,
+            "src": "321:79:6",
             "visibility": "public"
           }
         ],
-        "scope": 1264,
-        "src": "25:260:6"
+        "scope": 1607,
+        "src": "25:378:6"
       }
     ],
-    "src": "0:285:6"
+    "src": "0:403:6"
   },
   "compiler": {
     "name": "solc",
@@ -448,7 +448,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-21T21:32:03.374Z",
+  "updatedAt": "2019-12-06T23:23:15.802Z",
   "devdoc": {
     "methods": {}
   },

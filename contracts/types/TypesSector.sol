@@ -46,12 +46,14 @@ contract TypesSector is TypesItem{
     Transformations are applied step-by-step and acts directly on storage (to
     prevent excess copying). Each step creates one these structs to perserve
     the original Sector data incase a following step fails.
+
+    TODO switch from memcpy to this, could actually 'store' them in storage to
+    allow for the list to be built dyn
     */
     struct SectorModification{
         ItemSubtypePlaceable itemSubtypePlaceable;
         uint itemIndex;
         uint originalValue;
-        mapping (uint  => uint) thing;
     }
 
     /**************************************************************
@@ -102,10 +104,10 @@ contract TypesSector is TypesItem{
     ){
         uint quantity = quantityIn;
 
-        if(item.itemType == ItemType.NaturalResource){
+        if(item.itemType.itemCategory == ItemCategory.NaturalResource){
             /* Extract item from sector's potential nat reasource */
 
-        }else if(item.itemType == ItemType.Component){
+        }else if(item.itemType.itemCategory == ItemCategory.Component){
             /* Subtract item from sector's silos */
             for(
                 uint i = 0;
@@ -122,10 +124,14 @@ contract TypesSector is TypesItem{
                     }
                 }
             }
-        }else if(item.itemType == ItemType.Placeable){
+        }else if(item.itemType.itemCategory == ItemCategory.Placeable){
             /* Check if placeable exisits in sector */
 
-            if(item.itemSubtypePlaceable == ItemSubtypePlaceable.Assembler){
+            if(
+                item.itemType.itemSubtype == uint(
+                    ItemSubtypePlaceable.Assembler
+                )
+            ){
                 for(uint i = 0;
                     i < sector.assemblers.length && quantity > 0;
                     i++
@@ -135,7 +141,9 @@ contract TypesSector is TypesItem{
                     }
                 }
             }else if(
-                item.itemSubtypePlaceable == ItemSubtypePlaceable.Extractor
+                item.itemType.itemSubtype == uint(
+                    ItemSubtypePlaceable.Extractor
+                )
             ){
                 for(uint i = 0;
                     i < sector.extractors.length && quantity > 0;
@@ -161,19 +169,29 @@ contract TypesSector is TypesItem{
     ){
         uint quantity = quantityIn;
 
-        if(item.itemType == ItemType.Placeable){
-
-            if(item.itemSubtypePlaceable == ItemSubtypePlaceable.Silo){
-                sector.silos.push(item.placeableSubtypes.silo);
-            }else if(item.itemSubtypePlaceable == ItemSubtypePlaceable.Extractor){
-                sector.extractors.push(item.placeableSubtypes.extractor);
-            }else if(item.itemSubtypePlaceable == ItemSubtypePlaceable.Assembler){
-                sector.assemblers.push(item.placeableSubtypes.assembler);
+        if(item.itemType.itemCategory == ItemCategory.Placeable){
+            if(
+                item.itemType.itemSubtype == uint(
+                    ItemSubtypePlaceable.Silo
+                )
+            ){
+                sector.silos.push(item.subtypes.placeable.silo);
+            }else if(
+                item.itemType.itemSubtype == uint(
+                    ItemSubtypePlaceable.Extractor
+                )
+            ){
+                sector.extractors.push(item.subtypes.placeable.extractor);
+            }else if(
+                item.itemType.itemSubtype == uint(
+                    ItemSubtypePlaceable.Assembler
+                )
+            ){
+                sector.assemblers.push(item.subtypes.placeable.assembler);
             }
-
             quantity = 0;
 
-        }else if(item.itemType == ItemType.Component){
+        }else if(item.itemType.itemCategory == ItemCategory.Component){
             for(uint i = 0; i < sector.silos.length && quantity > 0; i++){
 
                 if(item.id == sector.silos[i].targetItemId){
@@ -187,7 +205,9 @@ contract TypesSector is TypesItem{
                         quantity = sector.silos[i].curQuantity -
                             sector.silos[i].maxQuantity;
 
-                        sector.silos[i].curQuantity = sector.silos[i].maxQuantity;
+                        sector.silos[i].curQuantity = sector
+                            .silos[i]
+                            .maxQuantity;
                     }else{
                         quantity = 0;
                     }
@@ -218,6 +238,10 @@ contract TypesSector is TypesItem{
         for(uint i = 0; i < sectorMem.assemblers.length; i++ ){
             sectorStor.assemblers[i] = sectorMem.assemblers[i];
         }
+    }
+
+    function setSectorTickBlock(Sector storage sector) internal {
+        sector.lastTickBlock = block.number;
     }
 
     /**************************************************************

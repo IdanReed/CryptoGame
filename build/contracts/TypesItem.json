@@ -1,25 +1,25 @@
 {
   "contractName": "TypesItem",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesItem.sol\":\"TypesItem\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesItem.sol\":{\"keccak256\":\"0x3943d11eca991432c49edfac2c6e83f06fc35ef50adcada256d64cb5ccab5948\",\"urls\":[\"bzzr://9e8a567636d12706a0f7788128fd54cbe814f1d6e6b4f5dc6cf3518270b1329a\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a7230582031d56161e7d88f1cf32efeb04dc6d2591ed4bacd93fd6d493f5dd400698471360029",
-  "deployedBytecode": "0x6080604052600080fdfea165627a7a7230582031d56161e7d88f1cf32efeb04dc6d2591ed4bacd93fd6d493f5dd400698471360029",
-  "sourceMap": "25:2229:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:2229:4;;;;;;;",
-  "deployedSourceMap": "25:2229:4:-;;;;;",
-  "source": "pragma solidity ^0.5.0;\n\ncontract TypesItem{\n\n    enum ItemType{\n        NaturalResource,\n        Component,\n        Placeable\n    }\n    enum ItemSubtypePlaceable{\n        None,\n        Silo,\n        Extractor,\n        Assembler\n    }\n    enum ItemSubtypeComponent{\n        None,\n        Standard\n    }\n    enum ItemSubtypeNaturalResource{\n        None,\n        Standard\n    }\n\n    /**\n    This struct contains all data an item MAY have. This is so an array of\n    ItemProperties structs can describe all possible items. Then index refs can\n    be made to that array.\n\n    Also structs of an optional subtype can be made to store only optional\n    members.\n\n    The only things that should be items are things with data determined by\n    external productionMap calls.\n    */\n    struct ItemProperties{\n        uint id; /* backup itemId */\n\n        uint mass;\n        uint volume;\n\n        ItemType itemType; /* Specify which ItemSubtype_____ */\n\n        /* optional data */\n        ItemSubtypeNaturalResource itemSubtypeNaturalResource;\n\n        ItemSubtypeComponent itemSubtypeComponent;\n\n        ItemSubtypePlaceable itemSubtypePlaceable;\n        PlaceableSubtypes placeableSubtypes;\n    }\n\n    /**\n    Required struct for item subtypes. Contains a reference back to it's item\n    index.\n    */\n    struct ItemSubtypeInterface{\n        uint itemId; /* backup itemId */\n    }\n\n    struct PlaceableSubtypes{\n        SiloItem silo;\n        ExtractorItem extractor;\n        AssemblerItem assembler;\n    }\n\n    struct Placeable {\n        uint floorSpace;\n    }\n\n    struct SiloItem {\n        /* contant */\n        ItemSubtypeInterface itemIntf;\n        Placeable placeable;\n\n        uint targetItemId;\n        uint maxQuantity;\n\n        /* volitile */\n        uint curQuantity;\n\n    }\n\n    struct ExtractorItem {\n        /* contant */\n        ItemSubtypeInterface itemIntf;\n        Placeable placeable;\n\n        uint targetTransformationId;\n    }\n\n    struct AssemblerItem {\n        /* contant */\n        ItemSubtypeInterface itemIntf;\n        Placeable placeable;\n\n        uint targetTransformationId;\n    }\n\n    function initItemSubtype(\n        ItemSubtypeInterface storage intf,\n        uint itemId\n    ) internal {\n        intf.itemId = itemId;\n    }\n}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesItem.sol\":\"TypesItem\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesItem.sol\":{\"keccak256\":\"0x3eab23b2c1f6a334f1faf364e32a8e271a68bbf4c7fc8b0eeab58403a1008e08\",\"urls\":[\"bzzr://073a52dd01fd25a745a0948190f1815518a730df9ecf01378b2ae37f4e57deac\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a72305820c3610c0905c4b3ecb1d3a19d225d59bd644ddef30bb92a2e9bb95c49d82431cd0029",
+  "deployedBytecode": "0x6080604052600080fdfea165627a7a72305820c3610c0905c4b3ecb1d3a19d225d59bd644ddef30bb92a2e9bb95c49d82431cd0029",
+  "sourceMap": "25:2975:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;25:2975:4;;;;;;;",
+  "deployedSourceMap": "25:2975:4:-;;;;;",
+  "source": "pragma solidity ^0.5.0;\n\ncontract TypesItem{\n\n    /**\n    This struct specifies the full type of an item. Currently this allows only\n    two layers where itemCategory defines behavior and subtypes specific extra\n    members to allow for unquie behavior.\n\n    Holds no data outside of enums.\n    */\n    struct ItemType{\n        ItemCategory itemCategory;\n        uint itemSubtype;\n\n        // ItemSubtypeNaturalResource itemSubtypeNaturalResource;\n        // ItemSubtypeComponent itemSubtypeComponent;\n        // ItemSubtypePlaceable itemSubtypePlaceable;\n    }\n\n    enum ItemCategory{\n        None,\n        NaturalResource,\n        Component,\n        Placeable\n    }\n\n    enum ItemSubtypePlaceable{\n        None,\n        Silo,\n        Extractor,\n        Assembler\n    }\n\n    enum ItemSubtypeComponent{\n        None,\n        Standard\n    }\n\n    enum ItemSubtypeNaturalResource{\n        None,\n        Standard\n    }\n\n    /**\n    This struct contains all data an item MAY have. This is so an array of\n    ItemProperties structs can describe all possible items. Then index refs can\n    be made to that array.\n\n    Also structs of an optional subtype can be made to store only optional\n    members.\n\n    The only things that should be items are things with data determined by\n    external productionMap calls.\n    */\n    struct ItemProperties{\n        uint id; /* backup itemId */\n\n        uint mass;\n        uint volume;\n\n        // ItemType itemType; /* Specify which ItemSubtype_____ */\n\n        /* optional data */\n\n        ItemType itemType; /* Only specifies */\n        ItemSubtypes subtypes; /* Holds data */\n\n        // ItemSubtypeNaturalResource itemSubtypeNaturalResource;\n\n        // ItemSubtypeComponent itemSubtypeComponent;\n\n        // ItemSubtypePlaceable itemSubtypePlaceable;\n        // PlaceableSubtypes placeableSubtypes;\n    }\n\n    /**\n    This struct stores all subtype data\n    */\n    struct ItemSubtypes{\n        PlaceableSubtypes placeable;\n\n    }\n\n    /**\n    Required struct for item subtypes. Contains a reference back to it's item\n    index. Allows for subtype data to be store seperatly.\n    */\n    // TODO seperate constant subtype data out from vol to use itemIntf?\n    struct ItemSubtypeInterface{\n        uint itemId; /* backup itemId */\n    }\n\n    struct PlaceableSubtypes{\n        SiloItem silo;\n        ExtractorItem extractor;\n        AssemblerItem assembler;\n    }\n\n    struct Placeable {\n        uint floorSpace;\n    }\n    struct SiloItem {\n        /* contant */\n        ItemSubtypeInterface itemIntf;\n        Placeable placeable;\n\n        uint targetItemId;\n        uint maxQuantity;\n\n        /* volitile */\n        uint curQuantity;\n\n    }\n    struct ExtractorItem {\n        /* contant */\n        ItemSubtypeInterface itemIntf;\n        Placeable placeable;\n\n        uint targetTransformationId;\n    }\n    struct AssemblerItem {\n        /* contant */\n        ItemSubtypeInterface itemIntf;\n        Placeable placeable;\n\n        uint targetTransformationId;\n    }\n\n}",
   "sourcePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesItem.sol",
   "ast": {
     "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesItem.sol",
     "exportedSymbols": {
       "TypesItem": [
-        912
+        924
       ]
     },
-    "id": 913,
+    "id": 925,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 827,
+        "id": 850,
         "literals": [
           "solidity",
           "^",
@@ -35,248 +35,40 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 912,
+        "id": 924,
         "linearizedBaseContracts": [
-          912
+          924
         ],
         "name": "TypesItem",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "TypesItem.ItemType",
-            "id": 831,
+            "id": 855,
             "members": [
-              {
-                "id": 828,
-                "name": "NaturalResource",
-                "nodeType": "EnumValue",
-                "src": "73:15:4"
-              },
-              {
-                "id": 829,
-                "name": "Component",
-                "nodeType": "EnumValue",
-                "src": "98:9:4"
-              },
-              {
-                "id": 830,
-                "name": "Placeable",
-                "nodeType": "EnumValue",
-                "src": "117:9:4"
-              }
-            ],
-            "name": "ItemType",
-            "nodeType": "EnumDefinition",
-            "src": "50:82:4"
-          },
-          {
-            "canonicalName": "TypesItem.ItemSubtypePlaceable",
-            "id": 836,
-            "members": [
-              {
-                "id": 832,
-                "name": "None",
-                "nodeType": "EnumValue",
-                "src": "172:4:4"
-              },
-              {
-                "id": 833,
-                "name": "Silo",
-                "nodeType": "EnumValue",
-                "src": "186:4:4"
-              },
-              {
-                "id": 834,
-                "name": "Extractor",
-                "nodeType": "EnumValue",
-                "src": "200:9:4"
-              },
-              {
-                "id": 835,
-                "name": "Assembler",
-                "nodeType": "EnumValue",
-                "src": "219:9:4"
-              }
-            ],
-            "name": "ItemSubtypePlaceable",
-            "nodeType": "EnumDefinition",
-            "src": "137:97:4"
-          },
-          {
-            "canonicalName": "TypesItem.ItemSubtypeComponent",
-            "id": 839,
-            "members": [
-              {
-                "id": 837,
-                "name": "None",
-                "nodeType": "EnumValue",
-                "src": "274:4:4"
-              },
-              {
-                "id": 838,
-                "name": "Standard",
-                "nodeType": "EnumValue",
-                "src": "288:8:4"
-              }
-            ],
-            "name": "ItemSubtypeComponent",
-            "nodeType": "EnumDefinition",
-            "src": "239:63:4"
-          },
-          {
-            "canonicalName": "TypesItem.ItemSubtypeNaturalResource",
-            "id": 842,
-            "members": [
-              {
-                "id": 840,
-                "name": "None",
-                "nodeType": "EnumValue",
-                "src": "348:4:4"
-              },
-              {
-                "id": 841,
-                "name": "Standard",
-                "nodeType": "EnumValue",
-                "src": "362:8:4"
-              }
-            ],
-            "name": "ItemSubtypeNaturalResource",
-            "nodeType": "EnumDefinition",
-            "src": "307:69:4"
-          },
-          {
-            "canonicalName": "TypesItem.ItemProperties",
-            "id": 859,
-            "members": [
-              {
-                "constant": false,
-                "id": 844,
-                "name": "id",
-                "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "810:7:4",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
-                },
-                "typeName": {
-                  "id": 843,
-                  "name": "uint",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "810:4:4",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 846,
-                "name": "mass",
-                "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "848:9:4",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
-                },
-                "typeName": {
-                  "id": 845,
-                  "name": "uint",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "848:4:4",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 848,
-                "name": "volume",
-                "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "867:11:4",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
-                },
-                "typeName": {
-                  "id": 847,
-                  "name": "uint",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "867:4:4",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 850,
-                "name": "itemType",
-                "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "889:17:4",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_ItemType_$831",
-                  "typeString": "enum TypesItem.ItemType"
-                },
-                "typeName": {
-                  "contractScope": null,
-                  "id": 849,
-                  "name": "ItemType",
-                  "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 831,
-                  "src": "889:8:4",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_ItemType_$831",
-                    "typeString": "enum TypesItem.ItemType"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              },
               {
                 "constant": false,
                 "id": 852,
-                "name": "itemSubtypeNaturalResource",
+                "name": "itemCategory",
                 "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "982:53:4",
+                "scope": 855,
+                "src": "327:25:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_ItemSubtypeNaturalResource_$842",
-                  "typeString": "enum TypesItem.ItemSubtypeNaturalResource"
+                  "typeIdentifier": "t_enum$_ItemCategory_$860",
+                  "typeString": "enum TypesItem.ItemCategory"
                 },
                 "typeName": {
                   "contractScope": null,
                   "id": 851,
-                  "name": "ItemSubtypeNaturalResource",
+                  "name": "ItemCategory",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 842,
-                  "src": "982:26:4",
+                  "referencedDeclaration": 860,
+                  "src": "327:12:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_ItemSubtypeNaturalResource_$842",
-                    "typeString": "enum TypesItem.ItemSubtypeNaturalResource"
+                    "typeIdentifier": "t_enum$_ItemCategory_$860",
+                    "typeString": "enum TypesItem.ItemCategory"
                   }
                 },
                 "value": null,
@@ -285,54 +77,169 @@
               {
                 "constant": false,
                 "id": 854,
-                "name": "itemSubtypeComponent",
+                "name": "itemSubtype",
                 "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "1046:41:4",
+                "scope": 855,
+                "src": "362:16:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_ItemSubtypeComponent_$839",
-                  "typeString": "enum TypesItem.ItemSubtypeComponent"
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
                 },
                 "typeName": {
-                  "contractScope": null,
                   "id": 853,
-                  "name": "ItemSubtypeComponent",
-                  "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 839,
-                  "src": "1046:20:4",
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "362:4:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_ItemSubtypeComponent_$839",
-                    "typeString": "enum TypesItem.ItemSubtypeComponent"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   }
                 },
                 "value": null,
                 "visibility": "internal"
-              },
+              }
+            ],
+            "name": "ItemType",
+            "nodeType": "StructDefinition",
+            "scope": 924,
+            "src": "302:258:4",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "TypesItem.ItemCategory",
+            "id": 860,
+            "members": [
               {
-                "constant": false,
                 "id": 856,
-                "name": "itemSubtypePlaceable",
+                "name": "None",
+                "nodeType": "EnumValue",
+                "src": "593:4:4"
+              },
+              {
+                "id": 857,
+                "name": "NaturalResource",
+                "nodeType": "EnumValue",
+                "src": "607:15:4"
+              },
+              {
+                "id": 858,
+                "name": "Component",
+                "nodeType": "EnumValue",
+                "src": "632:9:4"
+              },
+              {
+                "id": 859,
+                "name": "Placeable",
+                "nodeType": "EnumValue",
+                "src": "651:9:4"
+              }
+            ],
+            "name": "ItemCategory",
+            "nodeType": "EnumDefinition",
+            "src": "566:100:4"
+          },
+          {
+            "canonicalName": "TypesItem.ItemSubtypePlaceable",
+            "id": 865,
+            "members": [
+              {
+                "id": 861,
+                "name": "None",
+                "nodeType": "EnumValue",
+                "src": "707:4:4"
+              },
+              {
+                "id": 862,
+                "name": "Silo",
+                "nodeType": "EnumValue",
+                "src": "721:4:4"
+              },
+              {
+                "id": 863,
+                "name": "Extractor",
+                "nodeType": "EnumValue",
+                "src": "735:9:4"
+              },
+              {
+                "id": 864,
+                "name": "Assembler",
+                "nodeType": "EnumValue",
+                "src": "754:9:4"
+              }
+            ],
+            "name": "ItemSubtypePlaceable",
+            "nodeType": "EnumDefinition",
+            "src": "672:97:4"
+          },
+          {
+            "canonicalName": "TypesItem.ItemSubtypeComponent",
+            "id": 868,
+            "members": [
+              {
+                "id": 866,
+                "name": "None",
+                "nodeType": "EnumValue",
+                "src": "810:4:4"
+              },
+              {
+                "id": 867,
+                "name": "Standard",
+                "nodeType": "EnumValue",
+                "src": "824:8:4"
+              }
+            ],
+            "name": "ItemSubtypeComponent",
+            "nodeType": "EnumDefinition",
+            "src": "775:63:4"
+          },
+          {
+            "canonicalName": "TypesItem.ItemSubtypeNaturalResource",
+            "id": 871,
+            "members": [
+              {
+                "id": 869,
+                "name": "None",
+                "nodeType": "EnumValue",
+                "src": "885:4:4"
+              },
+              {
+                "id": 870,
+                "name": "Standard",
+                "nodeType": "EnumValue",
+                "src": "899:8:4"
+              }
+            ],
+            "name": "ItemSubtypeNaturalResource",
+            "nodeType": "EnumDefinition",
+            "src": "844:69:4"
+          },
+          {
+            "canonicalName": "TypesItem.ItemProperties",
+            "id": 882,
+            "members": [
+              {
+                "constant": false,
+                "id": 873,
+                "name": "id",
                 "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "1098:41:4",
+                "scope": 882,
+                "src": "1347:7:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_ItemSubtypePlaceable_$836",
-                  "typeString": "enum TypesItem.ItemSubtypePlaceable"
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
                 },
                 "typeName": {
-                  "contractScope": null,
-                  "id": 855,
-                  "name": "ItemSubtypePlaceable",
-                  "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 836,
-                  "src": "1098:20:4",
+                  "id": 872,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1347:4:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_ItemSubtypePlaceable_$836",
-                    "typeString": "enum TypesItem.ItemSubtypePlaceable"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   }
                 },
                 "value": null,
@@ -340,27 +247,107 @@
               },
               {
                 "constant": false,
-                "id": 858,
-                "name": "placeableSubtypes",
+                "id": 875,
+                "name": "mass",
                 "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "1149:35:4",
+                "scope": 882,
+                "src": "1385:9:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_PlaceableSubtypes_$869_storage_ptr",
-                  "typeString": "struct TypesItem.PlaceableSubtypes"
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 874,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1385:4:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 877,
+                "name": "volume",
+                "nodeType": "VariableDeclaration",
+                "scope": 882,
+                "src": "1404:11:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 876,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1404:4:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 879,
+                "name": "itemType",
+                "nodeType": "VariableDeclaration",
+                "scope": 882,
+                "src": "1523:17:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ItemType_$855_storage_ptr",
+                  "typeString": "struct TypesItem.ItemType"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 857,
-                  "name": "PlaceableSubtypes",
+                  "id": 878,
+                  "name": "ItemType",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 869,
-                  "src": "1149:17:4",
+                  "referencedDeclaration": 855,
+                  "src": "1523:8:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_PlaceableSubtypes_$869_storage_ptr",
-                    "typeString": "struct TypesItem.PlaceableSubtypes"
+                    "typeIdentifier": "t_struct$_ItemType_$855_storage_ptr",
+                    "typeString": "struct TypesItem.ItemType"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 881,
+                "name": "subtypes",
+                "nodeType": "VariableDeclaration",
+                "scope": 882,
+                "src": "1571:21:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ItemSubtypes_$885_storage_ptr",
+                  "typeString": "struct TypesItem.ItemSubtypes"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 880,
+                  "name": "ItemSubtypes",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 885,
+                  "src": "1571:12:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ItemSubtypes_$885_storage_ptr",
+                    "typeString": "struct TypesItem.ItemSubtypes"
                   }
                 },
                 "value": null,
@@ -369,21 +356,60 @@
             ],
             "name": "ItemProperties",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "779:412:4",
+            "scope": 924,
+            "src": "1316:525:4",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "TypesItem.ItemSubtypes",
+            "id": 885,
+            "members": [
+              {
+                "constant": false,
+                "id": 884,
+                "name": "placeable",
+                "nodeType": "VariableDeclaration",
+                "scope": 885,
+                "src": "1931:27:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_PlaceableSubtypes_$895_storage_ptr",
+                  "typeString": "struct TypesItem.PlaceableSubtypes"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 883,
+                  "name": "PlaceableSubtypes",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 895,
+                  "src": "1931:17:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PlaceableSubtypes_$895_storage_ptr",
+                    "typeString": "struct TypesItem.PlaceableSubtypes"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ItemSubtypes",
+            "nodeType": "StructDefinition",
+            "scope": 924,
+            "src": "1902:64:4",
             "visibility": "public"
           },
           {
             "canonicalName": "TypesItem.ItemSubtypeInterface",
-            "id": 862,
+            "id": 888,
             "members": [
               {
                 "constant": false,
-                "id": 861,
+                "id": 887,
                 "name": "itemId",
                 "nodeType": "VariableDeclaration",
-                "scope": 862,
-                "src": "1338:11:4",
+                "scope": 888,
+                "src": "2233:11:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -391,10 +417,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 860,
+                  "id": 886,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1338:4:4",
+                  "src": "2233:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -406,36 +432,36 @@
             ],
             "name": "ItemSubtypeInterface",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "1301:75:4",
+            "scope": 924,
+            "src": "2196:75:4",
             "visibility": "public"
           },
           {
             "canonicalName": "TypesItem.PlaceableSubtypes",
-            "id": 869,
+            "id": 895,
             "members": [
               {
                 "constant": false,
-                "id": 864,
+                "id": 890,
                 "name": "silo",
                 "nodeType": "VariableDeclaration",
-                "scope": 869,
-                "src": "1416:13:4",
+                "scope": 895,
+                "src": "2311:13:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_SiloItem_$883_storage_ptr",
+                  "typeIdentifier": "t_struct$_SiloItem_$909_storage_ptr",
                   "typeString": "struct TypesItem.SiloItem"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 863,
+                  "id": 889,
                   "name": "SiloItem",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 883,
-                  "src": "1416:8:4",
+                  "referencedDeclaration": 909,
+                  "src": "2311:8:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_SiloItem_$883_storage_ptr",
+                    "typeIdentifier": "t_struct$_SiloItem_$909_storage_ptr",
                     "typeString": "struct TypesItem.SiloItem"
                   }
                 },
@@ -444,26 +470,26 @@
               },
               {
                 "constant": false,
-                "id": 866,
+                "id": 892,
                 "name": "extractor",
                 "nodeType": "VariableDeclaration",
-                "scope": 869,
-                "src": "1439:23:4",
+                "scope": 895,
+                "src": "2334:23:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ExtractorItem_$890_storage_ptr",
+                  "typeIdentifier": "t_struct$_ExtractorItem_$916_storage_ptr",
                   "typeString": "struct TypesItem.ExtractorItem"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 865,
+                  "id": 891,
                   "name": "ExtractorItem",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 890,
-                  "src": "1439:13:4",
+                  "referencedDeclaration": 916,
+                  "src": "2334:13:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_ExtractorItem_$890_storage_ptr",
+                    "typeIdentifier": "t_struct$_ExtractorItem_$916_storage_ptr",
                     "typeString": "struct TypesItem.ExtractorItem"
                   }
                 },
@@ -472,26 +498,26 @@
               },
               {
                 "constant": false,
-                "id": 868,
+                "id": 894,
                 "name": "assembler",
                 "nodeType": "VariableDeclaration",
-                "scope": 869,
-                "src": "1472:23:4",
+                "scope": 895,
+                "src": "2367:23:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_AssemblerItem_$897_storage_ptr",
+                  "typeIdentifier": "t_struct$_AssemblerItem_$923_storage_ptr",
                   "typeString": "struct TypesItem.AssemblerItem"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 867,
+                  "id": 893,
                   "name": "AssemblerItem",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 897,
-                  "src": "1472:13:4",
+                  "referencedDeclaration": 923,
+                  "src": "2367:13:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AssemblerItem_$897_storage_ptr",
+                    "typeIdentifier": "t_struct$_AssemblerItem_$923_storage_ptr",
                     "typeString": "struct TypesItem.AssemblerItem"
                   }
                 },
@@ -501,21 +527,21 @@
             ],
             "name": "PlaceableSubtypes",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "1382:120:4",
+            "scope": 924,
+            "src": "2277:120:4",
             "visibility": "public"
           },
           {
             "canonicalName": "TypesItem.Placeable",
-            "id": 872,
+            "id": 898,
             "members": [
               {
                 "constant": false,
-                "id": 871,
+                "id": 897,
                 "name": "floorSpace",
                 "nodeType": "VariableDeclaration",
-                "scope": 872,
-                "src": "1535:15:4",
+                "scope": 898,
+                "src": "2430:15:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -523,10 +549,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 870,
+                  "id": 896,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1535:4:4",
+                  "src": "2430:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -538,36 +564,36 @@
             ],
             "name": "Placeable",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "1508:49:4",
+            "scope": 924,
+            "src": "2403:49:4",
             "visibility": "public"
           },
           {
             "canonicalName": "TypesItem.SiloItem",
-            "id": 883,
+            "id": 909,
             "members": [
               {
                 "constant": false,
-                "id": 874,
+                "id": 900,
                 "name": "itemIntf",
                 "nodeType": "VariableDeclaration",
-                "scope": 883,
-                "src": "1611:29:4",
+                "scope": 909,
+                "src": "2505:29:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
+                  "typeIdentifier": "t_struct$_ItemSubtypeInterface_$888_storage_ptr",
                   "typeString": "struct TypesItem.ItemSubtypeInterface"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 873,
+                  "id": 899,
                   "name": "ItemSubtypeInterface",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 862,
-                  "src": "1611:20:4",
+                  "referencedDeclaration": 888,
+                  "src": "2505:20:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
+                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$888_storage_ptr",
                     "typeString": "struct TypesItem.ItemSubtypeInterface"
                   }
                 },
@@ -576,26 +602,26 @@
               },
               {
                 "constant": false,
-                "id": 876,
+                "id": 902,
                 "name": "placeable",
                 "nodeType": "VariableDeclaration",
-                "scope": 883,
-                "src": "1650:19:4",
+                "scope": 909,
+                "src": "2544:19:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Placeable_$872_storage_ptr",
+                  "typeIdentifier": "t_struct$_Placeable_$898_storage_ptr",
                   "typeString": "struct TypesItem.Placeable"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 875,
+                  "id": 901,
                   "name": "Placeable",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 872,
-                  "src": "1650:9:4",
+                  "referencedDeclaration": 898,
+                  "src": "2544:9:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Placeable_$872_storage_ptr",
+                    "typeIdentifier": "t_struct$_Placeable_$898_storage_ptr",
                     "typeString": "struct TypesItem.Placeable"
                   }
                 },
@@ -604,11 +630,11 @@
               },
               {
                 "constant": false,
-                "id": 878,
+                "id": 904,
                 "name": "targetItemId",
                 "nodeType": "VariableDeclaration",
-                "scope": 883,
-                "src": "1680:17:4",
+                "scope": 909,
+                "src": "2574:17:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -616,10 +642,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 877,
+                  "id": 903,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1680:4:4",
+                  "src": "2574:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -630,11 +656,11 @@
               },
               {
                 "constant": false,
-                "id": 880,
+                "id": 906,
                 "name": "maxQuantity",
                 "nodeType": "VariableDeclaration",
-                "scope": 883,
-                "src": "1707:16:4",
+                "scope": 909,
+                "src": "2601:16:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -642,10 +668,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 879,
+                  "id": 905,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1707:4:4",
+                  "src": "2601:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -656,11 +682,11 @@
               },
               {
                 "constant": false,
-                "id": 882,
+                "id": 908,
                 "name": "curQuantity",
                 "nodeType": "VariableDeclaration",
-                "scope": 883,
-                "src": "1757:16:4",
+                "scope": 909,
+                "src": "2651:16:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -668,10 +694,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 881,
+                  "id": 907,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1757:4:4",
+                  "src": "2651:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -683,36 +709,36 @@
             ],
             "name": "SiloItem",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "1563:218:4",
+            "scope": 924,
+            "src": "2457:218:4",
             "visibility": "public"
           },
           {
             "canonicalName": "TypesItem.ExtractorItem",
-            "id": 890,
+            "id": 916,
             "members": [
               {
                 "constant": false,
-                "id": 885,
+                "id": 911,
                 "name": "itemIntf",
                 "nodeType": "VariableDeclaration",
-                "scope": 890,
-                "src": "1840:29:4",
+                "scope": 916,
+                "src": "2733:29:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
+                  "typeIdentifier": "t_struct$_ItemSubtypeInterface_$888_storage_ptr",
                   "typeString": "struct TypesItem.ItemSubtypeInterface"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 884,
+                  "id": 910,
                   "name": "ItemSubtypeInterface",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 862,
-                  "src": "1840:20:4",
+                  "referencedDeclaration": 888,
+                  "src": "2733:20:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
+                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$888_storage_ptr",
                     "typeString": "struct TypesItem.ItemSubtypeInterface"
                   }
                 },
@@ -721,26 +747,26 @@
               },
               {
                 "constant": false,
-                "id": 887,
+                "id": 913,
                 "name": "placeable",
                 "nodeType": "VariableDeclaration",
-                "scope": 890,
-                "src": "1879:19:4",
+                "scope": 916,
+                "src": "2772:19:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Placeable_$872_storage_ptr",
+                  "typeIdentifier": "t_struct$_Placeable_$898_storage_ptr",
                   "typeString": "struct TypesItem.Placeable"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 886,
+                  "id": 912,
                   "name": "Placeable",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 872,
-                  "src": "1879:9:4",
+                  "referencedDeclaration": 898,
+                  "src": "2772:9:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Placeable_$872_storage_ptr",
+                    "typeIdentifier": "t_struct$_Placeable_$898_storage_ptr",
                     "typeString": "struct TypesItem.Placeable"
                   }
                 },
@@ -749,11 +775,11 @@
               },
               {
                 "constant": false,
-                "id": 889,
+                "id": 915,
                 "name": "targetTransformationId",
                 "nodeType": "VariableDeclaration",
-                "scope": 890,
-                "src": "1909:27:4",
+                "scope": 916,
+                "src": "2802:27:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -761,10 +787,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 888,
+                  "id": 914,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1909:4:4",
+                  "src": "2802:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -776,36 +802,36 @@
             ],
             "name": "ExtractorItem",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "1787:156:4",
+            "scope": 924,
+            "src": "2680:156:4",
             "visibility": "public"
           },
           {
             "canonicalName": "TypesItem.AssemblerItem",
-            "id": 897,
+            "id": 923,
             "members": [
               {
                 "constant": false,
-                "id": 892,
+                "id": 918,
                 "name": "itemIntf",
                 "nodeType": "VariableDeclaration",
-                "scope": 897,
-                "src": "2002:29:4",
+                "scope": 923,
+                "src": "2894:29:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
+                  "typeIdentifier": "t_struct$_ItemSubtypeInterface_$888_storage_ptr",
                   "typeString": "struct TypesItem.ItemSubtypeInterface"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 891,
+                  "id": 917,
                   "name": "ItemSubtypeInterface",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 862,
-                  "src": "2002:20:4",
+                  "referencedDeclaration": 888,
+                  "src": "2894:20:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
+                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$888_storage_ptr",
                     "typeString": "struct TypesItem.ItemSubtypeInterface"
                   }
                 },
@@ -814,26 +840,26 @@
               },
               {
                 "constant": false,
-                "id": 894,
+                "id": 920,
                 "name": "placeable",
                 "nodeType": "VariableDeclaration",
-                "scope": 897,
-                "src": "2041:19:4",
+                "scope": 923,
+                "src": "2933:19:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Placeable_$872_storage_ptr",
+                  "typeIdentifier": "t_struct$_Placeable_$898_storage_ptr",
                   "typeString": "struct TypesItem.Placeable"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 893,
+                  "id": 919,
                   "name": "Placeable",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 872,
-                  "src": "2041:9:4",
+                  "referencedDeclaration": 898,
+                  "src": "2933:9:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Placeable_$872_storage_ptr",
+                    "typeIdentifier": "t_struct$_Placeable_$898_storage_ptr",
                     "typeString": "struct TypesItem.Placeable"
                   }
                 },
@@ -842,11 +868,11 @@
               },
               {
                 "constant": false,
-                "id": 896,
+                "id": 922,
                 "name": "targetTransformationId",
                 "nodeType": "VariableDeclaration",
-                "scope": 897,
-                "src": "2071:27:4",
+                "scope": 923,
+                "src": "2963:27:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -854,10 +880,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 895,
+                  "id": 921,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "2071:4:4",
+                  "src": "2963:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -869,179 +895,29 @@
             ],
             "name": "AssemblerItem",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "1949:156:4",
+            "scope": 924,
+            "src": "2841:156:4",
             "visibility": "public"
-          },
-          {
-            "body": {
-              "id": 910,
-              "nodeType": "Block",
-              "src": "2215:37:4",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 908,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "expression": {
-                        "argumentTypes": null,
-                        "id": 904,
-                        "name": "intf",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 899,
-                        "src": "2225:4:4",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
-                          "typeString": "struct TypesItem.ItemSubtypeInterface storage pointer"
-                        }
-                      },
-                      "id": 906,
-                      "isConstant": false,
-                      "isLValue": true,
-                      "isPure": false,
-                      "lValueRequested": true,
-                      "memberName": "itemId",
-                      "nodeType": "MemberAccess",
-                      "referencedDeclaration": 861,
-                      "src": "2225:11:4",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 907,
-                      "name": "itemId",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 901,
-                      "src": "2239:6:4",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
-                      }
-                    },
-                    "src": "2225:20:4",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "id": 909,
-                  "nodeType": "ExpressionStatement",
-                  "src": "2225:20:4"
-                }
-              ]
-            },
-            "documentation": null,
-            "id": 911,
-            "implemented": true,
-            "kind": "function",
-            "modifiers": [],
-            "name": "initItemSubtype",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 902,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 899,
-                  "name": "intf",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 911,
-                  "src": "2145:33:4",
-                  "stateVariable": false,
-                  "storageLocation": "storage",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
-                    "typeString": "struct TypesItem.ItemSubtypeInterface"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 898,
-                    "name": "ItemSubtypeInterface",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 862,
-                    "src": "2145:20:4",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
-                      "typeString": "struct TypesItem.ItemSubtypeInterface"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 901,
-                  "name": "itemId",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 911,
-                  "src": "2188:11:4",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 900,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "2188:4:4",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "2135:70:4"
-            },
-            "returnParameters": {
-              "id": 903,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "2215:0:4"
-            },
-            "scope": 912,
-            "src": "2111:141:4",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "internal"
           }
         ],
-        "scope": 913,
-        "src": "25:2229:4"
+        "scope": 925,
+        "src": "25:2975:4"
       }
     ],
-    "src": "0:2254:4"
+    "src": "0:3000:4"
   },
   "legacyAST": {
     "absolutePath": "/Users/idanreed/Documents/repos/CryptoGame/contracts/types/TypesItem.sol",
     "exportedSymbols": {
       "TypesItem": [
-        912
+        924
       ]
     },
-    "id": 913,
+    "id": 925,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 827,
+        "id": 850,
         "literals": [
           "solidity",
           "^",
@@ -1057,248 +933,40 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 912,
+        "id": 924,
         "linearizedBaseContracts": [
-          912
+          924
         ],
         "name": "TypesItem",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "canonicalName": "TypesItem.ItemType",
-            "id": 831,
+            "id": 855,
             "members": [
-              {
-                "id": 828,
-                "name": "NaturalResource",
-                "nodeType": "EnumValue",
-                "src": "73:15:4"
-              },
-              {
-                "id": 829,
-                "name": "Component",
-                "nodeType": "EnumValue",
-                "src": "98:9:4"
-              },
-              {
-                "id": 830,
-                "name": "Placeable",
-                "nodeType": "EnumValue",
-                "src": "117:9:4"
-              }
-            ],
-            "name": "ItemType",
-            "nodeType": "EnumDefinition",
-            "src": "50:82:4"
-          },
-          {
-            "canonicalName": "TypesItem.ItemSubtypePlaceable",
-            "id": 836,
-            "members": [
-              {
-                "id": 832,
-                "name": "None",
-                "nodeType": "EnumValue",
-                "src": "172:4:4"
-              },
-              {
-                "id": 833,
-                "name": "Silo",
-                "nodeType": "EnumValue",
-                "src": "186:4:4"
-              },
-              {
-                "id": 834,
-                "name": "Extractor",
-                "nodeType": "EnumValue",
-                "src": "200:9:4"
-              },
-              {
-                "id": 835,
-                "name": "Assembler",
-                "nodeType": "EnumValue",
-                "src": "219:9:4"
-              }
-            ],
-            "name": "ItemSubtypePlaceable",
-            "nodeType": "EnumDefinition",
-            "src": "137:97:4"
-          },
-          {
-            "canonicalName": "TypesItem.ItemSubtypeComponent",
-            "id": 839,
-            "members": [
-              {
-                "id": 837,
-                "name": "None",
-                "nodeType": "EnumValue",
-                "src": "274:4:4"
-              },
-              {
-                "id": 838,
-                "name": "Standard",
-                "nodeType": "EnumValue",
-                "src": "288:8:4"
-              }
-            ],
-            "name": "ItemSubtypeComponent",
-            "nodeType": "EnumDefinition",
-            "src": "239:63:4"
-          },
-          {
-            "canonicalName": "TypesItem.ItemSubtypeNaturalResource",
-            "id": 842,
-            "members": [
-              {
-                "id": 840,
-                "name": "None",
-                "nodeType": "EnumValue",
-                "src": "348:4:4"
-              },
-              {
-                "id": 841,
-                "name": "Standard",
-                "nodeType": "EnumValue",
-                "src": "362:8:4"
-              }
-            ],
-            "name": "ItemSubtypeNaturalResource",
-            "nodeType": "EnumDefinition",
-            "src": "307:69:4"
-          },
-          {
-            "canonicalName": "TypesItem.ItemProperties",
-            "id": 859,
-            "members": [
-              {
-                "constant": false,
-                "id": 844,
-                "name": "id",
-                "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "810:7:4",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
-                },
-                "typeName": {
-                  "id": 843,
-                  "name": "uint",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "810:4:4",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 846,
-                "name": "mass",
-                "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "848:9:4",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
-                },
-                "typeName": {
-                  "id": 845,
-                  "name": "uint",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "848:4:4",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 848,
-                "name": "volume",
-                "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "867:11:4",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_uint256",
-                  "typeString": "uint256"
-                },
-                "typeName": {
-                  "id": 847,
-                  "name": "uint",
-                  "nodeType": "ElementaryTypeName",
-                  "src": "867:4:4",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              },
-              {
-                "constant": false,
-                "id": 850,
-                "name": "itemType",
-                "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "889:17:4",
-                "stateVariable": false,
-                "storageLocation": "default",
-                "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_ItemType_$831",
-                  "typeString": "enum TypesItem.ItemType"
-                },
-                "typeName": {
-                  "contractScope": null,
-                  "id": 849,
-                  "name": "ItemType",
-                  "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 831,
-                  "src": "889:8:4",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_ItemType_$831",
-                    "typeString": "enum TypesItem.ItemType"
-                  }
-                },
-                "value": null,
-                "visibility": "internal"
-              },
               {
                 "constant": false,
                 "id": 852,
-                "name": "itemSubtypeNaturalResource",
+                "name": "itemCategory",
                 "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "982:53:4",
+                "scope": 855,
+                "src": "327:25:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_ItemSubtypeNaturalResource_$842",
-                  "typeString": "enum TypesItem.ItemSubtypeNaturalResource"
+                  "typeIdentifier": "t_enum$_ItemCategory_$860",
+                  "typeString": "enum TypesItem.ItemCategory"
                 },
                 "typeName": {
                   "contractScope": null,
                   "id": 851,
-                  "name": "ItemSubtypeNaturalResource",
+                  "name": "ItemCategory",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 842,
-                  "src": "982:26:4",
+                  "referencedDeclaration": 860,
+                  "src": "327:12:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_ItemSubtypeNaturalResource_$842",
-                    "typeString": "enum TypesItem.ItemSubtypeNaturalResource"
+                    "typeIdentifier": "t_enum$_ItemCategory_$860",
+                    "typeString": "enum TypesItem.ItemCategory"
                   }
                 },
                 "value": null,
@@ -1307,54 +975,169 @@
               {
                 "constant": false,
                 "id": 854,
-                "name": "itemSubtypeComponent",
+                "name": "itemSubtype",
                 "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "1046:41:4",
+                "scope": 855,
+                "src": "362:16:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_ItemSubtypeComponent_$839",
-                  "typeString": "enum TypesItem.ItemSubtypeComponent"
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
                 },
                 "typeName": {
-                  "contractScope": null,
                   "id": 853,
-                  "name": "ItemSubtypeComponent",
-                  "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 839,
-                  "src": "1046:20:4",
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "362:4:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_ItemSubtypeComponent_$839",
-                    "typeString": "enum TypesItem.ItemSubtypeComponent"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   }
                 },
                 "value": null,
                 "visibility": "internal"
-              },
+              }
+            ],
+            "name": "ItemType",
+            "nodeType": "StructDefinition",
+            "scope": 924,
+            "src": "302:258:4",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "TypesItem.ItemCategory",
+            "id": 860,
+            "members": [
               {
-                "constant": false,
                 "id": 856,
-                "name": "itemSubtypePlaceable",
+                "name": "None",
+                "nodeType": "EnumValue",
+                "src": "593:4:4"
+              },
+              {
+                "id": 857,
+                "name": "NaturalResource",
+                "nodeType": "EnumValue",
+                "src": "607:15:4"
+              },
+              {
+                "id": 858,
+                "name": "Component",
+                "nodeType": "EnumValue",
+                "src": "632:9:4"
+              },
+              {
+                "id": 859,
+                "name": "Placeable",
+                "nodeType": "EnumValue",
+                "src": "651:9:4"
+              }
+            ],
+            "name": "ItemCategory",
+            "nodeType": "EnumDefinition",
+            "src": "566:100:4"
+          },
+          {
+            "canonicalName": "TypesItem.ItemSubtypePlaceable",
+            "id": 865,
+            "members": [
+              {
+                "id": 861,
+                "name": "None",
+                "nodeType": "EnumValue",
+                "src": "707:4:4"
+              },
+              {
+                "id": 862,
+                "name": "Silo",
+                "nodeType": "EnumValue",
+                "src": "721:4:4"
+              },
+              {
+                "id": 863,
+                "name": "Extractor",
+                "nodeType": "EnumValue",
+                "src": "735:9:4"
+              },
+              {
+                "id": 864,
+                "name": "Assembler",
+                "nodeType": "EnumValue",
+                "src": "754:9:4"
+              }
+            ],
+            "name": "ItemSubtypePlaceable",
+            "nodeType": "EnumDefinition",
+            "src": "672:97:4"
+          },
+          {
+            "canonicalName": "TypesItem.ItemSubtypeComponent",
+            "id": 868,
+            "members": [
+              {
+                "id": 866,
+                "name": "None",
+                "nodeType": "EnumValue",
+                "src": "810:4:4"
+              },
+              {
+                "id": 867,
+                "name": "Standard",
+                "nodeType": "EnumValue",
+                "src": "824:8:4"
+              }
+            ],
+            "name": "ItemSubtypeComponent",
+            "nodeType": "EnumDefinition",
+            "src": "775:63:4"
+          },
+          {
+            "canonicalName": "TypesItem.ItemSubtypeNaturalResource",
+            "id": 871,
+            "members": [
+              {
+                "id": 869,
+                "name": "None",
+                "nodeType": "EnumValue",
+                "src": "885:4:4"
+              },
+              {
+                "id": 870,
+                "name": "Standard",
+                "nodeType": "EnumValue",
+                "src": "899:8:4"
+              }
+            ],
+            "name": "ItemSubtypeNaturalResource",
+            "nodeType": "EnumDefinition",
+            "src": "844:69:4"
+          },
+          {
+            "canonicalName": "TypesItem.ItemProperties",
+            "id": 882,
+            "members": [
+              {
+                "constant": false,
+                "id": 873,
+                "name": "id",
                 "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "1098:41:4",
+                "scope": 882,
+                "src": "1347:7:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_enum$_ItemSubtypePlaceable_$836",
-                  "typeString": "enum TypesItem.ItemSubtypePlaceable"
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
                 },
                 "typeName": {
-                  "contractScope": null,
-                  "id": 855,
-                  "name": "ItemSubtypePlaceable",
-                  "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 836,
-                  "src": "1098:20:4",
+                  "id": 872,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1347:4:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_enum$_ItemSubtypePlaceable_$836",
-                    "typeString": "enum TypesItem.ItemSubtypePlaceable"
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
                   }
                 },
                 "value": null,
@@ -1362,27 +1145,107 @@
               },
               {
                 "constant": false,
-                "id": 858,
-                "name": "placeableSubtypes",
+                "id": 875,
+                "name": "mass",
                 "nodeType": "VariableDeclaration",
-                "scope": 859,
-                "src": "1149:35:4",
+                "scope": 882,
+                "src": "1385:9:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_PlaceableSubtypes_$869_storage_ptr",
-                  "typeString": "struct TypesItem.PlaceableSubtypes"
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 874,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1385:4:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 877,
+                "name": "volume",
+                "nodeType": "VariableDeclaration",
+                "scope": 882,
+                "src": "1404:11:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 876,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1404:4:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 879,
+                "name": "itemType",
+                "nodeType": "VariableDeclaration",
+                "scope": 882,
+                "src": "1523:17:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ItemType_$855_storage_ptr",
+                  "typeString": "struct TypesItem.ItemType"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 857,
-                  "name": "PlaceableSubtypes",
+                  "id": 878,
+                  "name": "ItemType",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 869,
-                  "src": "1149:17:4",
+                  "referencedDeclaration": 855,
+                  "src": "1523:8:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_PlaceableSubtypes_$869_storage_ptr",
-                    "typeString": "struct TypesItem.PlaceableSubtypes"
+                    "typeIdentifier": "t_struct$_ItemType_$855_storage_ptr",
+                    "typeString": "struct TypesItem.ItemType"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 881,
+                "name": "subtypes",
+                "nodeType": "VariableDeclaration",
+                "scope": 882,
+                "src": "1571:21:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_ItemSubtypes_$885_storage_ptr",
+                  "typeString": "struct TypesItem.ItemSubtypes"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 880,
+                  "name": "ItemSubtypes",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 885,
+                  "src": "1571:12:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_ItemSubtypes_$885_storage_ptr",
+                    "typeString": "struct TypesItem.ItemSubtypes"
                   }
                 },
                 "value": null,
@@ -1391,21 +1254,60 @@
             ],
             "name": "ItemProperties",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "779:412:4",
+            "scope": 924,
+            "src": "1316:525:4",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "TypesItem.ItemSubtypes",
+            "id": 885,
+            "members": [
+              {
+                "constant": false,
+                "id": 884,
+                "name": "placeable",
+                "nodeType": "VariableDeclaration",
+                "scope": 885,
+                "src": "1931:27:4",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_PlaceableSubtypes_$895_storage_ptr",
+                  "typeString": "struct TypesItem.PlaceableSubtypes"
+                },
+                "typeName": {
+                  "contractScope": null,
+                  "id": 883,
+                  "name": "PlaceableSubtypes",
+                  "nodeType": "UserDefinedTypeName",
+                  "referencedDeclaration": 895,
+                  "src": "1931:17:4",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_PlaceableSubtypes_$895_storage_ptr",
+                    "typeString": "struct TypesItem.PlaceableSubtypes"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "ItemSubtypes",
+            "nodeType": "StructDefinition",
+            "scope": 924,
+            "src": "1902:64:4",
             "visibility": "public"
           },
           {
             "canonicalName": "TypesItem.ItemSubtypeInterface",
-            "id": 862,
+            "id": 888,
             "members": [
               {
                 "constant": false,
-                "id": 861,
+                "id": 887,
                 "name": "itemId",
                 "nodeType": "VariableDeclaration",
-                "scope": 862,
-                "src": "1338:11:4",
+                "scope": 888,
+                "src": "2233:11:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1413,10 +1315,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 860,
+                  "id": 886,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1338:4:4",
+                  "src": "2233:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -1428,36 +1330,36 @@
             ],
             "name": "ItemSubtypeInterface",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "1301:75:4",
+            "scope": 924,
+            "src": "2196:75:4",
             "visibility": "public"
           },
           {
             "canonicalName": "TypesItem.PlaceableSubtypes",
-            "id": 869,
+            "id": 895,
             "members": [
               {
                 "constant": false,
-                "id": 864,
+                "id": 890,
                 "name": "silo",
                 "nodeType": "VariableDeclaration",
-                "scope": 869,
-                "src": "1416:13:4",
+                "scope": 895,
+                "src": "2311:13:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_SiloItem_$883_storage_ptr",
+                  "typeIdentifier": "t_struct$_SiloItem_$909_storage_ptr",
                   "typeString": "struct TypesItem.SiloItem"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 863,
+                  "id": 889,
                   "name": "SiloItem",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 883,
-                  "src": "1416:8:4",
+                  "referencedDeclaration": 909,
+                  "src": "2311:8:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_SiloItem_$883_storage_ptr",
+                    "typeIdentifier": "t_struct$_SiloItem_$909_storage_ptr",
                     "typeString": "struct TypesItem.SiloItem"
                   }
                 },
@@ -1466,26 +1368,26 @@
               },
               {
                 "constant": false,
-                "id": 866,
+                "id": 892,
                 "name": "extractor",
                 "nodeType": "VariableDeclaration",
-                "scope": 869,
-                "src": "1439:23:4",
+                "scope": 895,
+                "src": "2334:23:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ExtractorItem_$890_storage_ptr",
+                  "typeIdentifier": "t_struct$_ExtractorItem_$916_storage_ptr",
                   "typeString": "struct TypesItem.ExtractorItem"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 865,
+                  "id": 891,
                   "name": "ExtractorItem",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 890,
-                  "src": "1439:13:4",
+                  "referencedDeclaration": 916,
+                  "src": "2334:13:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_ExtractorItem_$890_storage_ptr",
+                    "typeIdentifier": "t_struct$_ExtractorItem_$916_storage_ptr",
                     "typeString": "struct TypesItem.ExtractorItem"
                   }
                 },
@@ -1494,26 +1396,26 @@
               },
               {
                 "constant": false,
-                "id": 868,
+                "id": 894,
                 "name": "assembler",
                 "nodeType": "VariableDeclaration",
-                "scope": 869,
-                "src": "1472:23:4",
+                "scope": 895,
+                "src": "2367:23:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_AssemblerItem_$897_storage_ptr",
+                  "typeIdentifier": "t_struct$_AssemblerItem_$923_storage_ptr",
                   "typeString": "struct TypesItem.AssemblerItem"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 867,
+                  "id": 893,
                   "name": "AssemblerItem",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 897,
-                  "src": "1472:13:4",
+                  "referencedDeclaration": 923,
+                  "src": "2367:13:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_AssemblerItem_$897_storage_ptr",
+                    "typeIdentifier": "t_struct$_AssemblerItem_$923_storage_ptr",
                     "typeString": "struct TypesItem.AssemblerItem"
                   }
                 },
@@ -1523,21 +1425,21 @@
             ],
             "name": "PlaceableSubtypes",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "1382:120:4",
+            "scope": 924,
+            "src": "2277:120:4",
             "visibility": "public"
           },
           {
             "canonicalName": "TypesItem.Placeable",
-            "id": 872,
+            "id": 898,
             "members": [
               {
                 "constant": false,
-                "id": 871,
+                "id": 897,
                 "name": "floorSpace",
                 "nodeType": "VariableDeclaration",
-                "scope": 872,
-                "src": "1535:15:4",
+                "scope": 898,
+                "src": "2430:15:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1545,10 +1447,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 870,
+                  "id": 896,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1535:4:4",
+                  "src": "2430:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -1560,36 +1462,36 @@
             ],
             "name": "Placeable",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "1508:49:4",
+            "scope": 924,
+            "src": "2403:49:4",
             "visibility": "public"
           },
           {
             "canonicalName": "TypesItem.SiloItem",
-            "id": 883,
+            "id": 909,
             "members": [
               {
                 "constant": false,
-                "id": 874,
+                "id": 900,
                 "name": "itemIntf",
                 "nodeType": "VariableDeclaration",
-                "scope": 883,
-                "src": "1611:29:4",
+                "scope": 909,
+                "src": "2505:29:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
+                  "typeIdentifier": "t_struct$_ItemSubtypeInterface_$888_storage_ptr",
                   "typeString": "struct TypesItem.ItemSubtypeInterface"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 873,
+                  "id": 899,
                   "name": "ItemSubtypeInterface",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 862,
-                  "src": "1611:20:4",
+                  "referencedDeclaration": 888,
+                  "src": "2505:20:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
+                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$888_storage_ptr",
                     "typeString": "struct TypesItem.ItemSubtypeInterface"
                   }
                 },
@@ -1598,26 +1500,26 @@
               },
               {
                 "constant": false,
-                "id": 876,
+                "id": 902,
                 "name": "placeable",
                 "nodeType": "VariableDeclaration",
-                "scope": 883,
-                "src": "1650:19:4",
+                "scope": 909,
+                "src": "2544:19:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Placeable_$872_storage_ptr",
+                  "typeIdentifier": "t_struct$_Placeable_$898_storage_ptr",
                   "typeString": "struct TypesItem.Placeable"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 875,
+                  "id": 901,
                   "name": "Placeable",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 872,
-                  "src": "1650:9:4",
+                  "referencedDeclaration": 898,
+                  "src": "2544:9:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Placeable_$872_storage_ptr",
+                    "typeIdentifier": "t_struct$_Placeable_$898_storage_ptr",
                     "typeString": "struct TypesItem.Placeable"
                   }
                 },
@@ -1626,11 +1528,11 @@
               },
               {
                 "constant": false,
-                "id": 878,
+                "id": 904,
                 "name": "targetItemId",
                 "nodeType": "VariableDeclaration",
-                "scope": 883,
-                "src": "1680:17:4",
+                "scope": 909,
+                "src": "2574:17:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1638,10 +1540,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 877,
+                  "id": 903,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1680:4:4",
+                  "src": "2574:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -1652,11 +1554,11 @@
               },
               {
                 "constant": false,
-                "id": 880,
+                "id": 906,
                 "name": "maxQuantity",
                 "nodeType": "VariableDeclaration",
-                "scope": 883,
-                "src": "1707:16:4",
+                "scope": 909,
+                "src": "2601:16:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1664,10 +1566,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 879,
+                  "id": 905,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1707:4:4",
+                  "src": "2601:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -1678,11 +1580,11 @@
               },
               {
                 "constant": false,
-                "id": 882,
+                "id": 908,
                 "name": "curQuantity",
                 "nodeType": "VariableDeclaration",
-                "scope": 883,
-                "src": "1757:16:4",
+                "scope": 909,
+                "src": "2651:16:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1690,10 +1592,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 881,
+                  "id": 907,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1757:4:4",
+                  "src": "2651:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -1705,36 +1607,36 @@
             ],
             "name": "SiloItem",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "1563:218:4",
+            "scope": 924,
+            "src": "2457:218:4",
             "visibility": "public"
           },
           {
             "canonicalName": "TypesItem.ExtractorItem",
-            "id": 890,
+            "id": 916,
             "members": [
               {
                 "constant": false,
-                "id": 885,
+                "id": 911,
                 "name": "itemIntf",
                 "nodeType": "VariableDeclaration",
-                "scope": 890,
-                "src": "1840:29:4",
+                "scope": 916,
+                "src": "2733:29:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
+                  "typeIdentifier": "t_struct$_ItemSubtypeInterface_$888_storage_ptr",
                   "typeString": "struct TypesItem.ItemSubtypeInterface"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 884,
+                  "id": 910,
                   "name": "ItemSubtypeInterface",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 862,
-                  "src": "1840:20:4",
+                  "referencedDeclaration": 888,
+                  "src": "2733:20:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
+                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$888_storage_ptr",
                     "typeString": "struct TypesItem.ItemSubtypeInterface"
                   }
                 },
@@ -1743,26 +1645,26 @@
               },
               {
                 "constant": false,
-                "id": 887,
+                "id": 913,
                 "name": "placeable",
                 "nodeType": "VariableDeclaration",
-                "scope": 890,
-                "src": "1879:19:4",
+                "scope": 916,
+                "src": "2772:19:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Placeable_$872_storage_ptr",
+                  "typeIdentifier": "t_struct$_Placeable_$898_storage_ptr",
                   "typeString": "struct TypesItem.Placeable"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 886,
+                  "id": 912,
                   "name": "Placeable",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 872,
-                  "src": "1879:9:4",
+                  "referencedDeclaration": 898,
+                  "src": "2772:9:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Placeable_$872_storage_ptr",
+                    "typeIdentifier": "t_struct$_Placeable_$898_storage_ptr",
                     "typeString": "struct TypesItem.Placeable"
                   }
                 },
@@ -1771,11 +1673,11 @@
               },
               {
                 "constant": false,
-                "id": 889,
+                "id": 915,
                 "name": "targetTransformationId",
                 "nodeType": "VariableDeclaration",
-                "scope": 890,
-                "src": "1909:27:4",
+                "scope": 916,
+                "src": "2802:27:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1783,10 +1685,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 888,
+                  "id": 914,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "1909:4:4",
+                  "src": "2802:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -1798,36 +1700,36 @@
             ],
             "name": "ExtractorItem",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "1787:156:4",
+            "scope": 924,
+            "src": "2680:156:4",
             "visibility": "public"
           },
           {
             "canonicalName": "TypesItem.AssemblerItem",
-            "id": 897,
+            "id": 923,
             "members": [
               {
                 "constant": false,
-                "id": 892,
+                "id": 918,
                 "name": "itemIntf",
                 "nodeType": "VariableDeclaration",
-                "scope": 897,
-                "src": "2002:29:4",
+                "scope": 923,
+                "src": "2894:29:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
+                  "typeIdentifier": "t_struct$_ItemSubtypeInterface_$888_storage_ptr",
                   "typeString": "struct TypesItem.ItemSubtypeInterface"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 891,
+                  "id": 917,
                   "name": "ItemSubtypeInterface",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 862,
-                  "src": "2002:20:4",
+                  "referencedDeclaration": 888,
+                  "src": "2894:20:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
+                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$888_storage_ptr",
                     "typeString": "struct TypesItem.ItemSubtypeInterface"
                   }
                 },
@@ -1836,26 +1738,26 @@
               },
               {
                 "constant": false,
-                "id": 894,
+                "id": 920,
                 "name": "placeable",
                 "nodeType": "VariableDeclaration",
-                "scope": 897,
-                "src": "2041:19:4",
+                "scope": 923,
+                "src": "2933:19:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
-                  "typeIdentifier": "t_struct$_Placeable_$872_storage_ptr",
+                  "typeIdentifier": "t_struct$_Placeable_$898_storage_ptr",
                   "typeString": "struct TypesItem.Placeable"
                 },
                 "typeName": {
                   "contractScope": null,
-                  "id": 893,
+                  "id": 919,
                   "name": "Placeable",
                   "nodeType": "UserDefinedTypeName",
-                  "referencedDeclaration": 872,
-                  "src": "2041:9:4",
+                  "referencedDeclaration": 898,
+                  "src": "2933:9:4",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_Placeable_$872_storage_ptr",
+                    "typeIdentifier": "t_struct$_Placeable_$898_storage_ptr",
                     "typeString": "struct TypesItem.Placeable"
                   }
                 },
@@ -1864,11 +1766,11 @@
               },
               {
                 "constant": false,
-                "id": 896,
+                "id": 922,
                 "name": "targetTransformationId",
                 "nodeType": "VariableDeclaration",
-                "scope": 897,
-                "src": "2071:27:4",
+                "scope": 923,
+                "src": "2963:27:4",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -1876,10 +1778,10 @@
                   "typeString": "uint256"
                 },
                 "typeName": {
-                  "id": 895,
+                  "id": 921,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "2071:4:4",
+                  "src": "2963:4:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -1891,166 +1793,16 @@
             ],
             "name": "AssemblerItem",
             "nodeType": "StructDefinition",
-            "scope": 912,
-            "src": "1949:156:4",
+            "scope": 924,
+            "src": "2841:156:4",
             "visibility": "public"
-          },
-          {
-            "body": {
-              "id": 910,
-              "nodeType": "Block",
-              "src": "2215:37:4",
-              "statements": [
-                {
-                  "expression": {
-                    "argumentTypes": null,
-                    "id": 908,
-                    "isConstant": false,
-                    "isLValue": false,
-                    "isPure": false,
-                    "lValueRequested": false,
-                    "leftHandSide": {
-                      "argumentTypes": null,
-                      "expression": {
-                        "argumentTypes": null,
-                        "id": 904,
-                        "name": "intf",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 899,
-                        "src": "2225:4:4",
-                        "typeDescriptions": {
-                          "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
-                          "typeString": "struct TypesItem.ItemSubtypeInterface storage pointer"
-                        }
-                      },
-                      "id": 906,
-                      "isConstant": false,
-                      "isLValue": true,
-                      "isPure": false,
-                      "lValueRequested": true,
-                      "memberName": "itemId",
-                      "nodeType": "MemberAccess",
-                      "referencedDeclaration": 861,
-                      "src": "2225:11:4",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
-                      }
-                    },
-                    "nodeType": "Assignment",
-                    "operator": "=",
-                    "rightHandSide": {
-                      "argumentTypes": null,
-                      "id": 907,
-                      "name": "itemId",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 901,
-                      "src": "2239:6:4",
-                      "typeDescriptions": {
-                        "typeIdentifier": "t_uint256",
-                        "typeString": "uint256"
-                      }
-                    },
-                    "src": "2225:20:4",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "id": 909,
-                  "nodeType": "ExpressionStatement",
-                  "src": "2225:20:4"
-                }
-              ]
-            },
-            "documentation": null,
-            "id": 911,
-            "implemented": true,
-            "kind": "function",
-            "modifiers": [],
-            "name": "initItemSubtype",
-            "nodeType": "FunctionDefinition",
-            "parameters": {
-              "id": 902,
-              "nodeType": "ParameterList",
-              "parameters": [
-                {
-                  "constant": false,
-                  "id": 899,
-                  "name": "intf",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 911,
-                  "src": "2145:33:4",
-                  "stateVariable": false,
-                  "storageLocation": "storage",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
-                    "typeString": "struct TypesItem.ItemSubtypeInterface"
-                  },
-                  "typeName": {
-                    "contractScope": null,
-                    "id": 898,
-                    "name": "ItemSubtypeInterface",
-                    "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 862,
-                    "src": "2145:20:4",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_struct$_ItemSubtypeInterface_$862_storage_ptr",
-                      "typeString": "struct TypesItem.ItemSubtypeInterface"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                },
-                {
-                  "constant": false,
-                  "id": 901,
-                  "name": "itemId",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 911,
-                  "src": "2188:11:4",
-                  "stateVariable": false,
-                  "storageLocation": "default",
-                  "typeDescriptions": {
-                    "typeIdentifier": "t_uint256",
-                    "typeString": "uint256"
-                  },
-                  "typeName": {
-                    "id": 900,
-                    "name": "uint",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "2188:4:4",
-                    "typeDescriptions": {
-                      "typeIdentifier": "t_uint256",
-                      "typeString": "uint256"
-                    }
-                  },
-                  "value": null,
-                  "visibility": "internal"
-                }
-              ],
-              "src": "2135:70:4"
-            },
-            "returnParameters": {
-              "id": 903,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "2215:0:4"
-            },
-            "scope": 912,
-            "src": "2111:141:4",
-            "stateMutability": "nonpayable",
-            "superFunction": null,
-            "visibility": "internal"
           }
         ],
-        "scope": 913,
-        "src": "25:2229:4"
+        "scope": 925,
+        "src": "25:2975:4"
       }
     ],
-    "src": "0:2254:4"
+    "src": "0:3000:4"
   },
   "compiler": {
     "name": "solc",
@@ -2058,7 +1810,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.16",
-  "updatedAt": "2019-11-27T02:32:55.680Z",
+  "updatedAt": "2019-12-06T23:23:15.755Z",
   "devdoc": {
     "methods": {}
   },

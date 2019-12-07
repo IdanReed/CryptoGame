@@ -76,36 +76,37 @@ contract TestGame {
 
         game.addItem(
             0,
-            2, /* placeable */
-            1 /* silo */
+            3, /* placeable */
+            1  /* silo */
         );
         game.addSiloProperties(2, 100);
 
         game.addItem(
             1,
-            2, /* placeable */
-            1 /* silo */
+            3, /* placeable */
+            1  /* silo */
         );
         game.addSiloProperties(3, 100);
 
         game.addItem(
             2,
-            1, /* component */
-            1 /* none */
+            2, /* component */
+            1  /* standard */
         );
 
         game.addItem(
             3,
-            1, /* component */
-            1 /* none */
+            2, /* component */
+            1  /* standard */
         );
 
         game.addItem(
             4,
-            2, /* placeable */
-            3 /* Assembler */
+            3, /* placeable */
+            3  /* Assembler */
         );
         game.addAssemblerProperties(4);
+
 
         game.addTransformation(0); // free silo 0
         game.addTransformationElement(false, 0, 1);
@@ -134,18 +135,33 @@ contract TestGame {
     }
 
     function testFunction_manualTransformation() public {
-        // makes silos
-        game.manualTransformation(address(this), 0);
-        game.manualTransformation(address(this), 1);
+        bool successful = true;
+
+        // free silo 0 for component 2
+        successful = game.manualTransformation(address(this), 0)
+            ? successful : false;
+
+        // free silo 0 for component 2
+        successful = game.manualTransformation(address(this), 1)
+            ? successful : false;
 
         // free component 2
-        game.manualTransformation(address(this), 2);
+        successful = game.manualTransformation(address(this), 2)
+            ? successful : false;
 
         // component 2 -> assembler 4
-        game.manualTransformation(address(this), 3);
+        successful = game.manualTransformation(address(this), 3)
+            ? successful : false;
 
         // component 2 + assembler -> component 3
-        game.manualTransformation(address(this), 4);
+        successful = game.manualTransformation(address(this), 4)
+            ? successful : false;
+
+        Assert.equal(
+            true,
+            successful,
+            "Verify all transformations were successful"
+        );
 
         (   uint[] memory itemIds,
             uint[] memory itemQuantities

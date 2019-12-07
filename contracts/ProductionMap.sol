@@ -21,7 +21,7 @@ contract ProductionMap is
 
     function addItem(
         uint itemId,
-        uint itemType,
+        uint itemCategory,
         uint itemSubType
     ) external {
         require(
@@ -31,28 +31,16 @@ contract ProductionMap is
 
         ItemProperties memory itemProps;
         itemProps.id = items.length;
-        itemProps.itemType = ItemType(itemType);
-
-        if(itemProps.itemType == ItemType.NaturalResource){
-            itemProps.itemSubtypeNaturalResource = ItemSubtypeNaturalResource(
-                itemSubType
-            );
-        }else if(itemProps.itemType == ItemType.Component){
-            itemProps.itemSubtypeComponent = ItemSubtypeComponent(
-                itemSubType
-            );
-        }else if(itemProps.itemType == ItemType.Placeable){
-            itemProps.itemSubtypePlaceable = ItemSubtypePlaceable(
-                itemSubType
-            );
-        }
+        itemProps.itemType.itemCategory = ItemCategory(itemCategory);
+        itemProps.itemType.itemSubtype = itemSubType;
 
         items.push(itemProps);
     }
 
     function addAssemblerProperties(uint targetTransformationId) external {
         AssemblerItem storage curAssembler = items[topItemId()]
-            .placeableSubtypes
+            .subtypes
+            .placeable
             .assembler;
 
         curAssembler.itemIntf.itemId = topItemId();
@@ -61,7 +49,8 @@ contract ProductionMap is
 
     function addExtractorProperties(uint targetTransformationId) external {
         ExtractorItem storage curExtractor = items[topItemId()]
-            .placeableSubtypes
+            .subtypes
+            .placeable
             .extractor;
 
         curExtractor.itemIntf.itemId = topItemId();
@@ -70,7 +59,10 @@ contract ProductionMap is
 
     function addSiloProperties(uint targetItemId, uint maxQuantity) external {
 
-        SiloItem storage curSilo = items[topItemId()].placeableSubtypes.silo;
+        SiloItem storage curSilo = items[topItemId()]
+            .subtypes
+            .placeable
+            .silo;
 
         curSilo.itemIntf.itemId = topItemId();
         curSilo.targetItemId = targetItemId;

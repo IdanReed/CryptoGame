@@ -20,13 +20,6 @@ contract Game is
     /**************************************************************
     External functions - full
     **************************************************************/
-    function test(address sectorAddress) external{
-        Sector storage sectorStor = sectors[sectorAddress];
-        Sector memory sectorMem = sectorStor;
-
-        memcpyPlaceable(sectorMem, sectorStor);
-
-    }
 
     /**
     A primary game function that is called to make a sector's buildings act.
@@ -65,6 +58,7 @@ contract Game is
     /**
     This function attempts to execute a transformation that was externally
     called. Intended for building placeable items in a sector.
+
     */
     function manualTransformation(
         address sectorAddress,

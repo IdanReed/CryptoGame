@@ -2,7 +2,20 @@ pragma solidity ^0.5.0;
 
 contract TypesItem{
 
-    enum ItemType{
+    /**
+    This struct specifies the full type of an item. Currently this allows only
+    two layers where itemCategory defines behavior and subtypes specific extra
+    members to allow for unquie behavior.
+
+    Holds no data outside of enums.
+    */
+    struct ItemType{
+        ItemCategory itemCategory;
+        uint itemSubtype;
+    }
+
+    enum ItemCategory{
+        None,
         NaturalResource,
         Component,
         Placeable
@@ -42,37 +55,24 @@ contract TypesItem{
         uint mass;
         uint volume;
 
-        // ItemType itemType; /* Specify which ItemSubtype_____ */
+        ItemType itemType; /* Only specifies */
 
         /* optional data */
-
-        ItemTypeFull itemType1;
-
-        // ItemSubtypeNaturalResource itemSubtypeNaturalResource;
-
-        // ItemSubtypeComponent itemSubtypeComponent;
-
-        // ItemSubtypePlaceable itemSubtypePlaceable;
-        PlaceableSubtypes placeableSubtypes;
+        ItemSubtypes subtypes; /* Holds data */
     }
 
-
-    /*
-    TODO convert enum members into cast based type to allow for less
-    annoying type checking
+    /**
+    This struct stores all subtype data
     */
-    struct ItemTypeFull{
-        ItemType itemType;
-
-        ItemSubtypeNaturalResource itemSubtypeNaturalResource;
-        ItemSubtypeComponent itemSubtypeComponent;
-        ItemSubtypePlaceable itemSubtypePlaceable;
+    struct ItemSubtypes{
+        PlaceableSubtypes placeable;
     }
 
     /**
     Required struct for item subtypes. Contains a reference back to it's item
-    index.
+    index. Allows for subtype data to be store seperatly.
     */
+    // TODO seperate constant subtype data out from vol then use itemIntf?
     struct ItemSubtypeInterface{
         uint itemId; /* backup itemId */
     }
@@ -115,4 +115,5 @@ contract TypesItem{
 
         uint targetTransformationId;
     }
+
 }
