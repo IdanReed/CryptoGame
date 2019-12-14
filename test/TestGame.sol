@@ -8,6 +8,93 @@ contract TestGame {
     Game game = Game(DeployedAddresses.Game());
     uint public initialBalance = 10 ether;
 
+    /**
+    This function must run first. Other tests are dependent on the setup state
+    */
+    function testSetupRoutine_addTransformations() public {
+        setupRoutine_addTransformations();
+    }
+
+
+    /**
+    This function simulates the external calls that would be made to add
+    production transformations.
+    The idea is for JSON to be read and make these calls like they are here
+    now
+    */
+    function setupRoutine_addTransformations() private {
+
+        game.addItem(
+            0,
+            3, /* placeable */
+            1  /* silo */
+        );
+        game.addSiloProperties(2, 100);
+
+        game.addItem(
+            1,
+            3, /* placeable */
+            1  /* silo */
+        );
+        game.addSiloProperties(3, 100);
+
+        game.addItem(
+            2,
+            2, /* component */
+            1  /* standard */
+        );
+
+        game.addItem(
+            3,
+            2, /* component */
+            1  /* standard */
+        );
+
+        game.addItem(
+            4,
+            3, /* placeable */
+            3  /* Assembler */
+        );
+        game.addAssemblerProperties(4);
+
+        for(uint i = 5; i < 10; i++){
+            game.addItem(
+                i,
+                1, /* NaturalResource */
+                1  /* Standard */
+            );
+        }
+
+        game.addItem(
+            10,
+            3, /* placeable */
+            2  /* Extractor */
+        );
+        game.addExtractorProperties(4);
+
+        game.addTransformation(0); // free silo 0
+        game.addTransformationElement(false, 0, 1);
+
+        game.addTransformation(1); // free silo 1
+        game.addTransformationElement(false, 1, 1);
+
+        game.addTransformation(2); // free component 2
+        game.addTransformationElement(false, 2, 75);
+
+        game.addTransformation(3); // component 2 -> assembler 4
+        game.addTransformationElement(true, 2, 25);
+        game.addTransformationElement(false, 4, 1);
+
+        game.addTransformation(4); // component 2 + assembler -> component 3
+        game.addTransformationElement(true, 2, 25);
+        game.addTransformationElement(true, 4, 1);
+        game.addTransformationElement(false, 3, 1);
+
+        game.addTransformation(5); // natRes 5 -> natRes 5 in silo
+        game.addTransformationElement(true, 5, 1);
+        game.addTransformationElement(false, 5, 1);
+    }
+
     function testFunction_convertAddressToCordinateTuple() public {
 
         uint x;
@@ -64,74 +151,7 @@ contract TestGame {
             zAngleConverted,
             "Verify initialized xAngle matches a direct conversion"
         );
-    }
 
-    /**
-    This function simulates the external calls that would be made to add
-    production transformations.
-    The idea is for JSON to be read and make these calls like they are here
-    now
-    */
-    function setupRoutine_addTransformations() private {
-
-        game.addItem(
-            0,
-            3, /* placeable */
-            1  /* silo */
-        );
-        game.addSiloProperties(2, 100);
-
-        game.addItem(
-            1,
-            3, /* placeable */
-            1  /* silo */
-        );
-        game.addSiloProperties(3, 100);
-
-        game.addItem(
-            2,
-            2, /* component */
-            1  /* standard */
-        );
-
-        game.addItem(
-            3,
-            2, /* component */
-            1  /* standard */
-        );
-
-        game.addItem(
-            4,
-            3, /* placeable */
-            3  /* Assembler */
-        );
-        game.addAssemblerProperties(4);
-
-
-        game.addTransformation(0); // free silo 0
-        game.addTransformationElement(false, 0, 1);
-
-        game.addTransformation(1); // free silo 1
-        game.addTransformationElement(false, 1, 1);
-
-
-        game.addTransformation(2); // free component 2
-        game.addTransformationElement(false, 2, 75);
-
-        game.addTransformation(3); // component 2 -> assembler 4
-        game.addTransformationElement(true, 2, 25);
-        game.addTransformationElement(false, 4, 1);
-
-
-        game.addTransformation(4); // component 2 + assembler -> component 3
-        game.addTransformationElement(true, 2, 25);
-        game.addTransformationElement(true, 4, 1);
-        game.addTransformationElement(false, 3, 1);
-    }
-
-    function testSetupRoutine_addTransformations() public {
-        setupRoutine_addTransformations();
-        Assert.equal(true, true, "");
     }
 
     function testFunction_manualTransformation() public {
@@ -252,7 +272,6 @@ contract TestGame {
             itemQuantities1[0],
             "Verify that the sector's component 2 stored counts match."
         );
-
     }
 
 

@@ -15,6 +15,15 @@ contract ProductionMap is
     Transformation[] transformations;
     ItemProperties[] items;
 
+    uint[ /* category   */  ]
+        [ /* subtype    */  ]
+        [ /* id         */  ]
+        itemIdsByType;
+
+    constructor() public {
+        itemIdsByTypeSetLengths();
+    }
+
     /**************************************************************
     External functions - full
     **************************************************************/
@@ -35,6 +44,11 @@ contract ProductionMap is
         itemProps.itemType.itemSubtype = itemSubType;
 
         items.push(itemProps);
+
+        itemIdsByType
+            [uint(itemProps.itemType.itemCategory)]
+            [uint(itemProps.itemType.itemSubtype)]
+            .push(itemProps.id);
     }
 
     function addAssemblerProperties(uint targetTransformationId) external {
@@ -104,5 +118,13 @@ contract ProductionMap is
 
     function topItemId() internal view returns(uint ) {
         return items.length - 1;
+    }
+
+    function itemIdsByTypeSetLengths() internal{
+        itemIdsByType.length = uint(ItemCategory.Max);
+
+        for(uint category = 0; category < uint(ItemCategory.Max); category++){
+            itemIdsByType[category].length = subtypeBounds[category];
+        }
     }
 }

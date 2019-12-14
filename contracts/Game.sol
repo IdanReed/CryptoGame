@@ -10,7 +10,9 @@ contract Game is
     TypesItem, TypesTransformation, TypesSector,
     ProductionManager
     {
+    constructor() ProductionManager() public  {
 
+    }
     /**************************************************************
     Data
     **************************************************************/
@@ -51,7 +53,12 @@ contract Game is
     function initializeNativeSector() external {
         Sector storage nativeSector = sectors[msg.sender];
         if(!nativeSector.initialized){
-            initializeSector(nativeSector, msg.sender, msg.sender);
+            initializeSector(
+                nativeSector,
+                msg.sender,
+                msg.sender,
+                itemIdsByType
+            );
         }
     }
 
@@ -82,13 +89,13 @@ contract Game is
         uint xAngle,
         uint zAngle
     ){
-        Sector memory selSector = sectors[sectorAddress];
+        Sector memory sector = sectors[sectorAddress];
 
         return (
-            selSector.initialized,
-            selSector.owner,
-            selSector.cordinates.xAngle,
-            selSector.cordinates.zAngle
+            sector.initialized,
+            sector.owner,
+            sector.cordinates.xAngle,
+            sector.cordinates.zAngle
         );
     }
 
@@ -97,21 +104,46 @@ contract Game is
         uint[] memory itemQuantities
     ){
 
-        Sector memory selSector = sectors[sectorAddress];
-        uint siloCount = selSector.silos.length;
+        Sector memory sector = sectors[sectorAddress];
+        uint siloCount = sector.silos.length;
 
         itemIds = new uint[](siloCount);
         itemQuantities = new uint[](siloCount);
 
-        for(uint i = 0; i < selSector.silos.length; i++){
-            itemIds[i] = selSector.silos[i].targetItemId;
-            itemQuantities[i] = selSector.silos[i].curQuantity;
+        for(uint i = 0; i < sector.silos.length; i++){
+            itemIds[i] = sector.silos[i].targetItemId;
+            itemQuantities[i] = sector.silos[i].curQuantity;
         }
 
         return (
             itemIds,
             itemQuantities
         );
+    }
+
+    function getSectorNaturalResources(
+        address sectorAddress
+    )
+    public view returns (
+        uint[] memory itemIds,
+        uint[] memory remainingQuantities
+    ){
+        Sector memory sector = sectors[sectorAddress];
+        uint naturalResourceCount = sector.naturalResources.length;
+
+        itemIds = new uint[](naturalResourceCount);
+        remainingQuantities = new uint[](naturalResourceCount);
+
+        for(uint i = 0; i < naturalResourceCount; i++){
+            itemIds[i] = sector
+                .naturalResources[i]
+                .itemIntf
+                .itemId;
+
+            remainingQuantities[i] = sector
+                .naturalResources[i]
+                .remainingQuantity;
+        }
     }
 
     /**************************************************************

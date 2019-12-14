@@ -10,12 +10,6 @@ TypesSector contract:
 */
 contract TypesSector is TypesItem{
 
-    struct NaturalResource{
-        uint itemId;
-        uint quantity;
-        uint difficulty;
-    }
-
     struct SphereCordinate{
         uint xAngle; /* address bits from 160 to 80 */
         uint zAngle; /* address bits from 80 to 0   */
@@ -28,12 +22,13 @@ contract TypesSector is TypesItem{
         SphereCordinate cordinates;
         uint lastTickBlock;
 
-        NaturalResource[] naturalResources;
+        NaturalResourceItem[] naturalResources;
 
         /* Placeables       */
         SiloItem[] silos;
         ExtractorItem[] extractors;
         AssemblerItem[] assemblers;
+
     }
 
     struct SectorItemReference{
@@ -47,13 +42,30 @@ contract TypesSector is TypesItem{
     prevent excess copying). Each step creates one these structs to perserve
     the original Sector data incase a following step fails.
 
-    TODO switch from memcpy to this, could actually 'store' them in storage to
+    TODO switch from memcpy to this, put in Sector them in storage to
     allow for the list to be built dyn
     */
     struct SectorModification{
         ItemSubtypePlaceable itemSubtypePlaceable;
         uint itemIndex;
         uint originalValue;
+    }
+
+    /**************************************************************
+    Public Views/Pure
+    **************************************************************/
+    function convertAddressToCordinateTuple(
+        address addressToConvert
+    )
+    public pure returns(
+        uint xAngle, uint zAngle
+    ){
+        uint rightMask = (1 << 80) - 1;
+        uint addressCasted = uint(addressToConvert);
+
+        xAngle = (addressCasted & ~rightMask) >> 80;
+        zAngle = addressCasted & rightMask;
+        return (xAngle, zAngle);
     }
 
     /**************************************************************
@@ -68,7 +80,11 @@ contract TypesSector is TypesItem{
     function initializeSector(
         Sector storage sector,
         address owner, /* the new owner */
-        address sectorAddress /* the key in the address -> sector map */
+        address sectorAddress, /* the key in the address -> sector map */
+        uint[ /* category   */  ]
+            [ /* subtype    */  ]
+            [ /* id         */  ]
+            storage itemTypeMap
     )
     internal {
         require(
@@ -85,13 +101,45 @@ contract TypesSector is TypesItem{
 
         sector.cordinates = SphereCordinate(xAngle, zAngle);
 
-        initializeSectorNaturalResources(sector);
+        initializeSectorNaturalResources(sector, itemTypeMap);
     }
 
     function initializeSectorNaturalResources(
-        Sector storage sector
+        Sector storage sector,
+        uint[ /* category   */  ]
+            [ /* subtype    */  ]
+            [ /* id         */  ]
+            storage itemTypeMap
     ) private {
+        SphereCordinate memory cords = sector.cordinates;
 
+        uint[] memory naturalResourceIds = itemTypeMap
+            [uint(ItemCategory.NaturalResource)]
+            [uint(ItemSubtypeNaturalResource.Standard)];
+
+        uint curByteMask = 0xf;
+        uint curByte = (cords.xAngle & curByteMask);
+
+        uint maxTypes = 10;
+        uint typeCount = curByte % maxTypes;
+
+        for(uint i = 0; i < typeCount; i++){
+            curByteMask = curByteMask << 4;
+            curByte = (cords.xAngle & curByteMask);
+
+            NaturalResourceItem memory natResource;
+
+            natResource.itemIntf.itemId = naturalResourceIds
+                [curByte % naturalResourceIds.length];
+
+            uint maxQuantity = 100;
+            natResource.remainingQuantity = curByte % maxQuantity;
+
+            uint maxDifficulty = 100;
+            natResource.difficulty = curByte % maxDifficulty;
+
+            sector.naturalResources.push(natResource);
+        }
     }
 
     function consumeItem(
@@ -106,7 +154,27 @@ contract TypesSector is TypesItem{
 
         if(item.itemType.itemCategory == ItemCategory.NaturalResource){
             /* Extract item from sector's potential nat reasource */
-
+            for(
+                uint i = 0;
+                i < sector.naturalResources.length && quantity > 0;
+                i++
+            ){
+                if(item.id == sector.naturalResources[i].itemIntf.itemId){
+                    if(
+                        quantity < sector.naturalResources[i].remainingQuantity
+                    ){
+                        sector
+                            .naturalResources[i]
+                            .remainingQuantity -= quantity;
+                        quantity = 0;
+                    }else{
+                        quantity -= sector
+                            .naturalResources[i]
+                            .remainingQuantity;
+                        sector.naturalResources[i].remainingQuantity = 0;
+                    }
+                }
+            }
         }else if(item.itemType.itemCategory == ItemCategory.Component){
             /* Subtract item from sector's silos */
             for(
@@ -191,7 +259,10 @@ contract TypesSector is TypesItem{
             }
             quantity = 0;
 
-        }else if(item.itemType.itemCategory == ItemCategory.Component){
+        }else if(
+            item.itemType.itemCategory == ItemCategory.Component
+            || item.itemType.itemCategory == ItemCategory.NaturalResource
+        ){
             for(uint i = 0; i < sector.silos.length && quantity > 0; i++){
 
                 if(item.id == sector.silos[i].targetItemId){
@@ -242,23 +313,6 @@ contract TypesSector is TypesItem{
 
     function setSectorTickBlock(Sector storage sector) internal {
         sector.lastTickBlock = block.number;
-    }
-
-    /**************************************************************
-    Public Views/Pure
-    **************************************************************/
-    function convertAddressToCordinateTuple(
-        address addressToConvert
-    )
-    public pure returns(
-        uint xAngle, uint zAngle
-    ){
-        uint rightMask = (1 << 80) - 1;
-        uint addressCasted = uint(addressToConvert);
-
-        xAngle = (addressCasted & ~rightMask) >> 80;
-        zAngle = addressCasted & rightMask;
-        return (xAngle, zAngle);
     }
 
 }

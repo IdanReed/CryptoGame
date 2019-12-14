@@ -18,25 +18,36 @@ contract TypesItem{
         None,
         NaturalResource,
         Component,
-        Placeable
+        Placeable,
+        Max
+    }
+
+    enum ItemSubtypeNaturalResource{
+        None,
+        Standard,
+        Max
+    }
+
+    enum ItemSubtypeComponent{
+        None,
+        Standard,
+        Max
     }
 
     enum ItemSubtypePlaceable{
         None,
         Silo,
         Extractor,
-        Assembler
+        Assembler,
+        Max
     }
 
-    enum ItemSubtypeComponent{
-        None,
-        Standard
-    }
-
-    enum ItemSubtypeNaturalResource{
-        None,
-        Standard
-    }
+    uint[] subtypeBounds = [
+        0, /* None */
+        uint(ItemSubtypeNaturalResource.Max),
+        uint(ItemSubtypeComponent.Max),
+        uint(ItemSubtypePlaceable.Max)
+    ];
 
     /**
     This struct contains all data an item MAY have. This is so an array of
@@ -71,8 +82,9 @@ contract TypesItem{
     /**
     Required struct for item subtypes. Contains a reference back to it's item
     index. Allows for subtype data to be store seperatly.
-    */
+
     // TODO seperate constant subtype data out from vol then use itemIntf?
+    */
     struct ItemSubtypeInterface{
         uint itemId; /* backup itemId */
     }
@@ -116,4 +128,12 @@ contract TypesItem{
         uint targetTransformationId;
     }
 
+    struct NaturalResourceItem{
+        /* contant */
+        ItemSubtypeInterface itemIntf;
+        uint difficulty;
+
+        /* volitile */
+        uint remainingQuantity;
+    }
 }
