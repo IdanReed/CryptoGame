@@ -47,7 +47,7 @@ contract ProductionMap is
 
         itemIdsByType
             [uint(itemProps.itemType.itemCategory)]
-            [uint(itemProps.itemType.itemSubtype)]
+            [itemProps.itemType.itemSubtype]
             .push(itemProps.id);
     }
 
@@ -127,4 +127,6 @@ contract ProductionMap is
             itemIdsByType[category].length = subtypeBounds[category];
         }
     }
+
+
 }

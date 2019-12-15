@@ -19,6 +19,13 @@ contract TypesItem{
         NaturalResource,
         Component,
         Placeable,
+        Ap,
+        Max
+    }
+
+    enum ItemSubtypeAp{
+        None,
+        Standard,
         Max
     }
 
@@ -46,7 +53,8 @@ contract TypesItem{
         0, /* None */
         uint(ItemSubtypeNaturalResource.Max),
         uint(ItemSubtypeComponent.Max),
-        uint(ItemSubtypePlaceable.Max)
+        uint(ItemSubtypePlaceable.Max),
+        uint(ItemSubtypeAp.Max)
     ];
 
     /**

@@ -26,10 +26,9 @@ contract TestGame {
 
         game.addItem(
             0,
-            3, /* placeable */
-            1  /* silo */
+            4, /* ap */
+            1  /* standard */
         );
-        game.addSiloProperties(2, 100);
 
         game.addItem(
             1,
@@ -40,9 +39,10 @@ contract TestGame {
 
         game.addItem(
             2,
-            2, /* component */
-            1  /* standard */
+            3, /* placeable */
+            1  /* silo */
         );
+        game.addSiloProperties(4, 100);
 
         game.addItem(
             3,
@@ -52,12 +52,18 @@ contract TestGame {
 
         game.addItem(
             4,
+            2, /* component */
+            1  /* standard */
+        );
+
+        game.addItem(
+            5,
             3, /* placeable */
             3  /* Assembler */
         );
         game.addAssemblerProperties(4);
 
-        for(uint i = 5; i < 10; i++){
+        for(uint i = 6; i <= 10; i++){
             game.addItem(
                 i,
                 1, /* NaturalResource */
@@ -66,33 +72,38 @@ contract TestGame {
         }
 
         game.addItem(
-            10,
+            11,
             3, /* placeable */
             2  /* Extractor */
         );
         game.addExtractorProperties(4);
 
         game.addTransformation(0); // free silo 0
-        game.addTransformationElement(false, 0, 1);
-
-        game.addTransformation(1); // free silo 1
         game.addTransformationElement(false, 1, 1);
 
-        game.addTransformation(2); // free component 2
-        game.addTransformationElement(false, 2, 75);
+        game.addTransformation(1); // free silo 1
+        game.addTransformationElement(false, 2, 1);
 
-        game.addTransformation(3); // component 2 -> assembler 4
-        game.addTransformationElement(true, 2, 25);
+        game.addTransformation(2); // free component 3
+        game.addTransformationElement(false, 3, 75);
+
+        game.addTransformation(3); // component 3 -> assembler 4
+        game.addTransformationElement(true, 3, 25);
+        game.addTransformationElement(false, 5, 1);
+
+        game.addTransformation(4); // component 3 + assembler -> component 4
+        game.addTransformationElement(true, 3, 25);
+        game.addTransformationElement(true, 5, 1);
         game.addTransformationElement(false, 4, 1);
 
-        game.addTransformation(4); // component 2 + assembler -> component 3
-        game.addTransformationElement(true, 2, 25);
-        game.addTransformationElement(true, 4, 1);
-        game.addTransformationElement(false, 3, 1);
-
         game.addTransformation(5); // natRes 5 -> natRes 5 in silo
-        game.addTransformationElement(true, 5, 1);
-        game.addTransformationElement(false, 5, 1);
+        game.addTransformationElement(true, 6, 1);
+        game.addTransformationElement(false, 6, 1);
+
+        game.addTransformation(6); // component 3 -> ap
+        game.addTransformationElement(true, 3, 1);
+        game.addTransformationElement(false, 0, 1);
+
     }
 
     function testFunction_convertAddressToCordinateTuple() public {
@@ -140,7 +151,6 @@ contract TestGame {
             address(this),
             "Verify that the native sector owner is the test contract"
         );
-
         Assert.equal(
             xAngleInit,
             xAngleConverted,
@@ -157,23 +167,23 @@ contract TestGame {
     function testFunction_manualTransformation() public {
         bool successful = true;
 
-        // free silo 0 for component 2
+        // free silo 0 for component 3
         successful = game.manualTransformation(address(this), 0)
             ? successful : false;
 
-        // free silo 0 for component 2
+        // free silo 0 for component 3
         successful = game.manualTransformation(address(this), 1)
             ? successful : false;
 
-        // free component 2
+        // free component 3
         successful = game.manualTransformation(address(this), 2)
             ? successful : false;
 
-        // component 2 -> assembler 4
+        // component 3 -> assembler 4
         successful = game.manualTransformation(address(this), 3)
             ? successful : false;
 
-        // component 2 + assembler -> component 3
+        // component 3 + assembler -> component 4
         successful = game.manualTransformation(address(this), 4)
             ? successful : false;
 
@@ -194,23 +204,23 @@ contract TestGame {
         );
         Assert.equal(
             itemIds[0],
-            2,
-            "Verify that first silo stores component 2"
+            3,
+            "Verify that first silo stores component 3"
         );
         Assert.equal(
             itemIds[1],
-            3,
-            "Verify that second silo stores component 3"
+            4,
+            "Verify that second silo stores component 4"
         );
         Assert.equal(
             itemQuantities[0],
             25,
-            "Verify that remaining component 2 matches expected"
+            "Verify that remaining component 3 matches expected"
         );
         Assert.equal(
             itemQuantities[1],
             1,
-            "Verify that remaining component 3 matches expected"
+            "Verify that remaining component 4 matches expected"
         );
     }
 
@@ -228,23 +238,23 @@ contract TestGame {
         );
         Assert.equal(
             itemIds[0],
-            2,
-            "Verify that first silo stores component 2"
+            3,
+            "Verify that first silo stores component 3"
         );
         Assert.equal(
             itemIds[1],
-            3,
-            "Verify that second silo stores component 3"
+            4,
+            "Verify that second silo stores component 4"
         );
         Assert.equal(
             itemQuantities[0],
             0,
-            "Verify that remaining component 2 matches expected"
+            "Verify that remaining component 3 matches expected"
         );
         Assert.equal(
             itemQuantities[1],
             2,
-            "Verify that remaining component 3 matches expected"
+            "Verify that remaining component 4 matches expected"
         );
     }
 
@@ -270,9 +280,52 @@ contract TestGame {
         Assert.equal(
             itemQuantities2[0],
             itemQuantities1[0],
-            "Verify that the sector's component 2 stored counts match."
+            "Verify that the sector's component 3 stored counts match."
         );
     }
 
+    function testSystem_apStoreConsume() public {
+
+        game.manualTransformation(address(this), 2);
+        bool rtn = game.manualTransformation(address(this), 6);
+
+        Assert.equal(
+            rtn,
+            true,
+            "Verify that the transformation was unsuccessful."
+        );
+
+        Assert.equal(
+            game.getSectorAp(address(this)),
+            1,
+            "Verify that the sector as 1 AP."
+        );
+    }
+
+    function testSystem_bridge() public {
+        (   uint[] memory itemIds,
+            uint[] memory itemQuantities
+        ) = game.getSectorSilos(address(this));
+
+        game.createBridge(address(this), address(this), 3);
+        bool rtnSet = game.setBridge(address(this), 0, 1);
+
+        (bool rtn1, bool rtn2, bool rtn3) = game.tickSector(address(this));
+        // Assert.equal(
+        //     itemQuantities[0],
+        //     7,
+        //     "Verify that "
+        // );
+        // Assert.equal(
+        //     itemQuantities[1],
+        //     7,
+        //     "Verify that "
+        // );
+        Assert.equal(
+            rtn1,
+            true,
+            "Verify that "
+        );
+    }
 
 }

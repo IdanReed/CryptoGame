@@ -17,33 +17,119 @@ contract Game is
     Data
     **************************************************************/
 
-    mapping (address => Sector) sectors;
+    mapping (address => Sector) private sectors;
 
     /**************************************************************
     External functions - full
     **************************************************************/
 
     /**
+
+    */
+    function getSectorAp(address sectorAddress) external view returns(uint) {
+        return sectors[sectorAddress].ap;
+    }
+
+    /**
     A primary game function that is called to make a sector's buildings act.
     */
     function tickSector(
         address sectorAddress
-    ) external callerOwnsSector(sectorAddress) {
+    ) external callerOwnsSector(sectorAddress) returns(
+        bool wasSuccessful,bool wasSuccessful1,bool wasSuccessful2
+    ){
         Sector storage sector = sectors[sectorAddress];
 
+        bool extractorsSuccesful = true;
         for(uint i = 0; i < sector.extractors.length; i++){
-            proccessTransformation(
+            extractorsSuccesful = proccessTransformation(
                 sector,
                 transformations[sector.extractors[i].targetTransformationId]
             );
         }
 
+        bool assemberlsSuccesful = true;
         for(uint i = 0; i < sector.assemblers.length; i++){
-            proccessTransformation(
+            assemberlsSuccesful = proccessTransformation(
                 sector,
                 transformations[sector.assemblers[i].targetTransformationId]
             );
         }
+
+        bool bridgesSuccesful = true;
+        for(uint i = 0; i < sector.bridges.length; i++){
+            bridgesSuccesful = processBridge(
+                sector,
+                i
+           );
+        }
+
+        return (
+            extractorsSuccesful,
+            assemberlsSuccesful,
+            bridgesSuccesful
+        );
+
+    }
+
+    function createBridge(
+        address sectorAddressSource,
+        address sectorAddressTarget,
+        uint targetItemId
+    )
+        external
+        callerOwnsSector(sectorAddressSource)
+    {
+
+        Sector storage sector = sectors[sectorAddressSource];
+
+        if(sectors[sectorAddressTarget].owner != msg.sender){
+            require(
+                targetItemId == getApItem().id,
+                "Require bridge to be moving AP when ending at an unowned sector"
+            );
+        }
+
+        Bridge memory bridge;
+        bridge.targetItemId = targetItemId;
+        bridge.endSector = sectorAddressTarget;
+
+        bridge.curRate = 0;
+        bridge.maxRate = 0;
+
+        sector.bridges.push(bridge);
+
+    }
+
+    function setBridge(
+        address sectorAddress,
+        uint bridgeId,
+        uint newRate
+    )
+        external
+        callerOwnsSector(sectorAddress)
+        returns(bool)
+    {
+        Sector storage sector = sectors[sectorAddress];
+
+        require(
+            bridgeId < sector.bridges.length,
+            "Require valid bridgeId"
+        );
+
+        Bridge storage bridge = sector.bridges[bridgeId];
+
+        if(bridge.maxRate >= newRate){
+            bridge.curRate = newRate;
+        }else{
+            if(consumeItem(sector, getApItem(), newRate - bridge.maxRate)){
+                bridge.maxRate = newRate;
+                bridge.curRate = newRate;
+            }else{
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -143,6 +229,28 @@ contract Game is
             remainingQuantities[i] = sector
                 .naturalResources[i]
                 .remainingQuantity;
+        }
+    }
+
+    /**************************************************************
+    Internal functions - full
+    **************************************************************/
+    function processBridge(
+        Sector storage startSector,
+        uint bridgeId
+    ) internal returns (bool wasSuccessful){
+        Bridge memory bridge = startSector.bridges[bridgeId];
+        Sector storage endSector = sectors[bridge.endSector];
+
+        if(startSector.owner != endSector.owner){
+            attackSector(startSector, endSector, bridge);
+        }else{
+            return transferItem(
+                startSector,
+                sectors[bridge.endSector],
+                items[bridge.targetItemId],
+                bridge.curRate
+            );
         }
     }
 

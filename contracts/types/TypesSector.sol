@@ -10,31 +10,42 @@ TypesSector contract:
 */
 contract TypesSector is TypesItem{
 
-    struct SphereCordinate{
-        uint xAngle; /* address bits from 160 to 80 */
-        uint zAngle; /* address bits from 80 to 0   */
-    }
-
     struct Sector{
+        /* Constant         */
         bool initialized;
-
-        address owner;
+        address nativeAddress; /* this sector's key in game */
         SphereCordinate cordinates;
-        uint lastTickBlock;
 
+        /* Volitile         */
+        address owner;
+        uint lastTickBlock;
         NaturalResourceItem[] naturalResources;
+        uint ap;
 
         /* Placeables       */
         SiloItem[] silos;
         ExtractorItem[] extractors;
         AssemblerItem[] assemblers;
 
+        Bridge[] bridges;
+
     }
 
-    struct SectorItemReference{
-        ItemSubtypePlaceable itemType;
-        uint itemIndex;
-        uint originalVal;
+
+    /**
+    This struct is for transporting resources between sectors.
+    */
+    struct Bridge{
+        Placeable placeable;
+        uint targetItemId;
+        uint maxRate;
+        uint curRate;
+        address endSector;
+    }
+
+    struct SphereCordinate{
+        uint xAngle; /* address bits from 160 to 80 */
+        uint zAngle; /* address bits from 80 to 0   */
     }
 
     /**
@@ -100,7 +111,6 @@ contract TypesSector is TypesItem{
         ) = convertAddressToCordinateTuple(sectorAddress);
 
         sector.cordinates = SphereCordinate(xAngle, zAngle);
-
         initializeSectorNaturalResources(sector, itemTypeMap);
     }
 
@@ -223,6 +233,12 @@ contract TypesSector is TypesItem{
                 }
             }
 
+        }else if(item.itemType.itemCategory == ItemCategory.Ap){
+
+            if(quantity <= sector.ap){
+                sector.ap -= quantity;
+                quantity = 0;
+            }
         }
         return (quantity == 0);
     }
@@ -284,6 +300,9 @@ contract TypesSector is TypesItem{
                     }
                 }
             }
+        }else if(item.itemType.itemCategory == ItemCategory.Ap){
+            sector.ap += quantity;
+            quantity = 0;
         }
 
         return (quantity == 0);
@@ -313,6 +332,45 @@ contract TypesSector is TypesItem{
 
     function setSectorTickBlock(Sector storage sector) internal {
         sector.lastTickBlock = block.number;
+    }
+
+    function transferItem(
+        Sector storage sectorSource,
+        Sector storage sectorDestination,
+        ItemProperties memory item,
+        uint quantity
+    ) internal returns(
+        bool wasSuccessful
+    ){
+        Sector memory sectorSourceBackup = sectorSource;
+        Sector memory sectorDestinationBackup = sectorDestination;
+
+        if(!consumeItem(
+                sectorSource,
+                item,
+                quantity
+            ) &&
+            !storeItem(
+                sectorDestination,
+                item,
+                quantity
+            )
+        ){
+
+            memcpyPlaceable(sectorSourceBackup, sectorSource);
+            memcpyPlaceable(sectorDestinationBackup, sectorDestination);
+            return false;
+        }
+
+        return true;
+    }
+
+    function attackSector(
+        Sector storage sectorSource,
+        Sector storage sectorTarget,
+        Bridge memory bridge
+    ) internal {
+
     }
 
 }

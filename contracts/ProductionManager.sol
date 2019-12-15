@@ -90,7 +90,7 @@ contract ProductionManager is
         Sector storage sector,
         Transformation memory transformation
     ) internal returns (
-        bool successful
+        bool wasSuccessful
     ){
         Sector memory sectorBackup = sector;
 
@@ -126,5 +126,15 @@ contract ProductionManager is
 
         return true;
     }
+    /**************************************************************
+    Internal functions - view, pure
+    **************************************************************/
 
+    function getApItem() internal view returns (ItemProperties memory){
+        uint itemId = itemIdsByType
+            [uint(ItemCategory.Ap)]
+            [uint(ItemSubtypeAp.Standard)]
+            [0]; /* Only 1 ap type */
+        return items[itemId];
+    }
 }
