@@ -127,6 +127,4 @@ contract ProductionMap is
             itemIdsByType[category].length = subtypeBounds[category];
         }
     }
-
-
 }

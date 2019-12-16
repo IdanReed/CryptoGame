@@ -69,7 +69,6 @@ contract Game is
             assemberlsSuccesful,
             bridgesSuccesful
         );
-
     }
 
     function createBridge(
@@ -86,7 +85,7 @@ contract Game is
         if(sectors[sectorAddressTarget].owner != msg.sender){
             require(
                 targetItemId == getApItem().id,
-                "Require bridge to be moving AP when ending at an unowned sector"
+                "Require bridge to move AP when ending at unowned sector"
             );
         }
 
@@ -98,7 +97,6 @@ contract Game is
         bridge.maxRate = 0;
 
         sector.bridges.push(bridge);
-
     }
 
     function setBridge(
@@ -147,6 +145,7 @@ contract Game is
             );
         }
     }
+
 
     /**
     This function attempts to execute a transformation that was externally
@@ -235,22 +234,60 @@ contract Game is
     /**************************************************************
     Internal functions - full
     **************************************************************/
+
     function processBridge(
         Sector storage startSector,
         uint bridgeId
     ) internal returns (bool wasSuccessful){
         Bridge memory bridge = startSector.bridges[bridgeId];
         Sector storage endSector = sectors[bridge.endSector];
+        ItemProperties memory item = items[bridge.targetItemId];
 
         if(startSector.owner != endSector.owner){
-            attackSector(startSector, endSector, bridge);
+            /*
+            A sector with bridges ending at it could be taken by another. In
+            that case just stop the bridges from doing anything.
+            */
+            if(item.id == getApItem().id){
+                consumeItem(startSector, item, bridge.curRate);
+                proccessAttack(startSector, endSector, bridge);
+            }
+
+            return true;
         }else{
             return transferItem(
                 startSector,
                 sectors[bridge.endSector],
-                items[bridge.targetItemId],
+                item,
                 bridge.curRate
             );
+        }
+    }
+
+    /**
+
+    */
+    function proccessAttack(
+        Sector storage sectorSource,
+        Sector storage sectorTarget,
+        Bridge memory bridge
+    ) internal {
+        int apNegated = int(sectorTarget.ap) - int(bridge.curRate);
+
+        if(apNegated < 0){
+            if(!sectorTarget.initialized){
+                initializeSector(
+                    sectorTarget,
+                    sectorSource.owner,
+                    bridge.endSector,
+                    itemIdsByType
+                );
+            }else{
+                sectorTarget.owner = sectorSource.owner;
+                sectorTarget.ap = uint(apNegated * -1);
+            }
+        }else{
+            sectorTarget.ap = uint(apNegated);
         }
     }
 

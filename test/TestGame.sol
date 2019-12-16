@@ -302,30 +302,26 @@ contract TestGame {
         );
     }
 
-    function testSystem_bridge() public {
-        (   uint[] memory itemIds,
-            uint[] memory itemQuantities
-        ) = game.getSectorSilos(address(this));
+    function testSystem_attack() public {
+        address targetAddress = address(1234);
 
-        game.createBridge(address(this), address(this), 3);
-        bool rtnSet = game.setBridge(address(this), 0, 1);
+        game.createBridge(address(this), targetAddress, 0);
+        game.setBridge(address(this), 0, 1);
 
-        (bool rtn1, bool rtn2, bool rtn3) = game.tickSector(address(this));
-        // Assert.equal(
-        //     itemQuantities[0],
-        //     7,
-        //     "Verify that "
-        // );
-        // Assert.equal(
-        //     itemQuantities[1],
-        //     7,
-        //     "Verify that "
-        // );
+        (,, bool bridgesSuccesful) = game.tickSector(address(this));
+
         Assert.equal(
-            rtn1,
+            bridgesSuccesful,
             true,
-            "Verify that "
+            "Verify that bridges were succesfully proccessed"
         );
+
+        // (
+        //     bool initialized,
+        //     address owner,
+        //     uint xAngle,
+        //     uint zAngle
+        // ) = game.getSectorAttributes();
     }
 
 }

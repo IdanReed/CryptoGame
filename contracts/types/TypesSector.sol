@@ -13,7 +13,6 @@ contract TypesSector is TypesItem{
     struct Sector{
         /* Constant         */
         bool initialized;
-        address nativeAddress; /* this sector's key in game */
         SphereCordinate cordinates;
 
         /* Volitile         */
@@ -85,7 +84,7 @@ contract TypesSector is TypesItem{
 
     /**
     - When sectors are nativly initialize or taken for the first time via
-    confict they need to have their natural properties set. Must be done
+    attack they need to have their natural properties set. Must be done
     algorithmically.
     */
     function initializeSector(
@@ -361,16 +360,6 @@ contract TypesSector is TypesItem{
             memcpyPlaceable(sectorDestinationBackup, sectorDestination);
             return false;
         }
-
         return true;
     }
-
-    function attackSector(
-        Sector storage sectorSource,
-        Sector storage sectorTarget,
-        Bridge memory bridge
-    ) internal {
-
-    }
-
 }
