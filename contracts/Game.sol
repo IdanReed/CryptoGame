@@ -10,6 +10,10 @@ contract Game is
     TypesItem, TypesTransformation, TypesSector,
     ProductionManager
     {
+
+
+    uint public testUINT = 7;
+
     constructor() ProductionManager() public  {
 
     }
