@@ -12,7 +12,9 @@ contract Game is
     {
 
 
-    uint public testUINT = 7;
+    function testFunction() external pure returns(uint) {
+        return 13;
+    }
 
     constructor() ProductionManager() public  {
 

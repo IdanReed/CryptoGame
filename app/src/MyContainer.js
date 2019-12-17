@@ -3,13 +3,13 @@ import { drizzleConnect } from "@drizzle/react-plugin";
 
 const mapStateToProps = state => {
   return {
-    accounts: state.accounts,
-    SimpleStorage: state.contracts.SimpleStorage,
-    TutorialToken: state.contracts.TutorialToken,
-    drizzleStatus: state.drizzleStatus,
+    Game: state.contracts.Game,
   };
 };
 
 const MyContainer = drizzleConnect(MyComponent, mapStateToProps);
 
 export default MyContainer;
+
+
+
