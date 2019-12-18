@@ -14,3 +14,23 @@ TEXT
 #B7F1D5
 RED
 #E41400
+
+
+
+
+
+
+
+
+
+text
+#C7C7C7
+
+sidebar background
+#2D2D30
+
+main world background
+#1E1E1E
+
+border
+#3F3F46

@@ -1,4 +1,4 @@
-import MyComponent from "./MyComponent";
+import SidebarComp from "./sidebarComp";
 import { drizzleConnect } from "@drizzle/react-plugin";
 
 const mapStateToProps = state => {
@@ -7,9 +7,7 @@ const mapStateToProps = state => {
   };
 };
 
-const MyContainer = drizzleConnect(MyComponent, mapStateToProps);
+const MainPageCont = drizzleConnect(SidebarComp, mapStateToProps);
 
-export default MyContainer;
-
-
+export default MainPageCont;
 
