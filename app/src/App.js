@@ -5,18 +5,7 @@ import { LoadingContainer } from "@drizzle/react-components";
 import "./app.css"; // Styling root
 
 import drizzleOptions from "./drizzleOptions";
-import MainPage from "./mainPageCont";
-
-// const mainPageStyle = {
-//   height: '100%',
-//   width: '100%',
-//   position: 'relative',
-//   top: 0,
-//   left: 0,
-//   margin: 0,
-
-//   backgroundColor: 'black',
-// };
+import MainPage from "./contMainPage";
 
 class App extends Component {
   render() {

@@ -1,5 +1,6 @@
-import SidebarComp from "./sidebarComp";
 import { drizzleConnect } from "@drizzle/react-plugin";
+import SidebarComp from "./compSideBar";
+import TopbarComp from "./compTopBar";
 
 const mapStateToProps = state => {
   return {
@@ -7,7 +8,7 @@ const mapStateToProps = state => {
   };
 };
 
-const MainPageCont = drizzleConnect(SidebarComp, mapStateToProps);
+const MainPageCont = drizzleConnect(SidebarComp,TopbarComp, mapStateToProps);
 
 export default MainPageCont;
 

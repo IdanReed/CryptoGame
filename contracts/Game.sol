@@ -16,9 +16,14 @@ contract Game is
         return 13;
     }
 
+    function myAddress() external view returns(address) {
+        return msg.sender;
+    }
+
     constructor() ProductionManager() public  {
 
     }
+
 
     /**************************************************************
     Data
@@ -141,7 +146,7 @@ contract Game is
     Native sector is one with the same key address as the caller. If this
     sector hasn't been annexed or initialized this will do so .
     */
-    function initializeNativeSector() external {
+    function initializeNativeSector() external returns(uint){
         Sector storage nativeSector = sectors[msg.sender];
         if(!nativeSector.initialized){
             initializeSector(
@@ -151,6 +156,8 @@ contract Game is
                 itemIdsByType
             );
         }
+
+        return nativeSector.naturalResources.length;
     }
 
 

@@ -261,7 +261,7 @@ contract TestGame {
 
     function testFunction_manualTransformationFailCase() public {
 
-        (   uint[] memory itemIds1,
+        (   ,
             uint[] memory itemQuantities1
         ) = game.getSectorSilos(address(this));
 
@@ -273,7 +273,7 @@ contract TestGame {
             "Verify that the transformation was unsuccessful."
         );
 
-        (   uint[] memory itemIds2,
+        (   ,
             uint[] memory itemQuantities2
         ) = game.getSectorSilos(address(this));
 
