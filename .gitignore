@@ -2,3 +2,4 @@
 node_modules
 frontend/src/contracts
 app/src/contracts
+.DS_Store
