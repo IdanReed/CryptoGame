@@ -1,12 +1,14 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.6.1;
+pragma experimental ABIEncoderV2;
+
+interface ComponentIntf{
+    function store(GameLib.Sector calldata) external pure returns(bool);
+}
 
 library GameLib {
     struct Sector {
-        address key;
-    }
+        address addr;
 
-    function libFunc() public pure returns(uint){
-        return 13;
+        ComponentIntf[] components;
     }
-
 }
